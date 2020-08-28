@@ -1,0 +1,94 @@
+{% from "macros.html" import nav_link with context %}
+<!DOCTYPE html>
+<html>
+  <head>
+    {% block head %}
+      <title>{% block title %}{% endblock %} - Argo Patient List</title>
+    {% endblock %}
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <style type="text/css">
+      .container {
+        max-width: 700px;
+      }
+      h2 {color: red;}
+      h4 {color: white;
+      background-color: grey;}
+      #target a:hover .foo, #target a:active .foo{
+        fill: teal;}
+      .foo {
+        fill: #428bca;
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar navbar-inverse" role="navigation">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/">Argo Patient List!</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav">
+            <!--{{ nav_link('home', 'Home') }}-->
+            {{ nav_link('about', 'About') }}
+            {{ nav_link('contact', 'Contact Us') }}
+          </ul>
+          <!--
+          <form class="navbar-form navbar-left" role="search">
+            <div class="form-group">
+              <input type="text" class="form-control" placeholder="Search">
+            </div>
+            <button type="submit" class="btn btn-default">Submit</button>
+          </form> -->
+              <ul class="nav navbar-nav navbar-right">
+                  <a no-external="true" href="https://argonautwiki.hl7.org/Main_Page">
+            <img alt="visit our website" class="img-responsive project-logo" src="{{url_for('static', filename='images/org_logo.png')}}">
+            </a>
+          </ul>
+  <!--
+            <li><a href="#">Link</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li class="divider"></li>
+                <li><a href="#">Separated link</a></li>
+              </ul>
+            </li>
+          </ul>
+  -->
+        </div><!-- /.navbar-collapse -->
+      </div><!-- /.container-fluid -->
+    </nav>
+    <div class="container">
+      {% block heading %}
+        <h1>{% block page %}{% endblock %} - Argo Patient List Client</h1>
+      {% endblock %}
+
+      <br>
+      {% block content %}{% endblock %}
+      <br>
+
+      <hr>
+      <div class="footer">
+        {% block footer %}
+        Link to the <a href="http://bit.ly/argo20-lists" target="_blank">Argo Patient List Running Notes</a> and <a href="https://hackmd.io/AfJ9YNb6TNGeDSuAaHIn1g?view">Draft API</a>
+          <br>
+          <br>
+          <br>
+        {% endblock %}
+      </div>
+    </div>
+    <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+  </body>
+</html>

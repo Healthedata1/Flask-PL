@@ -1,0 +1,11 @@
+{% extends "template.html" %}
+
+{% block content %}
+
+  <br>
+  <h4>Current date/time: {{ current_time | datetimefilter }}</h4>
+  <br>
+  <p>{# My string (in markdown!!):#} {{ my_content | markdown | safe }}</p>
+  <br>
+
+{% endblock content %}

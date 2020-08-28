@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="591" height="1380">
+  <defs/>
+  <g>
+    <g/>
+    <g/>
+    <g/>
+    <g/>
+    <g/>
+    <g/>
+    <g/>
+    <g/>
+    <g/>
+    <g/>
+    <g/>
+    <g/>
+    <g/>
+    <g/>
+    <g/>
+    <g/>
+    <g/>
+    <g/>
+    <g/>
+    <g/>
+    <g/>
+    <g/>
+    <g/>
+    <g/>
+    <g/>
+    <g/>
+    <g/>
+    <g/>
+    <g/>
+    <g/>
+    <g/>
+    <g>
+      <rect fill="white" stroke="none" x="0" y="0" width="591" height="1380"/>
+    </g>
+    <g>
+      <text fill="black" stroke="none" font-family="sans-serif" font-size="16.5pt" font-style="normal" font-weight="normal" text-decoration="normal" x="181.5585660791146" y="26.3876361" text-anchor="start" dominant-baseline="alphabetic" xml:space="preserve">Patient List Interactions</text>
+    </g>
+    <g/>
+    <g>
+      <path fill="none" stroke="black" paint-order="fill stroke markers" d=" M 232.79707289539064 103.26361593799999 L 232.79707289539064 1380.4252031779997" stroke-miterlimit="10" stroke-width="1.4659797833333332" stroke-dasharray="13.532121076923076,5.863919133333333"/>
+      <path fill="none" stroke="black" paint-order="fill stroke markers" d=" M 378.2910980811979 103.26361593799999 L 378.2910980811979 1380.4252031779997" stroke-miterlimit="10" stroke-width="1.4659797833333332" stroke-dasharray="13.532121076923076,5.863919133333333"/>
+    </g>
+    <g>
+      <path fill="none" stroke="none"/>
+      <g>
+        <path fill="white" stroke="black" paint-order="fill stroke markers" d=" M 194.9698656647305 55.765870957999994 L 270.6242801260508 55.765870957999994 L 270.6242801260508 103.26361593799999 L 194.9698656647305 103.26361593799999 L 194.9698656647305 55.765870957999994 Z" stroke-miterlimit="10" stroke-width="2.814681184" stroke-dasharray=""/>
+      </g>
+      <g>
+        <g/>
+        <text fill="black" stroke="none" font-family="sans-serif" font-size="11pt" font-style="normal" font-weight="normal" text-decoration="normal" x="214.05692244373049" y="85.67185853800001" text-anchor="start" dominant-baseline="alphabetic" xml:space="preserve">Client</text>
+      </g>
+      <path fill="none" stroke="none"/>
+      <g>
+        <path fill="white" stroke="black" paint-order="fill stroke markers" d=" M 300.96496659516663 55.765870957999994 L 455.6172295672292 55.765870957999994 L 455.6172295672292 103.26361593799999 L 300.96496659516663 103.26361593799999 L 300.96496659516663 55.765870957999994 Z" stroke-miterlimit="10" stroke-width="2.814681184" stroke-dasharray=""/>
+      </g>
+      <g>
+        <g/>
+        <text fill="black" stroke="none" font-family="sans-serif" font-size="11pt" font-style="normal" font-weight="normal" text-decoration="normal" x="320.05202337416665" y="85.67185853800001" text-anchor="start" dominant-baseline="alphabetic" xml:space="preserve">EHR FHIR Server</text>
+      </g>
+    </g>
+
+    <g>
+      <path fill="white" stroke="black" paint-order="fill stroke markers" d=" M 232.79707289539064 176.269409148 L 224.00119419539064 176.269409148 M 50.914668372851565 138.447130738 L 208.16861253539065 138.447130738 L 224.00119419539064 154.279712398 L 224.00119419539064 214.091687558 L 50.914668372851565 214.091687558 L 50.914668372851565 138.447130738 M 208.16861253539065 138.447130738 L 208.16861253539065 154.279712398 L 224.00119419539064 154.279712398" stroke-miterlimit="10" stroke-width="3" stroke-dasharray=""/>
+    <g>
+
+        <text  fill="black" stroke="none" font-family="sans-serif" font-size="11pt" font-style="normal" font-weight="normal" text-decoration="normal" x="75.54312873285159" y="163.07559109800002" text-anchor="start" dominant-baseline="alphabetic" xml:space="preserve">1. Discovery:</text>
+        <text fill="black" stroke="none" font-family="sans-serif" font-size="11pt" font-style="normal" font-weight="normal" text-decoration="normal" x="75.54312873285159" y="180.66734849800002" text-anchor="start" dominant-baseline="alphabetic" xml:space="preserve"> Fetch Summary of</text>
+        <text fill="black" stroke="none" font-family="sans-serif" font-size="11pt" font-style="normal" font-weight="normal" text-decoration="normal" x="75.54312873285159" y="198.25910589800003" text-anchor="start" dominant-baseline="alphabetic" xml:space="preserve"> Patients Lists</text>
+      </g>
+      <g>
+        <g>
+          <rect fill="white" stroke="none" x="255.24247245202474" y="240.47932365799997" width="100.60322607253906" height="22.86928462"/>
+        </g>
+        <text fill="black" stroke="none" font-family="sans-serif" font-size="11pt" font-style="normal" font-weight="normal" text-decoration="normal" x="257.88123606202475" y="256.31190531799996" text-anchor="start" dominant-baseline="alphabetic" xml:space="preserve">GET Group?...</text>
+      </g>
+      <g>
+        <path fill="none" stroke="black" paint-order="fill stroke markers" d=" M 232.79707289539064 263.348608278 L 375.35913851453125 263.348608278" stroke-miterlimit="10" stroke-width="1.4659797833333332" stroke-dasharray=""/>
+        <g transform="translate(378.2910980811979,263.348608278) translate(-378.2910980811979,-263.348608278)">
+          <path fill="black" stroke="none" paint-order="stroke fill markers" d=" M 363.63130024786454 256.0187093613333 L 378.2910980811979 263.348608278 L 363.63130024786454 270.6785071946666 Z"/>
+        </g>
+      </g>
+      <path fill="white" stroke="black" paint-order="fill stroke markers" d=" M 378.2910980811979 327.558522788 L 387.0869767811979 327.558522788 M 387.0869767811979 289.736244378 L 533.7539305872917 289.736244378 L 549.5865122472917 305.568826038 L 549.5865122472917 365.380801198 L 387.0869767811979 365.380801198 L 387.0869767811979 289.736244378 M 533.7539305872917 289.736244378 L 533.7539305872917 305.568826038 L 549.5865122472917 305.568826038" stroke-miterlimit="10" stroke-width="1.4659797833333332" stroke-dasharray=""/>
+      <g>
+        <text fill="black" stroke="none" font-family="sans-serif" font-size="11pt" font-style="normal" font-weight="normal" text-decoration="normal" x="411.7154371411979" y="314.364704738" text-anchor="start" dominant-baseline="alphabetic" xml:space="preserve">Based on User</text>
+        <text fill="black" stroke="none" font-family="sans-serif" font-size="11pt" font-style="normal" font-weight="normal" text-decoration="normal" x="411.7154371411979" y="331.956462138" text-anchor="start" dominant-baseline="alphabetic" xml:space="preserve"> return Bundle of </text>
+        <text fill="black" stroke="none" font-family="sans-serif" font-size="11pt" font-style="normal" font-weight="normal" text-decoration="normal" x="411.7154371411979" y="349.548219538" text-anchor="start" dominant-baseline="alphabetic" xml:space="preserve">User Facing Lists</text>
+      </g>
+      <g>
+        <g>
+          <rect fill="white" stroke="none" x="280.0814235628646" y="391.768437298" width="50.92532385085937" height="22.86928462"/>
+        </g>
+        <text fill="black" stroke="none" font-family="sans-serif" font-size="11pt" font-style="normal" font-weight="normal" text-decoration="normal" x="282.7201871728646" y="407.601018958" text-anchor="start" dominant-baseline="alphabetic" xml:space="preserve">Bundle</text>
+      </g>
+      <g>
+        <path fill="none" stroke="black" paint-order="fill stroke markers" d=" M 378.2910980811979 414.63772191799995 L 235.72903246205732 414.63772191799995" stroke-miterlimit="10" stroke-width="1.4659797833333332" stroke-dasharray=""/>
+        <g transform="translate(232.79707289539064,414.63772191799995) translate(-232.79707289539064,-414.63772191799995)">
+          <path fill="black" stroke="none" paint-order="stroke fill markers" d=" M 247.45687072872397 407.3078230013333 L 232.79707289539064 414.63772191799995 L 247.45687072872397 421.9676208346666 Z"/>
+        </g>
+      </g><!-- A link around a text --> <a href="/fetch">
+      <path class="foo" stroke="black" paint-order="fill stroke markers" d=" M 232.79707289539064 478.847636428 L 224.00119419539064 478.847636428 M 52.51813822148438 441.02535801799996 L 208.16861253539065 441.02535801799996 L 224.00119419539064 456.857939678 L 224.00119419539064 516.669914838 L 52.51813822148438 516.669914838 L 52.51813822148438 441.02535801799996 M 208.16861253539065 441.02535801799996 L 208.16861253539065 456.857939678 L 224.00119419539064 456.857939678" stroke-linejoin="round" stroke-width="3" stroke-dasharray=""/>
+      <g>
+        <text fill="white" stroke="none" font-family="sans-serif" font-size="11pt" font-style="normal" font-weight="normal" text-decoration="normal" x="77.1465985814844" y="465.653818378" text-anchor="start" dominant-baseline="alphabetic" xml:space="preserve">2. Fetch Patient List:</text>
+        <text fill="white" stroke="none" font-family="sans-serif" font-size="11pt" font-style="normal" font-weight="normal" text-decoration="normal" x="77.1465985814844" y="483.245575778" text-anchor="start" dominant-baseline="alphabetic" xml:space="preserve">End User Selects</text>
+        <text fill="white" stroke="none" font-family="sans-serif" font-size="11pt" font-style="normal" font-weight="normal" text-decoration="normal" x="77.1465985814844" y="500.837333178" text-anchor="start" dominant-baseline="alphabetic" xml:space="preserve">Patient List</text>
+      </g></a>
+      <g>
+        <g>
+          <rect fill="white" stroke="none" x="253.61398581872396" y="543.057550938" width="103.86019933914062" height="22.86928462"/>
+        </g>
+        <text fill="black" stroke="none" font-family="sans-serif" font-size="11pt" font-style="normal" font-weight="normal" text-decoration="normal" x="256.252749428724" y="558.8901325979999" text-anchor="start" dominant-baseline="alphabetic" xml:space="preserve">GET Group/[id]</text>
+      </g>
+      <g>
+        <path fill="none" stroke="black" paint-order="fill stroke markers" d=" M 232.79707289539064 565.926835558 L 375.35913851453125 565.926835558" stroke-miterlimit="10" stroke-width="1.4659797833333332" stroke-dasharray=""/>
+        <g transform="translate(378.2910980811979,565.926835558) translate(-378.2910980811979,-565.926835558)">
+          <path fill="black" stroke="none" paint-order="stroke fill markers" d=" M 363.63130024786454 558.5969366413333 L 378.2910980811979 565.926835558 L 363.63130024786454 573.2567344746667 Z"/>
+        </g>
+      </g>
+      <path fill="white" stroke="black" paint-order="fill stroke markers" d=" M 378.2910980811979 621.340871368 L 387.0869767811979 621.340871368 M 387.0869767811979 592.3144716579999 L 539.4733367152214 592.3144716579999 L 555.3059183752214 608.1470533179998 L 555.3059183752214 650.3672710779999 L 387.0869767811979 650.3672710779999 L 387.0869767811979 592.3144716579999 M 539.4733367152214 592.3144716579999 L 539.4733367152214 608.1470533179998 L 555.3059183752214 608.1470533179998" stroke-miterlimit="10" stroke-width="1.4659797833333332" stroke-dasharray=""/>
+      <g>
+        <text fill="black" stroke="none" font-family="sans-serif" font-size="11pt" font-style="normal" font-weight="normal" text-decoration="normal" x="411.7154371411979" y="616.942932018" text-anchor="start" dominant-baseline="alphabetic" xml:space="preserve">Returns full Group</text>
+        <text fill="black" stroke="none" font-family="sans-serif" font-size="11pt" font-style="normal" font-weight="normal" text-decoration="normal" x="411.7154371411979" y="634.534689418" text-anchor="start" dominant-baseline="alphabetic" xml:space="preserve"> resource</text>
+      </g>
+      <g>
+        <g>
+          <rect fill="white" stroke="none" x="282.53309897790365" y="676.7549071779999" width="46.021973020781246" height="22.86928462"/>
+        </g>
+        <text fill="black" stroke="none" font-family="sans-serif" font-size="11pt" font-style="normal" font-weight="normal" text-decoration="normal" x="285.17186258790366" y="692.5874888379999" text-anchor="start" dominant-baseline="alphabetic" xml:space="preserve">Group</text>
+      </g>
+      <g>
+        <path fill="none" stroke="black" paint-order="fill stroke markers" d=" M 378.2910980811979 699.624191798 L 235.72903246205732 699.624191798" stroke-miterlimit="10" stroke-width="1.4659797833333332" stroke-dasharray=""/>
+        <g transform="translate(232.79707289539064,699.624191798) translate(-232.79707289539064,-699.624191798)">
+          <path fill="black" stroke="none" paint-order="stroke fill markers" d=" M 247.45687072872397 692.2942928813333 L 232.79707289539064 699.624191798 L 247.45687072872397 706.9540907146667 Z"/>
+        </g>
+      </g>
+
+      <path fill="white" stroke="black" paint-order="fill stroke markers" d=" M 232.79707289539064 781.4258637080001 L 224.00119419539064 781.4258637080001 M 8.7958787 726.0118278980001 L 208.16861253539065 726.0118278980001 L 224.00119419539064 741.844409558 L 224.00119419539064 836.839899518 L 8.7958787 836.839899518 L 8.7958787 726.0118278980001 M 208.16861253539065 726.0118278980001 L 208.16861253539065 741.844409558 L 224.00119419539064 741.844409558" stroke-miterlimit="10" stroke-width="3" stroke-dasharray=""/>
+      <g>
+        <text fill="black" stroke="none" font-family="sans-serif" font-size="11pt" font-style="normal" font-weight="normal" text-decoration="normal" x="33.42433906000001" y="750.640288258" text-anchor="start" dominant-baseline="alphabetic" xml:space="preserve">3. Fetch Additional Data:</text>
+        <text fill="black" stroke="none" font-family="sans-serif" font-size="11pt" font-style="normal" font-weight="normal" text-decoration="normal" x="33.42433906000001" y="768.2320456580001" text-anchor="start" dominant-baseline="alphabetic" xml:space="preserve"> Client MAY fetch more data </text>
+        <text fill="black" stroke="none" font-family="sans-serif" font-size="11pt" font-style="normal" font-weight="normal" text-decoration="normal" x="33.42433906000001" y="785.8238030580001" text-anchor="start" dominant-baseline="alphabetic" xml:space="preserve">using a series of</text>
+        <text fill="black" stroke="none" font-family="sans-serif" font-size="11pt" font-style="normal" font-weight="normal" text-decoration="normal" x="33.42433906000001" y="803.4155604580001" text-anchor="start" dominant-baseline="alphabetic" xml:space="preserve">FHIR API Searches</text>
+      </g>
+      <path fill="white" stroke="black" paint-order="fill stroke markers" d=" M 378.2910980811979 883.458056628 L 387.0869767811979 883.458056628 M 387.0869767811979 863.2275356179999 L 567.1683592982292 863.2275356179999 L 583.0009409582292 879.0601172779999 L 583.0009409582292 903.688577638 L 387.0869767811979 903.688577638 L 387.0869767811979 863.2275356179999 M 567.1683592982292 863.2275356179999 L 567.1683592982292 879.0601172779999 L 583.0009409582292 879.0601172779999" stroke-miterlimit="10" stroke-width="1.4659797833333332" stroke-dasharray=""/>
+      <g>
+        <text fill="black" stroke="none" font-family="sans-serif" font-size="11pt" font-style="normal" font-weight="normal" text-decoration="normal" x="411.7154371411979" y="887.855995978" text-anchor="start" dominant-baseline="alphabetic" xml:space="preserve">Returns search results</text>
+      </g>
+      <g>
+        <g>
+          <rect fill="white" stroke="none" x="276.8315990389388" y="930.076213738" width="57.424972898710934" height="22.86928462"/>
+        </g>
+        <text fill="black" stroke="none" font-family="sans-serif" font-size="11pt" font-style="normal" font-weight="normal" text-decoration="normal" x="279.4703626489388" y="945.9087953979999" text-anchor="start" dominant-baseline="alphabetic" xml:space="preserve">Query 1</text>
+      </g>
+      <g>
+        <path fill="none" stroke="black" paint-order="fill stroke markers" d=" M 232.79707289539064 952.945498358 L 375.35913851453125 952.945498358" stroke-miterlimit="10" stroke-width="1.4659797833333332" stroke-dasharray=""/>
+        <g transform="translate(378.2910980811979,952.945498358) translate(-378.2910980811979,-952.945498358)">
+          <path fill="black" stroke="none" paint-order="stroke fill markers" d=" M 363.63130024786454 945.6155994413333 L 378.2910980811979 952.945498358 L 363.63130024786454 960.2753972746667 Z"/>
+        </g>
+      </g>
+      <g>
+        <g>
+          <rect fill="white" stroke="none" x="302.9053218782943" y="979.333134458" width="5.27752722" height="22.86928462"/>
+        </g>
+        <text fill="black" stroke="none" font-family="sans-serif" font-size="11pt" font-style="normal" font-weight="normal" text-decoration="normal" x="305.5440854882943" y="995.165716118" text-anchor="start" dominant-baseline="alphabetic" xml:space="preserve">
+        </text>
+      </g>
+      <g>
+        <path fill="none" stroke="black" paint-order="fill stroke markers" d=" M 378.2910980811979 1002.202419078 L 235.72903246205732 1002.202419078" stroke-miterlimit="10" stroke-width="1.4659797833333332" stroke-dasharray=""/>
+        <g transform="translate(232.79707289539064,1002.202419078) translate(-232.79707289539064,-1002.202419078)">
+          <path fill="black" stroke="none" paint-order="stroke fill markers" d=" M 247.45687072872397 994.8725201613333 L 232.79707289539064 1002.202419078 L 247.45687072872397 1009.5323179946668 Z"/>
+        </g>
+      </g>
+      <g>
+        <g>
+          <rect fill="white" stroke="none" x="276.8315990389388" y="1028.590055178" width="57.424972898710934" height="22.86928462"/>
+        </g>
+        <text fill="black" stroke="none" font-family="sans-serif" font-size="11pt" font-style="normal" font-weight="normal" text-decoration="normal" x="279.4703626489388" y="1044.422636838" text-anchor="start" dominant-baseline="alphabetic" xml:space="preserve">Query 2</text>
+      </g>
+      <g>
+        <path fill="none" stroke="black" paint-order="fill stroke markers" d=" M 232.79707289539064 1051.459339798 L 375.35913851453125 1051.459339798" stroke-miterlimit="10" stroke-width="1.4659797833333332" stroke-dasharray=""/>
+        <g transform="translate(378.2910980811979,1051.459339798) translate(-378.2910980811979,-1051.459339798)">
+          <path fill="black" stroke="none" paint-order="stroke fill markers" d=" M 363.63130024786454 1044.1294408813333 L 378.2910980811979 1051.459339798 L 363.63130024786454 1058.7892387146667 Z"/>
+        </g>
+      </g>
+      <g>
+        <g>
+          <rect fill="white" stroke="none" x="302.9053218782943" y="1077.846975898" width="5.27752722" height="22.86928462"/>
+        </g>
+        <text fill="black" stroke="none" font-family="sans-serif" font-size="11pt" font-style="normal" font-weight="normal" text-decoration="normal" x="305.5440854882943" y="1093.679557558" text-anchor="start" dominant-baseline="alphabetic" xml:space="preserve">
+        </text>
+      </g>
+      <g>
+        <path fill="none" stroke="black" paint-order="fill stroke markers" d=" M 378.2910980811979 1100.716260518 L 235.72903246205732 1100.716260518" stroke-miterlimit="10" stroke-width="1.4659797833333332" stroke-dasharray=""/>
+        <g transform="translate(232.79707289539064,1100.716260518) translate(-232.79707289539064,-1100.716260518)">
+          <path fill="black" stroke="none" paint-order="stroke fill markers" d=" M 247.45687072872397 1093.3863616013332 L 232.79707289539064 1100.716260518 L 247.45687072872397 1108.0461594346666 Z"/>
+        </g>
+      </g>
+      <g>
+        <g>
+          <rect fill="white" stroke="none" x="293.1272304476302" y="1127.103896618" width="24.833710081328125" height="22.86928462"/>
+        </g>
+        <text fill="black" stroke="none" font-family="sans-serif" font-size="11pt" font-style="normal" font-weight="normal" text-decoration="normal" x="295.7659940576302" y="1142.9364782779999" text-anchor="start" dominant-baseline="alphabetic" xml:space="preserve">etc</text>
+      </g>
+      <g>
+        <path fill="none" stroke="black" paint-order="fill stroke markers" d=" M 232.79707289539064 1149.9731812379998 L 375.35913851453125 1149.9731812379998" stroke-miterlimit="10" stroke-width="1.4659797833333332" stroke-dasharray=""/>
+        <g transform="translate(378.2910980811979,1149.9731812379998) translate(-378.2910980811979,-1149.9731812379998)">
+          <path fill="black" stroke="none" paint-order="stroke fill markers" d=" M 363.63130024786454 1142.6432823213331 L 378.2910980811979 1149.9731812379998 L 363.63130024786454 1157.3030801546665 Z"/>
+        </g>
+      </g>
+      <g>
+        <g>
+          <rect fill="white" stroke="none" x="302.9053218782943" y="1176.3608173379998" width="5.27752722" height="22.86928462"/>
+        </g>
+        <text fill="black" stroke="none" font-family="sans-serif" font-size="11pt" font-style="normal" font-weight="normal" text-decoration="normal" x="305.5440854882943" y="1192.1933989979998" text-anchor="start" dominant-baseline="alphabetic" xml:space="preserve">
+        </text>
+      </g>
+      <g>
+        <path fill="none" stroke="black" paint-order="fill stroke markers" d=" M 378.2910980811979 1199.2301019579998 L 235.72903246205732 1199.2301019579998" stroke-miterlimit="10" stroke-width="1.4659797833333332" stroke-dasharray=""/>
+        <g transform="translate(232.79707289539064,1199.2301019579998) translate(-232.79707289539064,-1199.2301019579998)">
+          <path fill="black" stroke="none" paint-order="stroke fill markers" d=" M 247.45687072872397 1191.900203041333 L 232.79707289539064 1199.2301019579998 L 247.45687072872397 1206.5600008746665 Z"/>
+        </g>
+      </g>
+      <path fill="white" stroke="black" paint-order="fill stroke markers" d=" M 232.79707289539064 1272.2358951679996 L 224.00119419539064 1272.2358951679996 M 23.191035560351562 1225.6177380579998 L 208.16861253539065 1225.6177380579998 L 224.00119419539064 1241.4503197179997 L 224.00119419539064 1318.8540522779997 L 23.191035560351562 1318.8540522779997 L 23.191035560351562 1225.6177380579998 M 208.16861253539065 1225.6177380579998 L 208.16861253539065 1241.4503197179997 L 224.00119419539064 1241.4503197179997" stroke-miterlimit="10" stroke-width="1.4659797833333332" stroke-dasharray=""/>
+      <g>
+        <text fill="black" stroke="none" font-family="sans-serif" font-size="11pt" font-style="normal" font-weight="normal" text-decoration="normal" x="47.81949592035157" y="1250.2461984179995" text-anchor="start" dominant-baseline="alphabetic" xml:space="preserve">Client Application</text>
+        <text fill="black" stroke="none" font-family="sans-serif" font-size="11pt" font-style="normal" font-weight="normal" text-decoration="normal" x="47.81949592035157" y="1267.8379558179995" text-anchor="start" dominant-baseline="alphabetic" xml:space="preserve"> processes/displays/etc</text>
+        <text fill="black" stroke="none" font-family="sans-serif" font-size="11pt" font-style="normal" font-weight="normal" text-decoration="normal" x="47.81949592035157" y="1285.4297132179995" text-anchor="start" dominant-baseline="alphabetic" xml:space="preserve"> Group Members</text>
+        <text fill="black" stroke="none" font-family="sans-serif" font-size="11pt" font-style="normal" font-weight="normal" text-decoration="normal" x="47.81949592035157" y="1303.0214706179995" text-anchor="start" dominant-baseline="alphabetic" xml:space="preserve">to End User</text>
+      </g>
+    </g>
+    <g/>
+    <g/>
+  </g>
+</svg>

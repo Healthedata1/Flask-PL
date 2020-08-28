@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+{% block title %}{{title}}{% endblock %}
+{% block head %}
+  {{ super() }}
+{% endblock %}
+{% block page %}{{title}}{% endblock %}
+{% block heading %}
+  {{ super() }}
+{% endblock %}
+{% block content %}
+  <h4>Current date/time: {{ current_time | datetimefilter }}</h4>{% if title == 'Index' %}
+  <img alt="patient lists" class="img-responsive" src="{{url_for('static', filename='images/Picture1.png')}}">{% endif %}
+  <p>{{my_string | markdown | safe }}</p>
+{{ svg | safe }}
+{% endblock %}
