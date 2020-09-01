@@ -1,6 +1,6 @@
 <div>
-  <a href="https://argonautwiki.hl7.org/Main_Page">
-<img alt="visit our website" class="img-responsive project-logo" src="../static/images/org_logo.png">
+  <a href="https://confluence.hl7.org/display/AP/Argonaut+Project+Home">
+<img alt="visit our website" class="img-responsive project-logo" src="../static/images/argo.png">
 </a>
 </div>
 

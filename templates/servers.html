@@ -1,0 +1,9 @@
+
+<form method="post" name="get-server">
+{% for k,v in server_list.items() %}
+<input type="radio" name="get-server" id="{{ k | lower }}" value="{{ v }}" {% if k==default %}checked{% endif %}/>
+<label for="{{ k | lower }}"> "{{ k }}"</label><br>
+{% endfor %}
+
+<input type="submit" class="btn btn-primary btn-lg" role="button" value="CLICK HERE to Select Server Endpoint"></input><br>
+</form>

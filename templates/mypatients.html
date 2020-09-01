@@ -1,0 +1,20 @@
+<table  class="table table-striped table-bordered">
+<thead>
+<tr>
+<th>Patient</th>
+<th>id</th>
+<th>DOB</th>
+<th>Sex</th>
+</tr>
+</thead>
+<tbody>
+{% for i in my_patients %}
+<tr>
+<td><a href=/fetch-more?endpoint={{session_base}}/Patient/{{i.id}}>{{i.display}}</a></td>
+<td>{{i.id}}</td>
+<td {% if ep %}style="background-color:#00FF00"{% endif %}>{{i.dob}}</td>
+<td {% if ep %}style="background-color:#00FF00"{% endif %}>{{i.sex}}</td>
+</tr>
+{% endfor %}
+</tbody>
+</table>

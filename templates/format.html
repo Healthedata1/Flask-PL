@@ -1,0 +1,93 @@
+<ul>
+<li><strong>resourceType</strong>: {{Group.resource_type}}</li>
+<!--{%raw%} <li><strong>identifier</strong>: <ul>
+{% if Group.identifier %}
+{% for i in Group.identifier %}
+<li><strong>system</strong>: {{Group.identifier[i].system}}</li>
+<li><strong>value</strong>: {{Group.identifier[i].value}}</li>
+</ul>
+{% endfor %}
+{% endif %}
+</li>
+{%endraw%}
+<li><strong>actual</strong>: {{Group.actual}}</li>
+<li><strong>type</strong>: {{Group.type}}</li>
+<li><strong>active</strong>: {{Group.active}}</li>
+-->
+<li><strong>id</strong>: {{Group.id}}</li>
+<li><strong>name</strong>: {{Group.name}}</li>
+<li><strong>quantity</strong>: {{Group.quantity}}</li>
+<li><strong>managingEntity</strong>: <ul>
+<li><strong>reference</strong>: {{Group.managingEntity.reference}}</li>
+<li><strong>display</strong>: {{Group.managingEntity.display}}</li>
+</ul>
+</li>
+</ul>
+<!-- {% raw %}
+<li><strong>characteristic</strong>: <ul>
+  {% if Group.characteristic %}
+  {% for i in Group.characteristic %}
+<li><strong>code</strong>: {{Group.characteristic[i].code}}<ul>
+<li><strong>text</strong>: {{Group.characteristic[i].code.text}}</li>
+<li><strong>coding</strong>: {{Group.characteristic[i].coding}}<ul>
+    {% if Group.characteristic[i].coding %}
+    {% for j in Group.characteristic[i].coding %}
+<li><strong>code</strong>:{{Group.characteristic[i].coding[j].code}}</li>
+<li><strong>system</strong>:{{Group.characteristic[i].coding[j].system}}</li>
+<li><strong>display</strong>:{{Group.characteristic[i].coding[j].display}}</li>
+{% endfor %}
+{% endif %}
+</ul>
+</ul>
+</li>
+<li><strong>valueReference</strong>:
+<ul>
+<li><strong>reference</strong>: {{Group.characteristic[i].valueReference.reference}}</li>
+<li><strong>display</strong>: {{Group.characteristic[i].valueReference.display}}</li>
+</ul>
+</li>
+{% endfor %}
+{% endif %}
+</ul>
+</li>
+{%endraw%}
+-->
+{% if Group.member %}
+<h5><strong>PATIENTS:</strong>:<h5>
+  <ol>
+    {% for i in Group.member %}
+<li><strong>display</strong>: {{i.entity.display}}:
+ resource id = {{i.entity.reference}}</li>
+<!--{%raw%}
+<li><strong>period</strong>:
+<ul>
+<li><strong>start</strong>: {{i.period.start}}</li>
+</ul>
+</li>
+{%endraw%}
+-->
+  {% endfor %}
+  {% endif %}
+</ol>
+
+
+
+<h4> Group Resource Narrative (from resource itself): </h4>
+
+{{ Group.text.div | safe }}
+
+<h4> YAML format </h4>
+
+<a class="btn btn-default btn-lg" role="button" href="../uploads/test-argo-pl-group.yml">Download</a>
+
+<pre>
+{{ Group.as_json() | yaml }}
+</pre>
+
+<h4> JSON Format </h4>
+
+<a class="btn btn-default btn-lg" role="button" href="../uploads/test-argo-pl-group.json">Download</a>
+
+<pre>
+{{ Group.as_json() | tojson(indent=4) }}
+</pre>
