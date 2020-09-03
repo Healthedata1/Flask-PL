@@ -14,10 +14,11 @@ from time import sleep
 from jinja2 import Environment, FileSystemLoader
 from yaml import dump as y_dump
 
-app = Flask(__name__, static_url_path='/static')
+app = Flask(__name__,)
 app.secret_key = 'my secret key'
 
-env = Environment(loader=FileSystemLoader('templates'))
+env = Environment(loader=FileSystemLoader([f'{app.root_path}/pages',
+            f'{app.root_path}/includes',]))
 
 #==============Globals======================
 
@@ -27,14 +28,15 @@ server_list =  {  # base_url for reference server - no trailing forward slash
     'WildFHIR': 'http://wildfhir4.aegis.net/fhir4-0-1',
     }
 base = 'FHIR R4'
+pages = f'{app.root_path}/pages'
 
 # ================  Functions =================
 
 def md_template(my_md,*args,**kwargs): # Create template with the markdown source text
-    template = env.from_string(my_md,kwargs)
+    template = env.get_template(my_md)
     # Render that template.
     app.logger.info(f'line 34: kwargs = {kwargs}')
-    return template.render()
+    return template.render(kwargs)
 
 def search(Type, **kwargs):
     '''
@@ -95,7 +97,6 @@ def datetimefilter(value, format='%Y/%m/%d %H:%M'):
 def markdown(text, *args, **kwargs):
     return commonmark(text, *args, **kwargs,)
 
-env = Environment(loader=FileSystemLoader('templates'))
 env.filters['yaml'] = yaml
 
 app.jinja_env.filters['datetimefilter'] = datetimefilter
@@ -134,8 +135,9 @@ def discovery():
             app.logger.info(f'line 64: base = {base}')
         app.logger.info(f'line 66: session = {session}')
         my_intro = '## The Client Searches for User Facing Patient Lists from an EHR by Querying the *Group* Endpoint...' # markdown intro since the svg doesn't play nice in markdown includes
-        path = Path.cwd() / 'pages' / 'discovery.md' #markdown text with includes
-        my_markdown_string=md_template(path.read_text(),server_list=session['server_list'], default=session['base_name'])
+        my_markdown_string=md_template('discovery.md',
+            server_list=session['server_list'], default=session['base_name'],
+            )
         return render_template('template.html',
             my_intro=my_intro,
             my_string=my_markdown_string,
@@ -152,8 +154,7 @@ def fetch_lists():
     requests_object = search("Group",_summary=True, type='person',) # requests object
     py_bundle = pyfhir(requests_object.json(), Type="Bundle")
     app.logger.info(f'bundle id = {py_bundle.id}')
-    path = Path.cwd() / 'pages' / 'fetch_userfacinglists.md' #markdown text with includes
-    my_markdown_string=md_template(path.read_text(),    user_facing_lists=py_bundle.entry,
+    my_markdown_string=md_template('fetch_userfacinglists.md',    user_facing_lists=py_bundle.entry,
      base_name=session['base_name'],
      url_string=requests_object.url ,
      )
@@ -175,9 +176,8 @@ def fetch_patientlist():
         write_out(app.root_path, "test-argo-pl-group.yml", yaml(requests_object.json()))
         py_group = pyfhir(requests_object.json(), Type="Group")
         app.logger.info(f'group id = {py_group.id}')
-        path = Path.cwd() / 'pages' / 'fetch_patientlist.md' #markdown text with includes
         session['md_string']=md_template(
-             path.read_text(),
+             'fetch_patientlist.md',
              base_name=session['base_name'],
              url_string=requests_object.url,
              )
@@ -225,9 +225,8 @@ def fetch_more():
 
     app.logger.info(f'my_patients = {session["my_patients"]}')
     my_string="## The User Get additional Patient data one of three ways: <br>Click on the blue buttons below to continue..."
-    path = Path.cwd() / 'pages' / 'additional-data.md' #markdown text with includes
     my_markdown_string=md_template(
-         path.read_text(),
+         'additional-data.md',
          my_patients=session['my_patients'],
          session_base=session['base'],
          ep=endpoint
@@ -243,20 +242,17 @@ def fetch_more():
 
 @app.route("/home")
 def home():
-    return render_template('template.html', my_string="Foo",
-        my_list=[6,7,8,9,10,11], title="Home", current_time=datetime.datetime.now())
+    return redirect('/')
 
 @app.route("/about")
 def about():
-    path = Path.cwd() / 'pages' / 'about.md'
-
+    path = Path(pages) / 'about.md'
     return render_template('sub_template1.html', my_content=path.read_text(),
          title="About", current_time=datetime.datetime.now())
 
 @app.route("/contact")
 def contact():
-    path = Path.cwd() / 'pages' / 'contact.md'
-
+    path = Path(pages) / 'contact.md'
     return render_template('sub_template1.html', my_content=path.read_text(),
          title="Contact Info", current_time=datetime.datetime.now())
 

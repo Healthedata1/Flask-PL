@@ -11,4 +11,3 @@
 > 35 Crescent Avenue, Sausalito, CA 94965<br/>
 > 707.227.2608<br/>
 > ehaas@healthedatainc.com<br/>
-> Skype: haas.eric1'
