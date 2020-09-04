@@ -130,4 +130,4 @@ dmypy.json
 .pyre/
 
 # project files
-test_output
+test_output/
