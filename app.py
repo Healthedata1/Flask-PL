@@ -29,6 +29,12 @@ server_list =  {  # base_url for reference server - no trailing forward slash
     }
 base = 'FHIR R4'
 pages = f'{app.root_path}/pages'
+group_characterstics = [
+(0,'location','Location/[id]',),
+(1,'attributed-to','Practitioner/[id]',),
+(2,'attributed-to','Organization/[id]',),
+(3,'team','Location/CareTeam/[id]',),
+]
 
 # ================  Functions =================
 
@@ -36,29 +42,33 @@ def md_template(my_md,*args,**kwargs): # Create template with the markdown sourc
     template = env.get_template(my_md)
     # Render that template.
     app.logger.info(f'line 34: kwargs = {kwargs}')
+    kwargs = {k.replace('__','-'):v for k,v in kwargs.items() }
+    app.logger.info(f'line 34: kwargs = {kwargs}')
     return template.render(kwargs)
 
 def search(Type, **kwargs):
     '''
     Search resource Tyype with parameters. [base]/[Type]{?params=kwargs}
-    return resource as json
+    return resource as json, replace '__' with dashes
     '''
     headers = {
     'Accept':'application/fhir+json',
     'Content-Type':'application/fhir+json'
     }
-
+    app.logger.info(f'line 52: kwargs = {kwargs}')
+    kwargs = {k.replace('__','-'):v for k,v in kwargs.items() }
+    app.logger.info(f'line 54: kwargs = {kwargs}')
     r_url = (f'{session["base"]}/{Type.capitalize()}')
 
     app.logger.info(f'line 50: r_url = {r_url}***')
     for attempt in range(5): #retry request up to ten times
         sleep(1)  # wait a bit between retries
         with get(r_url, headers=headers, params=kwargs) as r:
-            # return r.status_code
-            # view  output
+            app.logger.info(f'line 61:status = {r.status_code}') #return r.status_code
+            app.logger.info(f'line 62:body = {r.json()}')# view  output
             # return (r.json()["text"]["div"])
             if r.status_code <300:
-                app.logger.info(f'query string = {r.url}')
+                app.logger.info(f'line 65:query string = {r.url}')
                 return r # just the first for now
     else:
         return None
@@ -83,6 +93,14 @@ def fetch(r_url):
                 return r # just the first for now
     else:
         return None
+
+
+# mockup for search by characteristic and value_reference
+def mock_bychar(py_bundle, requests_url, c_code, c_value):
+    url_string=f'{requests_url}&characteristic={c_code}&value_reference={c_value}'
+    py_bundle.entry = [e for e in py_bundle.entry if e.resource.characteristic]
+    py_bundle.entry = [e for e in py_bundle.entry if e.resource.characteristic[0].code == c_code and e.resource.characteristic[0].valueReference == c_value]
+    return url_string,py_bundle
 
 @app.template_filter()
 def yaml(r_dict):
@@ -137,6 +155,7 @@ def discovery():
         my_intro = '## The Client Searches for User Facing Patient Lists from an EHR by Querying the *Group* Endpoint...' # markdown intro since the svg doesn't play nice in markdown includes
         my_markdown_string=md_template('discovery.md',
             server_list=session['server_list'], default=session['base_name'],
+            group_characterstics= group_characterstics,
             )
         return render_template('template.html',
             my_intro=my_intro,
@@ -147,16 +166,44 @@ def discovery():
             seq_ht = 285,
         )
 
-@app.route("/fetch-lists")
+@app.route("/fetch-lists", methods=["POST", "GET"])
 def fetch_lists():
+    org_id = request.form.get("organization_id")
+    char_id = request.form.get("characteristic")
+    input_id = request.form.get("input_id")
     my_string='''## Server Returns a Bundle of User Facing Lists<br><br>Click on the blue buttons below to continue...'''
-    # fetch all Groups
-    requests_object = search("Group",_summary=True, type='person',) # requests object
+    app.logger.info(f' line 166: request.form args = {dict(request.form)}') # get button value...
+    if org_id: # fetch by managingEntity Groups
+        requests_object = search("Group",_summary=True, type='person', managing__entity=f'Organization/{org_id}')
+        url_string=requests_object.url
+
+    elif char_id: # fetch by characteristic
+        c_code = group_characterstics[int(char_id)][1]
+        c_value = group_characterstics[int(char_id)][2].replace("[id]",input_id)
+        #returns 400 error since characteristic not defined
+        #instead will mock up by fetching all and sorting below
+        # fetch all Groups
+        '''
+        requests_object = search("Group",_summary=True, type='person', characteristic=group_characterstics[int(char_id)][1],
+        value__reference=group_characterstics[int(char_id)][2].replace('[id]',request.form.get("input_id")))
+        url_string=requests_object.url
+        '''
+        requests_object = search("Group",_summary=True, type='person',) #
+
+    else: # fetch all Groups
+        requests_object = search("Group",_summary=True, type='person',) # requests object
+        url_string=requests_object.url
+
     py_bundle = pyfhir(requests_object.json(), Type="Bundle")
+
+    if char_id: #mock up by fetching by characteristic
+        url_string, py_bundle = mock_bychar(py_bundle, requests_object.url, c_code, c_value)
+
     app.logger.info(f'bundle id = {py_bundle.id}')
     my_markdown_string=md_template('fetch_userfacinglists.md',    user_facing_lists=py_bundle.entry,
      base_name=session['base_name'],
-     url_string=requests_object.url ,
+     url_string=url_string,
+     #params = params,
      )
     return render_template('template.html', my_intro=my_string,
         title="Returns a Bundle of User Facing Lists", current_time=datetime.datetime.now(),

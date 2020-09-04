@@ -1,4 +1,6 @@
-### The search: `{{url_string}}` returned the following Group resources from the *{{base_name}}* FHIR Server:
+### The following Group resources from the *{{base_name}}* FHIR Server were returned for the search:
+
+`{{url_string}}`
 
 ---
 

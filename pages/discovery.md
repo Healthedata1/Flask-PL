@@ -23,9 +23,9 @@ Server Success Criteria: The server responds with a complete Bundle of the avail
 
 Client Success Criteria: The list of lists is processed e.g.,displayed in HTML.
 
-<a href="/fetch-lists" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Click Here to Fetch User Facing Lists</a>
+<a href="/fetch-lists?value=all" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Click Here to Fetch <i>All</i> User Facing Lists</a>
 
-### 1.2 - Organization-Managed Lists
+#### 1.2 - Organization-Managed Lists
 
 A server is able to provide a collection of patient lists that are managed by a particular organization.  A client is able to query for lists, specifying the managing Organization in the request.
 
@@ -37,7 +37,11 @@ Server Success Criteria: The server responds with a Bundle of Group entries wher
 
 Client Success Criteria: The client provides a selector listing available Organizations.  When selected, a query returns the patient lists that are managed by the selected Organization.
 
-### 1.3 - Discovery by Group Characteristic
+{% with form_action="/fetch-lists", input_id="organization_id", label = "Enter Organization id:", input_name="organization_id", init_value='43', submit_text="Click Here to Fetch All User Facing Lists by Organization" %}
+{% include "input_form.html" %}
+{% endwith %}
+
+#### 1.3 - Discovery by Group Characteristic
 
 A server is able to provide a collection of patient lists that all have a common characteristic.  A client is able to query for lists, specifying one of the following characteristic parameters in the request:
 
@@ -85,3 +89,5 @@ Action: A client issues a GET request to a server:
 Server Success Criteria: The server responds with a Bundle of Group entries where each entry has the same characterisic code/value pair  (e.g.,  location=Location/[location_id])
 
 Client Success Criteria: The client provides a selector listing above characteristic name-value pairs.  When selected, a query returns the patient lists that are managed by the selected Organization.
+
+{% include "charactersticlist.html" %}

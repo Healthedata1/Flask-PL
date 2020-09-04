@@ -1,21 +1,32 @@
 **This is a simple python Flask App FHIR Facade which:**
 
-- [ ] use same Flask app framework as notifications
-    - [ ] set up pages
-        - [ ] home, contacts etc
-        - [ ] steps 1,2,3
-        - [ ] display
+- [X] use same Flask app framework as notifications
+    - [X] set up pages
+        - [X] home, contacts etc
+        - [X] steps 1,2,3
+        - [X] display
         - [ ] TODO validate
-    - [ ] update figures etc
-- [ ] TODO use HealthSamuri/YAML/Markdown
+    - [X] update figures etc
+
+**NEXT STEPS:**
+
+- [ ] Complete Get additional patient data by
+    - [ ] get Observation
+    - [ ] multipleOr
+    - [ ] Batch
+    - [ ] _include
+    - [ ] Q/QR
+          - [ ] create sample Q and generate QA from them
+                - [ ] TODO figure out how - SDC extensions?
+          - [ ] define extensions
 - [ ] set up test data using notifications data set
     - [ ] create Groups from data - using managing entity and provider characteristic to start
-    - [ ] start on Hap
+    - [ ] start on HAPI
 - [ ] since server's won't support support custom SP or QM extensions
-    - [ ] need to simulate using this as facade
+    - [X] need to simulate using this as facade
     - [ ] TODO use GRAPHQL if supported else
-    - [ ] create sample Q and generate QA from them
-        - [ ] TODO figure out how - SDC extensions?
+
+- [ ] TODO use HealthSamuri
 
 The source code can be found on *github*: <https://github.com/Healthedata1/PL-Client>
 

@@ -1,0 +1,22 @@
+
+<strong>Fetch List by one of the Following Characteristics:</strong>
+<form  action="/fetch-lists" method="post" name="characteristic">
+{% for i in group_characterstics %}
+<input type="radio" name="characteristic" id="{{ i.0 }}" value="{{ i.0 }}" {% if loop.index == 1 %}checked{% endif %}/>
+<label for="{{ i.0 }}">parameter: characteristic={{ i.1 }}, value-reference={{ i.2 }}</label><br>
+{% endfor %}
+
+<label for="input_id">Enter ID Below:</label><br>
+<input type="text" class="form-control" id="input_id" name="input_id" value="42"><br>
+
+<input type="submit" class="btn btn-primary btn-lg" role="button" value="CLICK HERE to Fetch User Facing lists by Characteristic"></input><br>
+</form>
+
+<!--
+group_characterstics = [
+(1,'location',Location/[id],),
+(2,'attributed__to',Practitioner/[id],),
+(3,'attrbuted__to',Organization/[id],),
+(4,'team',Location/CareTeam/[id],),
+]
+-->
