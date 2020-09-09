@@ -6,4 +6,6 @@ Server Success Criteria: The server responds with a complete Bundle of Patient e
 
 Client Success Criteria: The client queries for a particular list of patients and processes them e.g.,displayed in HTML as a list of ids:
 
+**CLICK ON THE BLUE BUTTON ABOVE TO FETCH MORE DATA ABOUT THE PATIENTS ON THE LIST**
+
 ---
