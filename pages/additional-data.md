@@ -102,7 +102,7 @@ Server Success Criteria: The server responds with a complete Bundle of Patient e
 
 Client Success Criteria: The client queries for a particular list of patients and processes them e.g.,displayed in HTML as a table of patient resource attributes such as Name, Age, DOB, Gender, MRN, Contact info.
 
- <a href="/fetch-more?include=true" class="btn btn-primary active" role="button" aria-pressed="true">Click Here to Fetch Additional Data for *All* Patients Using the Batch Functionality: `GET [base]/Group?_id={{group_id}}&_include=Group:member.`</a>
+ <a href="/fetch-more?include=true" class="btn btn-primary active" role="button" aria-pressed="true">Click Here to Fetch Additional Data for *All* Patients Using the _include Functionality: `GET [base]/Group?_id={{group_id}}&_include=Group:member.`</a>
 
 >Discussion: Should this be part of the basic Patient list API - e.g., Servers SHALL/SHOULD/MAY Support?
 
