@@ -1,5 +1,8 @@
+{% extends "details.html" %}
+{% block r_narrative %}
+{% set Group = pyfhir %}
 <ul>
-<li><strong>resourceType</strong>: {{Group.resource_type}}</li>
+<li><strong>resourceType</strong>: Group/resource_type</li>
 <!--{%raw%} <li><strong>identifier</strong>: <ul>
 {% if Group.identifier %}
 {% for i in Group.identifier %}
@@ -23,7 +26,6 @@
 </ul>
 </li>
 </ul>
-
 <!-- {% raw %}
 <li><strong>characteristic</strong>: <ul>
   {% if Group.characteristic %}
@@ -54,11 +56,23 @@
 {%endraw%}
 -->
 {% if Group.member %}
-<h5><strong>PATIENTS:</strong>:<h5>
-  <ol>
+<h5><strong>PATIENTS:</strong><h5>
+ <table  class="table table-striped table-bordered">
+ <thead>
+ <tr>
+ <th>Patient</th>
+ <th>id</th>
+ </tr>
+ </thead>
+ <tbody>
     {% for i in Group.member %}
-<li><strong>display</strong>: {{i.entity.display}}:
- resource id = {{i.entity.reference}}</li>
+ <tr>
+ <td>{{i.entity.display}}</td>
+ <td>{{i.entity.reference}}</td>
+ </tr>
+ {% endfor %}
+ </tbody>
+ </table>
 <!--{%raw%}
 <li><strong>period</strong>:
 <ul>
@@ -67,28 +81,6 @@
 </li>
 {%endraw%}
 -->
-  {% endfor %}
-  {% endif %}
-</ol>
+{% endif %}
 
-{% include format.html %}
-
-<h4> Group Resource Narrative (from resource itself): </h4>
-
-{{ Group.text.div | safe }}
-
-<h4> YAML format </h4>
-
-<a class="btn btn-default btn-lg" role="button" href="../uploads/test-argo-pl-group.yml">Download</a>
-
-<pre>
-{{ Group.as_json() | yaml }}
-</pre>
-
-<h4> JSON Format </h4>
-
-<a class="btn btn-default btn-lg" role="button" href="../uploads/test-argo-pl-group.json">Download</a>
-
-<pre>
-{{ Group.as_json() | tojson(indent=4) }}
-</pre>
+{% endblock %}

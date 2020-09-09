@@ -36,6 +36,10 @@ group_characterstics = [
 (3,'team','Location/CareTeam/[id]',),
 ]
 
+headers = {
+    'Accept':'application/fhir+json',
+    'Content-Type':'application/fhir+json'
+    }
 # ================  Functions =================
 
 def md_template(my_md,*args,**kwargs): # Create template with the markdown source text
@@ -48,13 +52,10 @@ def md_template(my_md,*args,**kwargs): # Create template with the markdown sourc
 
 def search(Type, **kwargs):
     '''
-    Search resource Tyype with parameters. [base]/[Type]{?params=kwargs}
+    Search resource Type with parameters. [base]/[Type]{?params=kwargs}
     return resource as json, replace '__' with dashes
     '''
-    headers = {
-    'Accept':'application/fhir+json',
-    'Content-Type':'application/fhir+json'
-    }
+
     app.logger.info(f'line 52: kwargs = {kwargs}')
     kwargs = {k.replace('__','-'):v for k,v in kwargs.items() }
     app.logger.info(f'line 54: kwargs = {kwargs}')
@@ -64,8 +65,8 @@ def search(Type, **kwargs):
     for attempt in range(5): #retry request up to ten times
         sleep(1)  # wait a bit between retries
         with get(r_url, headers=headers, params=kwargs) as r:
-            app.logger.info(f'line 61:status = {r.status_code}') #return r.status_code
-            app.logger.info(f'line 62:body = {r.json()}')# view  output
+            #app.logger.info(f'line 61:status = {r.status_code}') #return r.status_code
+            #app.logger.info(f'line 62:body = {r.json()}')# view  output
             # return (r.json()["text"]["div"])
             if r.status_code <300:
                 app.logger.info(f'line 65:query string = {r.url}')
@@ -78,16 +79,13 @@ def fetch(r_url):
     '''
     fetch resource by READ and return as request object
     '''
-    headers = {
-    'Accept':'application/fhir+json',
-    'Content-Type':'application/fhir+json'
-    }
+
     app.logger.info(f'****** r_url = {r_url}***')
     for attempt in range(5): #retry request up to ten times
         sleep(1)  # wait a bit between retries
         with get(r_url, headers=headers) as r:
-            # return r.status_code
-            # view  output
+            #app.logger.info(f'line 61:status = {r.status_code}') #return r.status_code
+            #app.logger.info(f'line 62:body = {r.json()}')# view  output
             # return (r.json()["text"]["div"])
             if r.status_code <300:
                 return r # just the first for now
@@ -95,12 +93,44 @@ def fetch(r_url):
         return None
 
 
+def post_batch(data):
+    '''
+    POST Batch as dict GET request and return response object
+    '''
+    r_url = session["base"]
+    for attempt in range(5): #retry request up to ten times
+        sleep(1)  # wait a bit between retries
+        with post(r_url, headers=headers, data=dumps(data)) as r:
+            app.logger.info(f'line 105:status = {r.status_code}') #return r.status_code
+            app.logger.info(f'line 106:body = {r.json()}')# view  output
+            # return (r.json()["text"]["div"])
+            if r.status_code <300:
+                return r # just the first for now
+    else:
+        return None
+
 # mockup for search by characteristic and value_reference
 def mock_bychar(py_bundle, requests_url, c_code, c_value):
     url_string=f'{requests_url}&characteristic={c_code}&value_reference={c_value}'
     py_bundle.entry = [e for e in py_bundle.entry if e.resource.characteristic]
     py_bundle.entry = [e for e in py_bundle.entry if e.resource.characteristic[0].code == c_code and e.resource.characteristic[0].valueReference == c_value]
     return url_string,py_bundle
+
+
+def update_pdata_table(bundle_dict): # update sessions['my_patients'] patient data table
+    py_fhir = pyfhir(bundle_dict, Type="Bundle") # request Bundle
+    for i in py_fhir.entry: #ignore paging for now TODO consider paging
+        py_patient = i.resource
+        update_pdata_row(py_patient)
+    return
+
+def update_pdata_row(py_patient):  # update sessions['my_patients'] for patient
+    for i in session['my_patients']:
+        if i['id'] == py_patient.id:
+            i['dob'] = py_patient.birthDate.as_json()
+            i['sex'] = py_patient.gender
+    return
+
 
 @app.template_filter()
 def yaml(r_dict):
@@ -205,13 +235,14 @@ def fetch_lists():
      url_string=url_string,
      #params = params,
      )
-    return render_template('template.html', my_intro=my_string,
+    return render_template('details.html',
+        my_intro=my_string,
         title="Returns a Bundle of User Facing Lists", current_time=datetime.datetime.now(),
         ht_offset = 285,
         seq_ht = 300,
         my_string=my_markdown_string,
+        pyfhir = py_bundle
         )
-
 
 @app.route("/fetch-patientlist", methods=["POST", "GET"])
 def fetch_patientlist():
@@ -229,39 +260,77 @@ def fetch_patientlist():
              url_string=requests_object.url,
              )
     my_string='''## After Fetching the List of User Facing lists, a Patient list is selected using a simple Fetch operation: <br>Click on the blue buttons below to continue...'''
-    return render_template('template.html',
+    return render_template('group_details.html',
         my_intro=my_string,
         title="Fetch Patient List",
         current_time=datetime.datetime.now(),
         ht_offset = 425,
         seq_ht = 425,
         my_string=session['md_string'],
-        display_group_resource=True, # display Group resource
-        Group = py_group
+        pyfhir = py_group
         )
 
 @app.route("/fetch-more")
 def fetch_more():
     endpoint = request.args.get('endpoint')
+    multiple_or = request.args.get('multipleOr')
+    batch = request.args.get('batch')
+    include = request.args.get('include')
     app.logger.info(f'endpoint = {endpoint}')
+    added = False
 
     if endpoint:
         try:
             requests_object = fetch(endpoint) # requests object
-            py_patient = pyfhir(requests_object.json(), Type="Patient") # request Patient object
+            py_fhir = pyfhir(requests_object.json(), Type="Patient") # request Patient object
         except AttributeError:
             app.logger.info(f'endpoint = {endpoint} is not a FHIR endpoint')
         else:
-            for i in session['my_patients']:
-                if i['id'] == py_patient.id:
-                    i['dob'] = py_patient.birthDate.as_json()
-                    i['sex'] = py_patient.gender
+            update_pdata_row(py_fhir)
+            added = True
+    elif include:
+        try: requests_object = search('Group', _id=session["patientlist"].split("/")[-1], _include='Group:member')
+        except AttributeError:
+            app.logger.info(f'endpoint = {endpoint} is not a FHIR endpoint')
+        else:
+            update_pdata_table(requests_object.json())
+            added = True
+    elif multiple_or:
+        p_value = ', Patient/'.join(i['id'] for i in session['my_patients'])
+        p_value = f'Patient/{p_value}'
+        try: requests_object = search('Patient', _id=p_value)
+        except AttributeError:
+            app.logger.info(f'endpoint = {endpoint} is not a FHIR endpoint')
+        else:
+            update_pdata_table(requests_object.json())
+            added = True
+    elif batch:
+        batch_body = {
+          "resourceType": "Bundle",
+          "type": "batch",
+          "entry":[],
+        }
+        for i in session['my_patients']:
+            entry = {
+                "request": {
+                "method": "GET",
+                "url": f"Patient/{i['id']}"
+              }
+            }
+            batch_body['entry'].append(entry)
+            app.logger.info(f'line 310 BATCH body = {dumps(batch_body, indent=4)}')
+        try:
+            requests_object = post_batch(batch_body)
+        except AttributeError:
+                    app.logger.info(f'endpoint = {endpoint} is not a FHIR endpoint')
+        else:
+            update_pdata_table(requests_object.json())
     else:
         requests_object = fetch(session['patientlist']) # requests Group object
-        py_group = pyfhir(requests_object.json(), Type="Group")
+        py_fhir = pyfhir(requests_object.json(), Type="Group")
         session['my_patients'] = []
 
-        for i in py_group.member:
+        for i in py_fhir.member: #type=Group
             e = i.entity
             patient_data=dict(
                 display = getattr(e,'display', None),
@@ -276,7 +345,13 @@ def fetch_more():
          'additional-data.md',
          my_patients=session['my_patients'],
          session_base=session['base'],
-         ep=endpoint
+         added=added,
+         url_string=requests_object.url,
+         request_headers = dumps(dict(requests_object.request.headers), indent=4),
+         request_body = requests_object.request.body,
+         response_headers = dumps(dict(requests_object.headers), indent=4),
+         response_body=dumps(requests_object.json(), indent=4),
+         group_id=session["patientlist"].split("/")[-1],
          )
     return render_template('template.html',
             my_intro=my_string,

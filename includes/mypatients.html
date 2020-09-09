@@ -10,10 +10,10 @@
 <tbody>
 {% for i in my_patients %}
 <tr>
-<td><a href=/fetch-more?endpoint={{session_base}}/Patient/{{i.id}}>{{i.display}}</a></td>
+<td><a href="/fetch-more?endpoint={{session_base}}/Patient/{{i.id}}">{{i.display}}</a></td>
 <td>{{i.id}}</td>
-<td {% if ep %}style="background-color:#00FF00"{% endif %}>{{i.dob}}</td>
-<td {% if ep %}style="background-color:#00FF00"{% endif %}>{{i.sex}}</td>
+<td {% if added %}style="background-color:#00FF00"{% endif %}>{{i.dob}}</td>
+<td {% if added %}style="background-color:#00FF00"{% endif %}>{{i.sex}}</td>
 </tr>
 {% endfor %}
 </tbody>

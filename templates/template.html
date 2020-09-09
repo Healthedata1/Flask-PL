@@ -13,5 +13,5 @@
   <div>{{my_intro | markdown | safe }}</div>
   {% include "seq_diagram.html" %}
   {% if my_string %}<div>{{my_string | markdown | safe }}</div>{% endif %}
-  {% if display_group_resource %}<div>{% include "format.html" %}</div>{% endif %}
+  {% block details %}{% endblock %}
 {% endblock %}

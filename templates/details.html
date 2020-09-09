@@ -1,0 +1,25 @@
+{% extends "template.html" %}
+{% block details %}{# narrative contents and YAML and JSON data #}
+
+{% block r_narrative %}{% endblock %}
+
+<h4> {{ pyfhir.resource_type }} Resource Narrative: </h4>
+
+{% if pyfhir.text %}{{ pyfhir.text.div | safe }}{% else %} (narrative element not present) {% endif %}
+
+<h4> YAML format </h4>
+
+<a class="btn btn-default btn-lg" role="button" href="../uploads/test-argo-pl-{{ pyfhir.resource_type | lower }}.yml">Download</a>
+
+<pre>
+{{ pyfhir.as_json() | yaml }}
+</pre>
+
+<h4> JSON Format </h4>
+
+<a class="btn btn-default btn-lg" role="button" href="../uploads/test-argo-pl-{{ pyfhir.resource_type | lower }}.json">Download</a>
+
+<pre>
+{{ pyfhir.as_json() | tojson(indent=4) }}
+</pre>
+{% endblock %}

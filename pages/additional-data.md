@@ -1,5 +1,11 @@
 ### 3  Getting Extra Details about the patients members in the list
 
+#### MY Patients:
+
+{% include "mypatients.html" %}
+
+{% include "collapse.html" %}
+
 #### 3.1 - Patient Lists - Extra Details via Base FHIR RESTful API Search
 The Simplest approach for the client to do a series of queries on the Server to Fetch additional data:
 
@@ -18,7 +24,9 @@ GET Observation/$lastn?patient=Patient/ID&category=laboratory
 
 {% include "mypatients.html" %}
 
-<button type="button" class="btn btn-primary">Click on Patient to Fetch addtional data...</button>
+<button type="button" class="btn btn-primary">Click on Patient to Fetch Additional Data for *Individual* Patient</button>
+
+{% include "collapse.html" %}
 
 Server Success Criteria: The client bundles the Observation GET requests in a request Bundle, sending a minimum number of GET requests to the server.
 
@@ -37,6 +45,8 @@ Client Success Criteria: The request bundle is properly prepared, minimizing GET
 >
 >Client Success Criteria: The request bundle is properly prepared, minimizing GET operations against the server.  All fetched 'extra details' are then also processes them e.g.,displayed in HTML.
 >
+> <a href="/fetch-more?multipleOr=true" class="btn btn-primary active" role="button" aria-pressed="true">Click Here to Fetch Additional Data for *All* Patients Using the multipleOr Functionality: `GET Patient?_id=Patient/{{my_patients | join(',Patient/', attribute='id')}}`</a>
+>
 >Note that US Core does not require servers to support multipleOr for these queries
 >
 >Should this be part of the basic Patient list API - e.g., Servers SHALL/SHOULD/MAY Support?
@@ -48,7 +58,6 @@ Client Success Criteria: The request bundle is properly prepared, minimizing GET
 ~~~JSON
 {
   "resourceType": "Bundle",
-  "id": "bundle-request-groupdetails",
   "type": "batch",
   "entry": [
     {
@@ -87,6 +96,7 @@ Client Success Criteria: The request bundle is properly prepared, minimizing GET
 >The server SHALL return a Bundle with type set to batch-response that contains the request resource for each entry in the  batch request, in the same order, with the outcome of processing the entry.
 >
 >Client Success Criteria: The request bundle is properly prepared, minimizing GET operations against the server.  All fetched 'extra details' are then also processes them e.g.,displayed in HTML.
+> <a href="/fetch-more?batch=true" class="btn btn-primary active" role="button" aria-pressed="true">Click Here to Fetch Additional Data for *All* Patients Using the Batch Functionality: `POST [base]....`</a>
 
 
 #### 3.2 - Using _include:
@@ -97,6 +107,8 @@ Support _include for Group so that the Patient resource attributes such as Name,
 Server Success Criteria: The server responds with a complete Bundle of Patient entries, all members of the requested Group with ID '123' AND a Patient resource for each Group.member.
 
 Client Success Criteria: The client queries for a particular list of patients and processes them e.g.,displayed in HTML as a table of patient resource attributes such as Name, Age, DOB, Gender, MRN, Contact info.
+
+ <a href="/fetch-more?include=true" class="btn btn-primary active" role="button" aria-pressed="true">Click Here to Fetch Additional Data for *All* Patients Using the Batch Functionality: `GET [base]/Group?_id={{group_id}}&_include=Group:member.`</a>
 
 >Discussion: Should this be part of the basic Patient list API - e.g., Servers SHALL/SHOULD/MAY Support?
 
