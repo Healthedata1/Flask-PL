@@ -12,9 +12,9 @@
 
 - [ ] Complete Get additional patient data by
     - [ ] get Observation
-    - [ ] multipleOr
-    - [ ] Batch
-    - [ ] _include
+    - [X] multipleOr
+    - [X] Batch
+    - [X] _include
     - [ ] Q/QR
           - [ ] create sample Q and generate QA from them
                 - [ ] TODO figure out how - SDC extensions?
