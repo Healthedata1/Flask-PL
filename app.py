@@ -325,6 +325,7 @@ def fetch_more():
                     app.logger.info(f'endpoint = {endpoint} is not a FHIR endpoint')
         else:
             update_pdata_table(requests_object.json())
+            added = True
     else:
         requests_object = fetch(session['patientlist']) # requests Group object
         py_fhir = pyfhir(requests_object.json(), Type="Group")
