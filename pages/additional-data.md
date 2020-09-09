@@ -20,13 +20,7 @@ GET Patient/ID
 GET Observation/$lastn?patient=Patient/ID&category=laboratory
 ~~~
 
-#### MY Patients:
-
-{% include "mypatients.html" %}
-
 <button type="button" class="btn btn-primary">Click on Patient to Fetch Additional Data for *Individual* Patient</button>
-
-{% include "collapse.html" %}
 
 Server Success Criteria: The client bundles the Observation GET requests in a request Bundle, sending a minimum number of GET requests to the server.
 
