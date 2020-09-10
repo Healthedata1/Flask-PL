@@ -31,7 +31,7 @@ server_list =  {  # base_url for reference server - no trailing forward slash
     }
 
 
-base = 'FHIR R4'
+base = 'HAPI UHN R4'
 pages = f'{app.root_path}/pages'
 group_characterstics = [
 (0,'location','Location/[id]',),
@@ -60,10 +60,12 @@ def search(Type, **kwargs):
     Search resource Type with parameters. [base]/[Type]{?params=kwargs}
     return resource as json, replace '__' with dashes
     '''
-
-    app.logger.info(f'line 64: kwargs = {kwargs}')
+    app.logger.info(f'line 63: kwargs = {kwargs}')
+    if session['base_name']=='HAPI UHN R4': # append tag search param
+        kwargs['_tag'] = '2020-Sep'
+    app.logger.info(f'line 67: kwargs = {kwargs}')
     kwargs = {k.replace('__','-'):v for k,v in kwargs.items() }
-    app.logger.info(f'line 66: kwargs = {kwargs}')
+    app.logger.info(f'line 69: kwargs = {kwargs}')
     r_url = (f'{session["base"]}/{Type.capitalize()}')
 
     app.logger.info(f'line 50: r_url = {r_url}***')
@@ -85,7 +87,6 @@ def fetch(r_url):
     '''
     fetch resource by READ and return as request object
     '''
-
     app.logger.info(f'****** r_url = {r_url}***')
     for attempt in range(5): #retry request up to ten times
         sleep(1)  # wait a bit between retries
@@ -188,8 +189,8 @@ def discovery():
             #get base
             session['base'] = request.form["get-server"]
             session['base_name'] = next(i for i in server_list if server_list[i]==session['base'])
-            app.logger.info(f'line 64: base = {base}')
-        app.logger.info(f'line 66: session = {session}')
+            app.logger.info(f'line 191: base = {base}')
+        app.logger.info(f'line 192: session = {session}')
         my_intro = '## The Client Searches for User Facing Patient Lists from an EHR by Querying the *Group* Endpoint...' # markdown intro since the svg doesn't play nice in markdown includes
         my_markdown_string=md_template('discovery.md',
             server_list=session['server_list'], default=session['base_name'],

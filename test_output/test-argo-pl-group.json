@@ -1,122 +1,40 @@
 {
-    "id": "62d97255-3f5e-4388-81fd-a46c9b2d6196",
-    "active": true,
+    "resourceType": "Group",
+    "id": "1465520",
+    "meta": {
+        "versionId": "1",
+        "lastUpdated": "2020-09-10T06:44:44.204+00:00",
+        "source": "#gzsqoU84lBNIJ9v6",
+        "tag": [
+            {
+                "system": "http://hl7.org/Connectathon",
+                "code": "2020-Sep"
+            }
+        ]
+    },
     "type": "person",
     "actual": true,
-    "name": "AMB Scheduled Patients",
-    "managingEntity": {
-        "reference": "Organization/DEV.US",
-        "display": "DEV.US"
-    },
-    "member": [
-        {
-            "entity": {
-                "reference": "Patient/FD1BD66E-FA2E-4DAB-B621-36A62B980699",
-                "display": "ashlyn test"
-            }
-        },
-        {
-            "entity": {
-                "reference": "Patient/FC9F29CC-EE9B-463F-A00C-412CD4461EF4",
-                "display": "Molly Smith"
-            }
-        },
-        {
-            "entity": {
-                "reference": "Patient/41B242D8-2F8F-4FD8-8062-ED3F3A588DFC",
-                "display": "BARBARA HART"
-            }
-        },
-        {
-            "entity": {
-                "reference": "Patient/25D2CD43-F6DB-4D54-8CF6-0ACC9C538C74",
-                "display": "Lynda Janness"
-            }
-        },
-        {
-            "entity": {
-                "reference": "Patient/9E510C6D-00AC-4CE7-A11E-E067266032CB",
-                "display": "Megan Batchelder"
-            }
-        },
-        {
-            "entity": {
-                "reference": "Patient/2343467D-91C9-4113-A855-435F58D56635",
-                "display": "sean madden"
-            }
-        },
-        {
-            "entity": {
-                "reference": "Patient/0453ACC3-A1A9-4177-AA91-4B6561E5BACC",
-                "display": "Jessica Anderson"
-            }
-        },
-        {
-            "entity": {
-                "reference": "Patient/95E3732A-8884-425A-B621-7ECEB8393E2F",
-                "display": "ELSIE OLLILA"
-            }
-        },
-        {
-            "entity": {
-                "reference": "Patient/03017167-9F58-4812-89A7-FB87A442361C",
-                "display": "Julia Evans"
-            }
-        },
-        {
-            "entity": {
-                "reference": "Patient/FE5013CF-20CC-4EFE-A937-AE8AE98C8AF5",
-                "display": "Gordon Town"
-            }
-        },
-        {
-            "entity": {
-                "reference": "Patient/90DB7338-C328-47F8-928D-8E4D14EC4B06",
-                "display": "Delete J Norton"
-            }
-        },
-        {
-            "entity": {
-                "reference": "Patient/5D8AC795-782C-4210-8FB8-231F09C7E9CB",
-                "display": "Carly Stebbins"
-            }
-        },
-        {
-            "entity": {
-                "reference": "Patient/9699FA83-DD07-42C0-9CB6-C67652ECF82D",
-                "display": "WAYNE A WENHAM"
-            }
-        },
-        {
-            "entity": {
-                "reference": "Patient/3B20D943-4E3F-4C8B-A54B-9471F316A0F5",
-                "display": "Rusty Rees"
-            }
-        },
-        {
-            "entity": {
-                "reference": "Patient/FD1BD66E-FA2E-4DAB-B621-36A62B980699",
-                "display": "ashlyn test"
-            }
-        },
-        {
-            "entity": {
-                "reference": "Patient/2793C80D-0042-4A65-B6A7-50435B979BB0",
-                "display": "Daisy Talabec"
-            }
-        }
-    ],
+    "name": "Care Team List #1",
     "characteristic": [
         {
             "code": {
-                "text": "location"
+                "coding": [
+                    {
+                        "system": "http://argonautproject.org/patient-lists/CodeSystem/characteristics",
+                        "code": "attributed-to-care-team"
+                    }
+                ]
             },
             "valueReference": {
-                "reference": "Location/fac8f367-6705-5186-8352-6f936aef1f44",
-                "display": "1 East"
-            },
-            "exclude": false
+                "reference": "CareTeam/1463628"
+            }
         }
     ],
-    "resourceType": "Group"
+    "member": [
+        {
+            "entity": {
+                "reference": "Patient/1461624"
+            }
+        }
+    ]
 }
