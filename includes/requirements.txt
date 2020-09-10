@@ -1,0 +1,27 @@
+certifi==2019.11.28
+chardet==3.0.4
+Click==7.0
+commonmark==0.9.1
+DateTime==4.3
+Flask==1.1.1
+idna==2.8
+isodate==0.6.0
+itsdangerous==1.1.0
+Jinja2==2.10.3
+MarkupSafe==1.1.1
+pathlib==1.0.1
+pytz==2019.3
+requests==2.22.0
+six==1.13.0
+urllib3==1.25.7
+uuid==1.30
+Werkzeug==0.16.0
+zope.interface==4.7.1
+
+
+/home/ehaas/.virtualenvs/myvirtualenv
+
+For example, if your app lives at /home/myusername/myproject/myapp.py, and in there, the WSGI app is a variable called app, you'll want:
+
+sys.path.append('/home/mysusername/myproject')
+from myapp import app as application

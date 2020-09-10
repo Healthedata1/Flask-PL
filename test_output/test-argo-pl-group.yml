@@ -1,21 +1,65 @@
+active: true
 actual: true
-id: '217330'
+characteristic:
+- code:
+    text: location
+  exclude: false
+  valueReference:
+    display: 1 East
+    reference: Location/fac8f367-6705-5186-8352-6f936aef1f44
+id: 62d97255-3f5e-4388-81fd-a46c9b2d6196
+managingEntity:
+  display: DEV.US
+  reference: Organization/DEV.US
 member:
 - entity:
-    reference: Patient/217281
-  period:
-    start: '2014-10-08'
-meta:
-  lastUpdated: '2019-12-05T07:44:48.422+00:00'
-  source: '#4Zu1q7eYBVXOjT3V'
-  versionId: '1'
+    display: ashlyn test
+    reference: Patient/FD1BD66E-FA2E-4DAB-B621-36A62B980699
+- entity:
+    display: Molly Smith
+    reference: Patient/FC9F29CC-EE9B-463F-A00C-412CD4461EF4
+- entity:
+    display: BARBARA HART
+    reference: Patient/41B242D8-2F8F-4FD8-8062-ED3F3A588DFC
+- entity:
+    display: Lynda Janness
+    reference: Patient/25D2CD43-F6DB-4D54-8CF6-0ACC9C538C74
+- entity:
+    display: Megan Batchelder
+    reference: Patient/9E510C6D-00AC-4CE7-A11E-E067266032CB
+- entity:
+    display: sean madden
+    reference: Patient/2343467D-91C9-4113-A855-435F58D56635
+- entity:
+    display: Jessica Anderson
+    reference: Patient/0453ACC3-A1A9-4177-AA91-4B6561E5BACC
+- entity:
+    display: ELSIE OLLILA
+    reference: Patient/95E3732A-8884-425A-B621-7ECEB8393E2F
+- entity:
+    display: Julia Evans
+    reference: Patient/03017167-9F58-4812-89A7-FB87A442361C
+- entity:
+    display: Gordon Town
+    reference: Patient/FE5013CF-20CC-4EFE-A937-AE8AE98C8AF5
+- entity:
+    display: Delete J Norton
+    reference: Patient/90DB7338-C328-47F8-928D-8E4D14EC4B06
+- entity:
+    display: Carly Stebbins
+    reference: Patient/5D8AC795-782C-4210-8FB8-231F09C7E9CB
+- entity:
+    display: WAYNE A WENHAM
+    reference: Patient/9699FA83-DD07-42C0-9CB6-C67652ECF82D
+- entity:
+    display: Rusty Rees
+    reference: Patient/3B20D943-4E3F-4C8B-A54B-9471F316A0F5
+- entity:
+    display: ashlyn test
+    reference: Patient/FD1BD66E-FA2E-4DAB-B621-36A62B980699
+- entity:
+    display: Daisy Talabec
+    reference: Patient/2793C80D-0042-4A65-B6A7-50435B979BB0
+name: AMB Scheduled Patients
 resourceType: Group
-text:
-  div: "<div xmlns=\"http://www.w3.org/1999/xhtml\">\n      <p>Selected Patients</p>\n\
-    \      <ul>\n        <li>Patient Donald DUCK @ Acme Healthcare, Inc. MR = 654321</li>\n\
-    \        <li>Patient Donald D DUCK @ Acme Healthcare, Inc. MR = 123456</li>\n\
-    \        <li>Patient Simon Notsowell @ Acme Healthcare, Inc. MR = 123457, DECEASED</li>\n\
-    \        <li>Patient Sandy Notsowell @ Acme Healthcare, Inc. MR = 123458, DECEASED</li>\n\
-    \      </ul>\n    </div>"
-  status: additional
 type: person

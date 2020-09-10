@@ -26,7 +26,11 @@ server_list =  {  # base_url for reference server - no trailing forward slash
     'FHIR R4': 'http://test.fhir.org/r4',
     'HAPI UHN R4': 'http://hapi.fhir.org/baseR4',
     'WildFHIR': 'http://wildfhir4.aegis.net/fhir4-0-1',
+    'Meditech':  'https://dev-mtx-interop.meditech.com/v1/ArgoPatientList/R4',
+    'Cerner': 'https://fhir-open.stagingcerner.com/beta/dacc6494-e336-45ad-8729-b789ff8663c6',
     }
+
+
 base = 'FHIR R4'
 pages = f'{app.root_path}/pages'
 group_characterstics = [
@@ -38,7 +42,8 @@ group_characterstics = [
 
 headers = {
     'Accept':'application/fhir+json',
-    'Content-Type':'application/fhir+json'
+    'Content-Type':'application/fhir+json',
+    "Authorization": 'Bearer 0QLWt38GQHyYxrcHuG40mw==',# TEMP meditech token remove and fix if this works
     }
 # ================  Functions =================
 
@@ -56,17 +61,18 @@ def search(Type, **kwargs):
     return resource as json, replace '__' with dashes
     '''
 
-    app.logger.info(f'line 52: kwargs = {kwargs}')
+    app.logger.info(f'line 64: kwargs = {kwargs}')
     kwargs = {k.replace('__','-'):v for k,v in kwargs.items() }
-    app.logger.info(f'line 54: kwargs = {kwargs}')
+    app.logger.info(f'line 66: kwargs = {kwargs}')
     r_url = (f'{session["base"]}/{Type.capitalize()}')
 
     app.logger.info(f'line 50: r_url = {r_url}***')
     for attempt in range(5): #retry request up to ten times
         sleep(1)  # wait a bit between retries
         with get(r_url, headers=headers, params=kwargs) as r:
-            #app.logger.info(f'line 61:status = {r.status_code}') #return r.status_code
-            #app.logger.info(f'line 62:body = {r.json()}')# view  output
+            app.logger.info(f'line 73:url-string = {r.url}')
+            app.logger.info(f'line 73:status = {r.status_code}') #return r.status_code
+            app.logger.info(f'line 74:body = {r.json()}')# view  output
             # return (r.json()["text"]["div"])
             if r.status_code <300:
                 app.logger.info(f'line 65:query string = {r.url}')
@@ -84,14 +90,13 @@ def fetch(r_url):
     for attempt in range(5): #retry request up to ten times
         sleep(1)  # wait a bit between retries
         with get(r_url, headers=headers) as r:
-            #app.logger.info(f'line 61:status = {r.status_code}') #return r.status_code
-            #app.logger.info(f'line 62:body = {r.json()}')# view  output
+            app.logger.info(f'line 61:status = {r.status_code}') #return r.status_code
+            app.logger.info(f'line 62:body = {r.json()}')# view  output
             # return (r.json()["text"]["div"])
             if r.status_code <300:
                 return r # just the first for now
     else:
         return None
-
 
 def post_batch(data):
     '''
@@ -125,10 +130,13 @@ def update_pdata_table(bundle_dict): # update sessions['my_patients'] patient da
     return
 
 def update_pdata_row(py_patient):  # update sessions['my_patients'] for patient
+    app.logger.info(f'before updating session["my_patients"] = {session["my_patients"]}')
     for i in session['my_patients']:
         if i['id'] == py_patient.id:
             i['dob'] = py_patient.birthDate.as_json()
             i['sex'] = py_patient.gender
+            session.modified = True
+    app.logger.info(f'after updating session["my_patients"] = {session["my_patients"]}')
     return
 
 
@@ -204,7 +212,7 @@ def fetch_lists():
     my_string='''## Server Returns a Bundle of User Facing Lists<br><br>Click on the blue buttons below to continue...'''
     app.logger.info(f' line 166: request.form args = {dict(request.form)}') # get button value...
     if org_id: # fetch by managingEntity Groups
-        requests_object = search("Group",_summary=True, type='person', managing__entity=f'Organization/{org_id}')
+        requests_object = search("Group",_summary='true', type='person', managing__entity=f'Organization/{org_id}')
         url_string=requests_object.url
 
     elif char_id: # fetch by characteristic
@@ -218,10 +226,10 @@ def fetch_lists():
         value__reference=group_characterstics[int(char_id)][2].replace('[id]',request.form.get("input_id")))
         url_string=requests_object.url
         '''
-        requests_object = search("Group",_summary=True, type='person',) #
+        requests_object = search("Group",_summary='true', type='person',) #
 
     else: # fetch all Groups
-        requests_object = search("Group",_summary=True, type='person',) # requests object
+        requests_object = search("Group",_summary='true', type='person',) # requests object
         url_string=requests_object.url
 
     py_bundle = pyfhir(requests_object.json(), Type="Bundle")
