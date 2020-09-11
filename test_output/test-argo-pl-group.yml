@@ -1,22 +1,54 @@
+active: true
 actual: true
-characteristic:
-- code:
-    coding:
-    - code: attributed-to-care-team
-      system: http://argonautproject.org/patient-lists/CodeSystem/characteristics
+extension:
+- url: http://registry.fhir.org/argonaut/patientlistsquestionnairev1
   valueReference:
-    reference: CareTeam/1463628
-id: '1465520'
+    reference: Questionnaire/1169270
+id: '1171742'
+identifier:
+- system: http://example.org
+  value: dba0a9f9-82cb-4d42-ad92-3250756a9420
+managingEntity:
+  display: Dairyland Hospital
+  reference: Organization/example-organization-2
 member:
 - entity:
-    reference: Patient/1461624
+    display: Name = Daniel Crimson (MRN = 456)
+    extension:
+    - url: http://registry.fhir.org/argonaut/patientlistsquestionnaireresponsev1
+      valueReference:
+        reference: QuestionnaireResponse/1169472
+    identifier:
+      system: http://example.org
+      value: '456'
+  inactive: false
+- entity:
+    display: Name = Peter Silie (MRN = 567)
+    extension:
+    - url: http://registry.fhir.org/argonaut/patientlistsquestionnaireresponsev1
+      valueReference:
+        reference: QuestionnaireResponse/1171740
+    identifier:
+      system: http://example.org
+      value: '567'
+  inactive: false
+- entity:
+    display: Name = Caleb Cushing (MRN = 901)
+    extension:
+    - url: http://registry.fhir.org/argonaut/patientlistsquestionnaireresponsev1
+      valueReference:
+        reference: QuestionnaireResponse/1171741
+    identifier:
+      system: http://example.org
+      value: '901'
+  inactive: false
 meta:
-  lastUpdated: '2020-09-10T06:44:44.204+00:00'
-  source: '#gzsqoU84lBNIJ9v6'
+  lastUpdated: '2020-09-11T02:52:11.871+00:00'
+  source: '#yvKBgaYDYOOj9TZ1'
   tag:
   - code: 2020-Sep
     system: http://hl7.org/Connectathon
-  versionId: '1'
-name: 'Care Team List #1'
+  versionId: '4'
+name: ICU List
 resourceType: Group
 type: person

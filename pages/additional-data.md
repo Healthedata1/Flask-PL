@@ -126,6 +126,12 @@ Client Success Criteria: The client queries for a particular list of patients.  
 
 for each patient in group123.bundle.entry get QR:  GET QuestionnaireResponse/[QuestionnaireResponse resource id from Group.member.entity.extension]
 
+<button type="button" class="btn btn-primary">Click on Patient to Fetch Additional Data for *Individual* Patient using Questionnaire and QuestionnaireResponse</button>
+
+{% include "myqr.html" %}
+
+{% include "collapse_qr.html" %}
+
 **Option 2:**  Get all QR for groups based on Q url
 
 GET QuestionnaireResponse?q=/[Questionnaire url from Group.extension]

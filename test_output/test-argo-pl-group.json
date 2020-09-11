@@ -1,10 +1,10 @@
 {
     "resourceType": "Group",
-    "id": "1465520",
+    "id": "1171742",
     "meta": {
-        "versionId": "1",
-        "lastUpdated": "2020-09-10T06:44:44.204+00:00",
-        "source": "#gzsqoU84lBNIJ9v6",
+        "versionId": "4",
+        "lastUpdated": "2020-09-11T02:52:11.871+00:00",
+        "source": "#yvKBgaYDYOOj9TZ1",
         "tag": [
             {
                 "system": "http://hl7.org/Connectathon",
@@ -12,29 +12,82 @@
             }
         ]
     },
-    "type": "person",
-    "actual": true,
-    "name": "Care Team List #1",
-    "characteristic": [
+    "extension": [
         {
-            "code": {
-                "coding": [
-                    {
-                        "system": "http://argonautproject.org/patient-lists/CodeSystem/characteristics",
-                        "code": "attributed-to-care-team"
-                    }
-                ]
-            },
+            "url": "http://registry.fhir.org/argonaut/patientlistsquestionnairev1",
             "valueReference": {
-                "reference": "CareTeam/1463628"
+                "reference": "Questionnaire/1169270"
             }
         }
     ],
+    "identifier": [
+        {
+            "system": "http://example.org",
+            "value": "dba0a9f9-82cb-4d42-ad92-3250756a9420"
+        }
+    ],
+    "active": true,
+    "type": "person",
+    "actual": true,
+    "name": "ICU List",
+    "managingEntity": {
+        "reference": "Organization/example-organization-2",
+        "display": "Dairyland Hospital"
+    },
     "member": [
         {
             "entity": {
-                "reference": "Patient/1461624"
-            }
+                "extension": [
+                    {
+                        "url": "http://registry.fhir.org/argonaut/patientlistsquestionnaireresponsev1",
+                        "valueReference": {
+                            "reference": "QuestionnaireResponse/1169472"
+                        }
+                    }
+                ],
+                "identifier": {
+                    "system": "http://example.org",
+                    "value": "456"
+                },
+                "display": "Name = Daniel Crimson (MRN = 456)"
+            },
+            "inactive": false
+        },
+        {
+            "entity": {
+                "extension": [
+                    {
+                        "url": "http://registry.fhir.org/argonaut/patientlistsquestionnaireresponsev1",
+                        "valueReference": {
+                            "reference": "QuestionnaireResponse/1171740"
+                        }
+                    }
+                ],
+                "identifier": {
+                    "system": "http://example.org",
+                    "value": "567"
+                },
+                "display": "Name = Peter Silie (MRN = 567)"
+            },
+            "inactive": false
+        },
+        {
+            "entity": {
+                "extension": [
+                    {
+                        "url": "http://registry.fhir.org/argonaut/patientlistsquestionnaireresponsev1",
+                        "valueReference": {
+                            "reference": "QuestionnaireResponse/1171741"
+                        }
+                    }
+                ],
+                "identifier": {
+                    "system": "http://example.org",
+                    "value": "901"
+                },
+                "display": "Name = Caleb Cushing (MRN = 901)"
+            },
+            "inactive": false
         }
     ]
 }

@@ -14,6 +14,7 @@ from time import sleep
 from jinja2 import Environment, FileSystemLoader
 from yaml import dump as y_dump
 
+
 app = Flask(__name__,)
 app.secret_key = 'my secret key'
 
@@ -61,12 +62,12 @@ def search(Type, **kwargs):
     return resource as json, replace '__' with dashes
     '''
     app.logger.info(f'line 63: kwargs = {kwargs}')
-    if session['base_name']=='HAPI UHN R4': # append tag search param
+    if session['base_name']=='HAPI UHN R4' and Type == "Group": # append tag search param
         kwargs['_tag'] = '2020-Sep'
     app.logger.info(f'line 67: kwargs = {kwargs}')
     kwargs = {k.replace('__','-'):v for k,v in kwargs.items() }
     app.logger.info(f'line 69: kwargs = {kwargs}')
-    r_url = (f'{session["base"]}/{Type.capitalize()}')
+    r_url = (f'{session["base"]}/{Type}')
 
     app.logger.info(f'line 50: r_url = {r_url}***')
     for attempt in range(5): #retry request up to ten times
@@ -139,6 +140,16 @@ def update_pdata_row(py_patient):  # update sessions['my_patients'] for patient
             session.modified = True
     app.logger.info(f'after updating session["my_patients"] = {session["my_patients"]}')
     return
+
+
+def get_qr_id(member_index): #get QR extension value from member
+    app.logger.info(f'member_index = {member_index} of type = {type(member_index)}')
+
+    path =  Path () / app.root_path / 'test_output' / 'test-argo-pl-group.json'
+    group_dict = loads(path.read_text())
+    qr_id = group_dict['member'][member_index]['entity']['extension'][0]['valueReference']['reference']  #assume is first extension for now
+    qr_id = qr_id.split('/')[-1]
+    return qr_id
 
 
 @app.template_filter()
@@ -285,6 +296,7 @@ def fetch_more():
     multiple_or = request.args.get('multipleOr')
     batch = request.args.get('batch')
     include = request.args.get('include')
+    qr = request.args.get('qr')
     app.logger.info(f'endpoint = {endpoint}')
     added = False
 
@@ -335,6 +347,27 @@ def fetch_more():
         else:
             update_pdata_table(requests_object.json())
             added = True
+
+    elif qr:  # fetch Q and QR qr == member_index
+        member_index = int(request.args.get('member-index'))
+        qr_id = get_qr_id(member_index = member_index)
+        try:
+            requests_object = search('QuestionnaireResponse', _id=qr_id, _include='QuestionnaireResponse:questionnaire')
+            py_fhir = pyfhir(requests_object.json(), Type="Bundle") # request Bundle object
+        except AttributeError:
+            app.logger.info(f'endpoint = {endpoint} is not a FHIR endpoint')
+        else: # get qr data
+            for entry in py_fhir.entry:
+                if entry.resource.resource_type == "QuestionnaireResponse":
+                    my_qr = entry.resource
+                    answer_list = []
+                    for i in my_qr.item:# assume list items go one deep for know - recurse later:
+                        answer = i.answer[0].as_json()
+                        answer_list.append(answer)
+            #update_pdata_row
+            session['my_patients'][member_index]['answer_list']=answer_list
+            session.modified = True
+
     else:
         requests_object = fetch(session['patientlist']) # requests Group object
         py_fhir = pyfhir(requests_object.json(), Type="Group")
@@ -349,12 +382,23 @@ def fetch_more():
             )
             session['my_patients'].append(patient_data)
 
+        # if Q Extension get questions assume only one for now
+        ext = py_fhir.extension[0]
+        myq = fetch(f'{session["base"]}/{ext.valueReference.reference}')
+        py_q = pyfhir(myq.json(), Type="Questionnaire")
+        app.logger.info(f'py_q.id = {py_q.id}')
+        session['q_list'] = []
+        for q_item in py_q.item:
+            question = q_item.text
+            session['q_list'].append(question)
+
     app.logger.info(f'my_patients = {session["my_patients"]}')
     my_string="## The User Get additional Patient data one of three ways: <br>Click on the blue buttons below to continue..."
     my_markdown_string=md_template(
          'additional-data.md',
          my_patients=session['my_patients'],
          session_base=session['base'],
+         q_list = session['q_list'],
          added=added,
          url_string=requests_object.url,
          request_headers = dumps(dict(requests_object.request.headers), indent=4),
