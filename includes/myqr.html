@@ -11,11 +11,13 @@
 {% for i in my_patients %}
 <tr>
 <td><a href="/fetch-more?qr=true&member-index={{loop.index0}}">{{i.display}}</a></td>
+
 {% for j in i.answer_list %}
 {% for k,v in j.items() %}
 <td>{{v}}<br/>({{k}})</td>
 {% endfor %}
 {% endfor %}
+
 </tr>
 {% endfor %}
 </tbody>

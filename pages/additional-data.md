@@ -2,6 +2,7 @@
 
 #### MY Patients:
 
+
 {% include "mypatients.html" %}
 
 {% include "collapse.html" %}
@@ -106,7 +107,7 @@ Client Success Criteria: The client queries for a particular list of patients an
 
 >Discussion: Should this be part of the basic Patient list API - e.g., Servers SHALL/SHOULD/MAY Support?
 
-
+<a name="#via-q"></a>
 #### 3.3 - Patient Lists - Extra Details via Questionnaire
 
 See full example of this exchange: https://hackmd.io/AfJ9YNb6TNGeDSuAaHIn1g?view#Patients-with-column-data
@@ -127,11 +128,19 @@ Client Success Criteria: The client queries for a particular list of patients.  
 for each patient in group123.bundle.entry get QR:  GET QuestionnaireResponse/[QuestionnaireResponse resource id from Group.member.entity.extension]
 
 <button type="button" class="btn btn-primary">Click on Patient to Fetch Additional Data for *Individual* Patient using Questionnaire and QuestionnaireResponse</button>
-
+{% if q_list %}
 {% include "myqr.html" %}
 
 {% include "collapse_qr.html" %}
+{% else %}
 
+---
+<img alt="NO Q/QR for this Group" class="img-responsive project-logo" src="../static/images/empty.png">
+ *NO Q/QR for this Group*
+
+---
+
+{% endif %}
 **Option 2:**  Get all QR for groups based on Q url
 
 GET QuestionnaireResponse?q=/[Questionnaire url from Group.extension]

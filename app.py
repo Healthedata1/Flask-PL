@@ -372,6 +372,11 @@ def fetch_more():
         requests_object = fetch(session['patientlist']) # requests Group object
         py_fhir = pyfhir(requests_object.json(), Type="Group")
         session['my_patients'] = []
+        # remove q_list from the session if it is there
+        try:
+            session.pop('q_list')
+        except KeyError:
+            pass
 
         for i in py_fhir.member: #type=Group
             e = i.entity
@@ -383,29 +388,33 @@ def fetch_more():
             session['my_patients'].append(patient_data)
 
         # if Q Extension get questions assume only one for now
-        ext = py_fhir.extension[0]
-        myq = fetch(f'{session["base"]}/{ext.valueReference.reference}')
-        py_q = pyfhir(myq.json(), Type="Questionnaire")
-        app.logger.info(f'py_q.id = {py_q.id}')
-        session['q_list'] = []
-        for q_item in py_q.item:
-            question = q_item.text
-            session['q_list'].append(question)
+        try:
+            ext = py_fhir.extension[0]
+        except TypeError:
+            app.logger.info ('No Q extension for Group/{py_fhir}') # no extesnsion
+        else:
+            myq = fetch(f'{session["base"]}/{ext.valueReference.reference}')
+            py_q = pyfhir(myq.json(), Type="Questionnaire")
+            app.logger.info(f'py_q.id = {py_q.id}')
+            session['q_list'] = []
+            for q_item in py_q.item:
+                question = q_item.text
+                session['q_list'].append(question)
 
     app.logger.info(f'my_patients = {session["my_patients"]}')
     my_string="## The User Get additional Patient data one of three ways: <br>Click on the blue buttons below to continue..."
     my_markdown_string=md_template(
          'additional-data.md',
-         my_patients=session['my_patients'],
-         session_base=session['base'],
-         q_list = session['q_list'],
+         my_patients= session.get('my_patients'),
+         session_base=session.get('base'),
+         q_list = session.get('q_list'),
          added=added,
          url_string=requests_object.url,
          request_headers = dumps(dict(requests_object.request.headers), indent=4),
          request_body = requests_object.request.body,
          response_headers = dumps(dict(requests_object.headers), indent=4),
          response_body=dumps(requests_object.json(), indent=4),
-         group_id=session["patientlist"].split("/")[-1],
+         group_id=session.get("patientlist").split("/")[-1],
          )
     return render_template('template.html',
             my_intro=my_string,
