@@ -230,24 +230,20 @@ def fetch_lists():
     elif char_id: # fetch by characteristic
         c_code = group_characterstics[int(char_id)][1]
         c_value = group_characterstics[int(char_id)][2].replace("[id]",input_id)
-        #returns 400 error since characteristic not defined
-        #instead will mock up by fetching all and sorting below
-        # fetch all Groups
-        '''
-        requests_object = search("Group",_summary=True, type='person', characteristic=group_characterstics[int(char_id)][1],
-        value__reference=group_characterstics[int(char_id)][2].replace('[id]',request.form.get("input_id")))
+        requests_object = search("Group",
+        _summary='true',
+         type='person',
+         characteristic=group_characterstics[int(char_id)][1],
+        value__reference=group_characterstics[int(char_id)][2].replace('[id]', request.form.get("input_id")),
+        characteristic__reference=group_characterstics[int(char_id)][2].replace('[id]', request.form.get("input_id")),
+        )
         url_string=requests_object.url
-        '''
-        requests_object = search("Group",_summary='true', type='person',) #
 
     else: # fetch all Groups
         requests_object = search("Group",_summary='true', type='person',) # requests object
         url_string=requests_object.url
 
     py_bundle = pyfhir(requests_object.json(), Type="Bundle")
-
-    if char_id: #mock up by fetching by characteristic
-        url_string, py_bundle = mock_bychar(py_bundle, requests_object.url, c_code, c_value)
 
     app.logger.info(f'bundle id = {py_bundle.id}')
     my_markdown_string=md_template('fetch_userfacinglists.md',    user_facing_lists=py_bundle.entry,
