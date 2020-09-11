@@ -1,0 +1,14 @@
+{% extends "layout.html" %}
+{% block title %}{{title}}{% endblock %}
+{% block head %}
+  {{ super() }}
+{% endblock %}
+{% block page %}{{title}}{% endblock %}
+{% block heading %}
+  {{ super() }}
+{% endblock %}
+{% block content %}
+  <h4>Current date/time: {{ current_time | datetimefilter }}</h4>
+    <div>{{my_intro | markdown | safe }}</div>
+<img alt="NO Q/QR for this Group" class="img-responsive project-logo" src="{{url_for('static', filename='images/rabbit-hole.png')}}">
+{% endblock %}

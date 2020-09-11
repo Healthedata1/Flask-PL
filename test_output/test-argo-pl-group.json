@@ -1,188 +1,93 @@
 {
-    "id": "a9b97bcf-7a12-43ba-a258-9b0ff1655767",
+    "resourceType": "Group",
+    "id": "1171742",
+    "meta": {
+        "versionId": "4",
+        "lastUpdated": "2020-09-11T02:52:11.871+00:00",
+        "source": "#yvKBgaYDYOOj9TZ1",
+        "tag": [
+            {
+                "system": "http://hl7.org/Connectathon",
+                "code": "2020-Sep"
+            }
+        ]
+    },
+    "extension": [
+        {
+            "url": "http://registry.fhir.org/argonaut/patientlistsquestionnairev1",
+            "valueReference": {
+                "reference": "Questionnaire/1169270"
+            }
+        }
+    ],
+    "identifier": [
+        {
+            "system": "http://example.org",
+            "value": "dba0a9f9-82cb-4d42-ad92-3250756a9420"
+        }
+    ],
     "active": true,
     "type": "person",
     "actual": true,
-    "name": "List by Location - 1 West",
+    "name": "ICU List",
     "managingEntity": {
-        "reference": "Organization/DEV.US",
-        "display": "DEV.US"
+        "reference": "Organization/example-organization-2",
+        "display": "Dairyland Hospital"
     },
     "member": [
         {
             "entity": {
-                "reference": "Patient/9804DBB6-4387-417E-BCE8-A01BBD8C6E96",
-                "display": "MARNI ZAK"
-            }
-        },
-        {
-            "entity": {
-                "reference": "Patient/F2AC3E8F-E7F3-435C-964D-071467AAAD38",
-                "display": "Jason Wilcox"
-            }
-        },
-        {
-            "entity": {
-                "reference": "Patient/9B5CFD4D-2923-4753-8C65-889A0A3B2ECB",
-                "display": "HELEN PONTE"
-            }
-        },
-        {
-            "entity": {
-                "reference": "Patient/85E7768E-F0F7-4F38-A6E0-B0A62B5C71B6",
-                "display": "DAN FLORAIS"
-            }
-        },
-        {
-            "entity": {
-                "reference": "Patient/854CA058-F4A3-45A3-B2F0-1DF3B2A86906",
-                "display": "STEVEN LOPES"
-            }
-        },
-        {
-            "entity": {
-                "reference": "Patient/86625066-B1D2-489B-B279-B5E53E5676F3",
-                "display": "BOB COVELO"
-            }
-        },
-        {
-            "entity": {
-                "reference": "Patient/B30A8128-A321-455E-8998-36FD17468A3E",
-                "display": "Marc Volnest"
-            }
-        },
-        {
-            "entity": {
-                "reference": "Patient/B4339671-0CDF-4974-A925-21830D3E1346",
-                "display": "MAGGIE PAYNE"
-            }
-        },
-        {
-            "entity": {
-                "reference": "Patient/EA5216FA-87A9-46CA-8462-4DC6599E0A48",
-                "display": "JEFF MELLO"
-            }
-        },
-        {
-            "entity": {
-                "reference": "Patient/D0DCC18E-4DF8-4EDA-BBFA-39F3EF91758F",
-                "display": "MANNY CARLSON"
-            }
-        },
-        {
-            "entity": {
-                "reference": "Patient/E995B241-F7DD-4DCB-922F-01B170762ADB",
-                "display": "LUCY ZAK"
-            }
-        },
-        {
-            "entity": {
-                "reference": "Patient/C61FEA6E-1143-43BB-9D0A-B33F6FEA42B6",
-                "display": "Milo Saunders"
-            }
-        },
-        {
-            "entity": {
-                "reference": "Patient/8A8D83AF-46FD-4E62-86D7-F0743032B607",
-                "display": "john farias"
-            }
-        },
-        {
-            "entity": {
-                "reference": "Patient/3C143F53-BC3F-47E2-A1CF-CA969D9DAA80",
-                "display": "Steve Jager"
-            }
-        },
-        {
-            "entity": {
-                "reference": "Patient/DBF98CF1-CBC7-4E67-9690-D345EBAD6E00",
-                "display": "NATE LESTER"
-            }
-        },
-        {
-            "entity": {
-                "reference": "Patient/C4FBCA32-5BCD-4967-B186-6063F36A0AB6",
-                "display": "rob covelo"
-            }
-        },
-        {
-            "entity": {
-                "reference": "Patient/B5AD4A74-3BCB-4FC1-AE5D-8150EF01AB2D",
-                "display": "Scott Simmer"
-            }
-        },
-        {
-            "entity": {
-                "reference": "Patient/9B5CFD4D-2923-4753-8C65-889A0A3B2ECB",
-                "display": "HELEN PONTE"
-            }
-        },
-        {
-            "entity": {
-                "reference": "Patient/09BD9CAD-B1D2-4E15-945F-4F347124F950",
-                "display": "Jason Monson"
-            }
-        },
-        {
-            "entity": {
-                "reference": "Patient/9804DBB6-4387-417E-BCE8-A01BBD8C6E96",
-                "display": "MARNI ZAK"
-            }
-        },
-        {
-            "entity": {
-                "reference": "Patient/CF49A1E0-44BB-43F3-A3C3-E6C89E4AB2CE",
-                "display": "MIKE ROCK"
-            }
-        },
-        {
-            "entity": {
-                "reference": "Patient/3D30DBA7-E265-4C19-A855-3CCF98637890",
-                "display": "SCOT SIMER"
-            }
-        },
-        {
-            "entity": {
-                "reference": "Patient/6A77ACAF-6F9C-4682-B180-B449BCDDABF2",
-                "display": "Dan Masterson"
-            }
-        },
-        {
-            "entity": {
-                "reference": "Patient/15F6A1DE-6328-482B-9470-5A1E598EFED2",
-                "display": "Mike Sutton"
-            }
-        },
-        {
-            "entity": {
-                "reference": "Patient/BC6D78F7-137B-40B3-9C31-4966CACAD8AB",
-                "display": "Ken Gundy"
-            }
-        },
-        {
-            "entity": {
-                "reference": "Patient/7D08D56F-CDEB-4156-B958-021E0E941EE7",
-                "display": "Maurice Gildan"
-            }
-        },
-        {
-            "entity": {
-                "reference": "Patient/C3889881-850B-4CD2-8647-B8F9985E30B5",
-                "display": "Mike Propain"
-            }
-        }
-    ],
-    "characteristic": [
-        {
-            "code": {
-                "text": "location"
+                "extension": [
+                    {
+                        "url": "http://registry.fhir.org/argonaut/patientlistsquestionnaireresponsev1",
+                        "valueReference": {
+                            "reference": "QuestionnaireResponse/1169472"
+                        }
+                    }
+                ],
+                "identifier": {
+                    "system": "http://example.org",
+                    "value": "456"
+                },
+                "display": "Name = Daniel Crimson (MRN = 456)"
             },
-            "valueReference": {
-                "reference": "Location/83a1a1b6-7692-52ef-80b2-f64d3397f5b6",
-                "display": "1 West"
+            "inactive": false
+        },
+        {
+            "entity": {
+                "extension": [
+                    {
+                        "url": "http://registry.fhir.org/argonaut/patientlistsquestionnaireresponsev1",
+                        "valueReference": {
+                            "reference": "QuestionnaireResponse/1171740"
+                        }
+                    }
+                ],
+                "identifier": {
+                    "system": "http://example.org",
+                    "value": "567"
+                },
+                "display": "Name = Peter Silie (MRN = 567)"
             },
-            "exclude": false
+            "inactive": false
+        },
+        {
+            "entity": {
+                "extension": [
+                    {
+                        "url": "http://registry.fhir.org/argonaut/patientlistsquestionnaireresponsev1",
+                        "valueReference": {
+                            "reference": "QuestionnaireResponse/1171741"
+                        }
+                    }
+                ],
+                "identifier": {
+                    "system": "http://example.org",
+                    "value": "901"
+                },
+                "display": "Name = Caleb Cushing (MRN = 901)"
+            },
+            "inactive": false
         }
-    ],
-    "resourceType": "Group"
+    ]
 }

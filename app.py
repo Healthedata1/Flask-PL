@@ -367,7 +367,6 @@ def fetch_more():
             #update_pdata_row
             session['my_patients'][member_index]['answer_list']=answer_list
             session.modified = True
-
     else:
         requests_object = fetch(session['patientlist']) # requests Group object
         py_fhir = pyfhir(requests_object.json(), Type="Group")
@@ -423,6 +422,14 @@ def fetch_more():
             ht_offset = 600,
             seq_ht = 825,
             my_string=my_markdown_string,
+        )
+
+@app.route("/todo")
+def todo():
+    return render_template('todo.html',
+            my_intro='## TODO...Click the back button or the "Argo Patient List!" link to start over',
+            title="TODO",
+            current_time=datetime.datetime.now(),
         )
 
 @app.route("/home")

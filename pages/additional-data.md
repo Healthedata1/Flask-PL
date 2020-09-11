@@ -143,12 +143,14 @@ for each patient in group123.bundle.entry get QR:  GET QuestionnaireResponse/[Qu
 {% endif %}
 **Option 2:**  Get all QR for groups based on Q url
 
-GET QuestionnaireResponse?q=/[Questionnaire url from Group.extension]
-
+GET QuestionnaireResponse?questionnaire=[Questionnaire url from Group.extension]
 
 Server Success Criteria:  The server responds with search Bundle with each entry a QuestionnaireResponse resources for each patient containing the requested patient attributes.
 
 Client Success Criteria:  The Client extracts the extra patient details from the QuestionnaireResponse resources and processes them e.g., populates a table for display.
+
+<a href="/todo" type="button" class="btn btn-primary">Click Here to Fetch *All* Additional Data Patients using Questionnaire and QuestionnaireResponse</a>
+
 
 > Discussion:
 
