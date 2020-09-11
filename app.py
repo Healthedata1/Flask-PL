@@ -31,7 +31,6 @@ server_list =  {  # base_url for reference server - no trailing forward slash
     'Cerner': 'https://fhir-open.stagingcerner.com/beta/dacc6494-e336-45ad-8729-b789ff8663c6',
     }
 
-
 base = 'HAPI UHN R4'
 pages = f'{app.root_path}/pages'
 group_characterstics = [

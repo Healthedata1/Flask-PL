@@ -1,54 +1,18 @@
 active: true
 actual: true
-extension:
-- url: http://registry.fhir.org/argonaut/patientlistsquestionnairev1
+characteristic:
+- code:
+    coding:
+    - code: attributed-to
+    text: attributed-to
+  exclude: false
   valueReference:
-    reference: Questionnaire/1169270
-id: '1171742'
-identifier:
-- system: http://example.org
-  value: dba0a9f9-82cb-4d42-ad92-3250756a9420
-managingEntity:
-  display: Dairyland Hospital
-  reference: Organization/example-organization-2
+    reference: Practitioner/12397977
+id: '3149446'
 member:
 - entity:
-    display: Name = Daniel Crimson (MRN = 456)
-    extension:
-    - url: http://registry.fhir.org/argonaut/patientlistsquestionnaireresponsev1
-      valueReference:
-        reference: QuestionnaireResponse/1169472
-    identifier:
-      system: http://example.org
-      value: '456'
-  inactive: false
-- entity:
-    display: Name = Peter Silie (MRN = 567)
-    extension:
-    - url: http://registry.fhir.org/argonaut/patientlistsquestionnaireresponsev1
-      valueReference:
-        reference: QuestionnaireResponse/1171740
-    identifier:
-      system: http://example.org
-      value: '567'
-  inactive: false
-- entity:
-    display: Name = Caleb Cushing (MRN = 901)
-    extension:
-    - url: http://registry.fhir.org/argonaut/patientlistsquestionnaireresponsev1
-      valueReference:
-        reference: QuestionnaireResponse/1171741
-    identifier:
-      system: http://example.org
-      value: '901'
-  inactive: false
-meta:
-  lastUpdated: '2020-09-11T02:52:11.871+00:00'
-  source: '#yvKBgaYDYOOj9TZ1'
-  tag:
-  - code: 2020-Sep
-    system: http://hl7.org/Connectathon
-  versionId: '4'
-name: ICU List
+    display: WH, MOMSGIRL
+    reference: Patient/12740140
+name: Model Behavioral Health Clinic
 resourceType: Group
 type: person
