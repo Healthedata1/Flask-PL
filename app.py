@@ -75,6 +75,7 @@ def search(Type, **kwargs):
             app.logger.info(f'line 73:url-string = {r.url}')
             app.logger.info(f'line 73:status = {r.status_code}') #return r.status_code
             app.logger.info(f'line 74:body = {r.json()}')# view  output
+            #app.logger.info(f'line 75:body as json = {dumps(r.json(), indent=4)}')# view  output
             # return (r.json()["text"]["div"])
             if r.status_code <300:
                 app.logger.info(f'line 65:query string = {r.url}')
@@ -153,7 +154,7 @@ def get_qr_id(member_index): #get QR extension value from member
 
 @app.template_filter()
 def yaml(r_dict):
-    return y_dump(r_dict, allow_unicode=True,)
+    return y_dump(r_dict, allow_unicode=True, sort_keys=False)
 
 @app.template_filter()
 def datetimefilter(value, format='%Y/%m/%d %H:%M'):
@@ -242,10 +243,13 @@ def fetch_lists():
         requests_object = search("Group",_summary='true', type='person',) # requests object
         url_string=requests_object.url
 
+    write_out(app.root_path, "test-argo-pl-bundle.json", dumps(requests_object.json(), indent=4))
+    write_out(app.root_path, "test-argo-pl-bundle.yml", y_dump(requests_object.json(), sort_keys=False))
     py_bundle = pyfhir(requests_object.json(), Type="Bundle")
 
     app.logger.info(f'bundle id = {py_bundle.id}')
-    my_markdown_string=md_template('fetch_userfacinglists.md',    user_facing_lists=py_bundle.entry,
+    my_markdown_string=md_template('fetch_userfacinglists.md',
+     user_facing_lists=py_bundle.entry,
      base_name=session['base_name'],
      url_string=url_string,
      #params = params,
@@ -446,7 +450,7 @@ def contact():
 @app.route('/uploads/<path:filename>', methods=['GET', 'POST'])
 def download(filename):
     directory= f'{app.root_path}/test_output'
-    return send_from_directory(directory= directory, filename=filename, as_attachment=True, mimetype='application/json')
+    return send_from_directory(directory=directory, filename=filename, as_attachment=True, mimetype='application/json')
 
 if __name__ == '__main__':
     app.run(debug=True)
