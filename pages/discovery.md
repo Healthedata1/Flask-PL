@@ -62,13 +62,13 @@ A server is able to provide a collection of patient lists that all have a common
 </tr>
 <tr>
 <td>characteristic</td>
-<td>attributed-to</td>
+<td>practitioner</td>
 <td>value-reference</td>
 <td>Practitioner/[practitioner_id]</td>
 </tr>
 <tr>
 <td>characteristic</td>
-<td>attributed-to</td>
+<td>organization</td>
 <td>value-reference</td>
 <td>Organization/[organization_id]</td>
 </tr>
@@ -80,7 +80,8 @@ A server is able to provide a collection of patient lists that all have a common
 </tr>
 </tbody></table>
 
-value-reference is a custom SearchParameter formally defined [here](https://healthedata1.github.io/Sushi-Sandbox/SearchParameter-Group-value-reference.html):
+This code-system is formally defined [here](https://healthedata1.github.io/Sushi-Sandbox/CodeSystem-argo-group-characteristic.html):
+and the value-reference is a custom SearchParameter formally defined [here](https://healthedata1.github.io/Sushi-Sandbox/SearchParameter-Group-value-reference.html):
 
 Action: A client issues a GET request to a server:
 

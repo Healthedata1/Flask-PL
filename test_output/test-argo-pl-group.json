@@ -1,22 +1,53 @@
 {
     "resourceType": "Group",
-    "id": "3149446",
+    "id": "argo-pl-group-practitioner-302",
+    "meta": {
+        "versionId": "5",
+        "lastUpdated": "2020-09-25T04:13:29.455+00:00",
+        "source": "Health_eData_Inc#Fmh9UsPR9ezkY3RH",
+        "tag": [
+            {
+                "code": "2020-Sep"
+            }
+        ]
+    },
+    "extension": [
+        {
+            "url": "http://registry.fhir.org/argonaut/StructureDefinition/patientlistsquestionnaire",
+            "valueReference": {
+                "reference": "Questionnaire/argo-pl-q1",
+                "display": "Argo PL List Test Questionnaire id=argo-pl-q1"
+            }
+        }
+    ],
+    "identifier": [
+        {
+            "system": "http://example.org/fhir/identifiers",
+            "value": "argo-pl-group-practitioner-302"
+        }
+    ],
     "active": true,
     "type": "person",
     "actual": true,
-    "name": "Model Behavioral Health Clinic",
+    "name": "Argo Patient List \"practitioner\" Use Case",
+    "managingEntity": {
+        "reference": "Organization/db0acede-4abe-3c01-8d03-5c68a190d8c7",
+        "display": "SOUTH SHORE HOSPITAL"
+    },
     "characteristic": [
         {
             "code": {
                 "coding": [
                     {
-                        "code": "attributed-to"
+                        "system": "http://argonautproject.org/patient-lists/CodeSystem/group-characteristic",
+                        "code": "practitioner",
+                        "display": "Practitioner"
                     }
-                ],
-                "text": "attributed-to"
+                ]
             },
             "valueReference": {
-                "reference": "Practitioner/12397977"
+                "reference": "participant.individual/0000016f-57cb-cdac-0000-00000000019a",
+                "display": "Dr. Raina861 Willms744"
             },
             "exclude": false
         }
@@ -24,9 +55,22 @@
     "member": [
         {
             "entity": {
-                "reference": "Patient/12740140",
-                "display": "WH, MOMSGIRL"
-            }
+                "extension": [
+                    {
+                        "url": "http://registry.fhir.org/argonaut/StructureDefinition/patientlistquestionnaireresponse",
+                        "valueReference": {
+                            "reference": "QuestionnaireResponse/argo-pl-q1-qr-02ba9ec6-0712-4715-8ba4-5485fc571403",
+                            "display": "Argo PL List Test QuestionnaireResponse aad0894e-47f4-4ffc-8fab-8fe5487110d2"
+                        }
+                    }
+                ],
+                "reference": "Patient/aad0894e-47f4-4ffc-8fab-8fe5487110d2",
+                "display": "Ms. Jama227 Corwin846"
+            },
+            "period": {
+                "start": "2020-09-24"
+            },
+            "inactive": false
         }
     ]
 }

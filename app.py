@@ -35,8 +35,8 @@ base = 'HAPI UHN R4'
 pages = f'{app.root_path}/pages'
 group_characterstics = [
 (0,'location','Location/[id]',),
-(1,'attributed-to','Practitioner/[id]',),
-(2,'attributed-to','Organization/[id]',),
+(1,'practitioner','Practitioner/[id]',),
+(2,'organization','Organization/[id]',),
 (3,'team','Location/CareTeam/[id]',),
 ]
 
@@ -352,6 +352,7 @@ def fetch_more():
         qr_id = get_qr_id(member_index = member_index)
         try:
             requests_object = search('QuestionnaireResponse', _id=qr_id, _include='QuestionnaireResponse:questionnaire')
+            app.logger.info(f'line 355 requests_object.json() = {requests_object.json()}')
             py_fhir = pyfhir(requests_object.json(), Type="Bundle") # request Bundle object
         except AttributeError:
             app.logger.info(f'endpoint = {endpoint} is not a FHIR endpoint')
@@ -391,6 +392,7 @@ def fetch_more():
         except TypeError:
             app.logger.info ('No Q extension for Group/{py_fhir}') # no extesnsion
         else:
+            app.logger.info(f'line 394: ext.valueReference.reference = {ext.valueReference.reference}')
             myq = fetch(f'{session["base"]}/{ext.valueReference.reference}')
             py_q = pyfhir(myq.json(), Type="Questionnaire")
             app.logger.info(f'py_q.id = {py_q.id}')
