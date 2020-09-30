@@ -14,7 +14,13 @@
 
 {% for j in i.answer_list %}
 {% for k,v in j.items() %}
-<td>{{v}}<br/>({{k}})</td>
+<td>
+  {% if k.split('value')[-1] != 'Reference' %}
+  {{v}}
+  {% else %}
+  <a href="{{session_base}}/{{v['reference']}}">{{v['reference']}}</a>
+  {% endif %}
+  <br/>({{k}})</td>
 {% endfor %}
 {% endfor %}
 

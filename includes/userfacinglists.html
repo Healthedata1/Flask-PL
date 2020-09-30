@@ -3,7 +3,7 @@
 <form  action="/fetch-patientlist" method="post" name="get-list">
 {% for i in user_facing_lists %}
 <input type="radio" name="get-list" id="{{ i.fullUrl }}" value="{{ i.fullUrl }}" {% if loop.index == 1 %}checked{% endif %}/>
-<label for="{{ i.fullUrl }}">Name = {{ i.resource.name }}, id = {{ i.resource.id }}, fullUrl = {{ i.fullUrl }}</label><br>
+<label for="{{ i.fullUrl }}">{{ i.resource.name }}</label><br>
 {% endfor %}
 <input type="submit" class="btn btn-primary btn-lg" role="button" value="CLICK HERE to Fetch User Facing lists"></input><br>
 </form>

@@ -224,14 +224,22 @@ def fetch_lists():
     my_string='''## Server Returns a Bundle of User Facing Lists<br><br>Click on the blue buttons below to continue...'''
     app.logger.info(f' line 166: request.form args = {dict(request.form)}') # get button value...
     if org_id: # fetch by managingEntity Groups
-        requests_object = search("Group",_summary='true', type='person', managing__entity=f'Organization/{org_id}')
+        requests_object = search(
+        "Group",
+        _summary='true',
+        _count=50,
+         type='person',
+          managing__entity=f'Organization/{org_id}'
+          )
         url_string=requests_object.url
 
     elif char_id: # fetch by characteristic
         c_code = group_characterstics[int(char_id)][1]
         c_value = group_characterstics[int(char_id)][2].replace("[id]",input_id)
-        requests_object = search("Group",
+        requests_object = search(
+        "Group",
         _summary='true',
+        _count=50,
          type='person',
          characteristic=group_characterstics[int(char_id)][1],
         value__reference=group_characterstics[int(char_id)][2].replace('[id]', request.form.get("input_id")),
@@ -240,7 +248,12 @@ def fetch_lists():
         url_string=requests_object.url
 
     else: # fetch all Groups
-        requests_object = search("Group",_summary='true', type='person',) # requests object
+        requests_object = search(
+        "Group",
+        _summary='true',
+        type='person',
+        _count=50,
+         ) # requests object
         url_string=requests_object.url
 
     write_out(app.root_path, "test-argo-pl-bundle.json", dumps(requests_object.json(), indent=4))
@@ -392,8 +405,9 @@ def fetch_more():
         except TypeError:
             app.logger.info ('No Q extension for Group/{py_fhir}') # no extesnsion
         else:
-            app.logger.info(f'line 394: ext.valueReference.reference = {ext.valueReference.reference}')
-            myq = fetch(f'{session["base"]}/{ext.valueReference.reference}')
+            session['q_ref'] = ext.valueReference.reference
+            app.logger.info(f'line 394: ext.valueReference.reference = {session["q_ref"]}')
+            myq = fetch(f'{session["base"]}/{session["q_ref"]}')
             py_q = pyfhir(myq.json(), Type="Questionnaire")
             app.logger.info(f'py_q.id = {py_q.id}')
             session['q_list'] = []
@@ -407,6 +421,7 @@ def fetch_more():
          'additional-data.md',
          my_patients= session.get('my_patients'),
          session_base=session.get('base'),
+         session_q=session['q_ref'],
          q_list = session.get('q_list'),
          added=added,
          url_string=requests_object.url,

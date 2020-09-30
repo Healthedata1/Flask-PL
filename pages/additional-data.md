@@ -129,6 +129,9 @@ for each patient in group123.bundle.entry get QR:  GET QuestionnaireResponse/[Qu
 
 <button type="button" class="btn btn-primary">Click on Patient to Fetch Additional Data for *Individual* Patient using Questionnaire and QuestionnaireResponse</button>
 {% if q_list %}
+
+<a href="{{session_base}}/{{session_q}}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Click Here to Fetch Questionnaire</a>
+
 {% include "myqr.html" %}
 
 {% include "collapse_qr.html" %}
