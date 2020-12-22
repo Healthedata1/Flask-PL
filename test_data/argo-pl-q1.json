@@ -1,0 +1,215 @@
+{
+  "id": "argo-pl-q1",
+  "meta": {
+    "lastUpdated": "2020-09-24T22:21:02.987Z",
+    "source": "Health_eData_Inc",
+    "tag": [
+      {
+        "code": "2020-Sep"
+      },
+      {
+        "code": "lformsVersion: 25.1.3"
+      }
+    ]
+  },
+  "date": "2020-09-24T22:17:44.629Z",
+  "subjectType": [
+    "Patient"
+  ],
+  "status": "draft",
+  "publisher": "The Argonaut Project",
+  "description": "*Argo PL List Test Questionnaire 1*  is an example Questionnaire to test out the use case for providing additional data for a patient list.",
+  "useContext": [
+    {
+      "code": {
+        "code": "workflow"
+      },
+      "valueCodeableConcept": {
+        "text": "My use case, for example, ICU Rounds List"
+      }
+    }
+  ],
+  "purpose": "This Form is designed for displaying additional patient list data in the \"XYZ\" Setting for \"ABC\" use case.",
+  "url": "http://registry.fhir.org/argonaut/Questionniare/argo-pl-q1",
+  "name": "ArgoPLListTestQuestionnaire1",
+  "title": "Argo PL List Test Questionnaire 1",
+  "resourceType": "Questionnaire",
+  "item": [
+    {
+      "type": "string",
+      "code": [
+        {
+          "code": "21112-8",
+          "display": "DOB"
+        }
+      ],
+      "extension": [
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/variable",
+          "valueExpression": {
+            "language": "text/fhirpath",
+            "name": "dob",
+            "expression": "Patient.birthDate",
+            "description": "date of birth"
+          }
+        }
+      ],
+      "required": false,
+      "linkId": "dob",
+      "definition": "http://hl7.org/fhir/StructureDefinition/Patient#birthDate",
+      "text": "DOB",
+      "prefix": "1.",
+      "readOnly": false,
+      "initial": [
+        {
+          "valueString": "N/A"
+        }
+      ]
+    },
+    {
+      "type": "string",
+      "code": [
+        {
+          "code": "72143-1",
+          "display": "Sex"
+        }
+      ],
+      "extension": [
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/variable",
+          "valueExpression": {
+            "language": "text/fhirpath",
+            "name": "sex",
+            "expression": "Patient.gender",
+            "description": "Gender of Patient"
+          }
+        }
+      ],
+      "required": false,
+      "linkId": "sex",
+      "definition": "http://hl7.org/fhir/StructureDefinition/Patient#gender",
+      "text": "Sex",
+      "prefix": "2.",
+      "readOnly": false,
+      "initial": [
+        {
+          "valueString": "N/A"
+        }
+      ]
+    },
+    {
+      "type": "string",
+      "code": [
+        {
+          "code": "52455-3",
+          "display": "Admission Date"
+        }
+      ],
+      "extension": [
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/variable",
+          "valueExpression": {
+            "language": "text/fhirpath",
+            "name": "admit-date",
+            "expression": "Encounter.period.start",
+            "description": "The start of the encounter"
+          }
+        }
+      ],
+      "required": false,
+      "linkId": "admit-date",
+      "definition": "http://hl7.org/fhir/StructureDefinition/Encounter#period",
+      "text": "Admission Date",
+      "prefix": "3.",
+      "readOnly": false,
+      "initial": [
+        {
+          "valueString": "N/A"
+        }
+      ]
+    },
+    {
+      "type": "string",
+      "code": [
+        {
+          "code": "75519-9",
+          "display": "Related Encounter"
+        }
+      ],
+      "extension": [
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/variable",
+          "valueExpression": {
+            "language": "text/fhirpath",
+            "name": "rel-encounter",
+            "expression": "Encounter.id",
+            "description": "id of the related Encounter"
+          }
+        }
+      ],
+      "required": false,
+      "linkId": "rel-encounter-id",
+      "definition": "http://hl7.org/fhir/StructureDefinition/Encounter#id",
+      "text": "Related Encounter (e.g. admission Enounter) as id only",
+      "prefix": "4.",
+      "readOnly": false,
+      "initial": [
+        {
+          "valueString": "N/A"
+        }
+      ]
+    },
+    {
+      "type": "reference",
+      "code": [
+        {
+          "code": "75519-9",
+          "display": "Related Encounter"
+        }
+      ],
+      "extension": [
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/variable",
+          "valueExpression": {
+            "language": "text/CQL",
+            "name": "rel-encounter",
+            "expression": "[CQL for the admission Encounter]",
+            "description": "reference to the related Encounter"
+          }
+        }
+      ],
+      "required": false,
+      "linkId": "rel-encounter-ref",
+      "definition": "http://hl7.org/fhir/StructureDefinition/Encounter",
+      "text": "Related Encounter (e.g. admission Enounter) as FHIR reference",
+      "prefix": "5.",
+      "readOnly": false
+    },
+    {
+      "type": "url",
+      "code": [
+        {
+          "code": "75519-9",
+          "display": "Related Encounter"
+        }
+      ],
+      "extension": [
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/variable",
+          "valueExpression": {
+            "language": "text/CQL",
+            "name": "rel-encounter",
+            "expression": "[CQL for the admission Encounter uri]",
+            "description": "reference to the related Encounter uri"
+          }
+        }
+      ],
+      "required": false,
+      "linkId": "rel-encounter-uri",
+      "definition": "http://hl7.org/fhir/StructureDefinition/Encounter",
+      "text": "Related Encounter (e.g. admission Enounter) as uri",
+      "prefix": "6.",
+      "readOnly": false
+    }
+  ]
+}

@@ -1,10 +1,10 @@
 {
     "resourceType": "Group",
-    "id": "argo-pl-group-practitioner-3008",
+    "id": "argo-pl-group-all-1000",
     "meta": {
-        "versionId": "2",
-        "lastUpdated": "2020-09-30T00:21:22.823+00:00",
-        "source": "Health_eData_Inc#avf4s5AkqVLaJF0N",
+        "versionId": "5",
+        "lastUpdated": "2020-09-30T00:31:32.053+00:00",
+        "source": "Health_eData_Inc#xXG4ePql1TNKMBIT",
         "tag": [
             {
                 "code": "2020-Sep"
@@ -23,35 +23,17 @@
     "identifier": [
         {
             "system": "http://example.org/fhir/identifiers",
-            "value": "argo-pl-group-practitioner-3008"
+            "value": "argo-pl-group-all-1000"
         }
     ],
     "active": true,
     "type": "person",
     "actual": true,
-    "name": "Argo Patient List #3008: \"practitioner\" Use Case",
+    "name": "Argo Patient List #1000: \"all\" Use Case",
     "managingEntity": {
-        "reference": "Organization/d692e283-0833-3201-8e55-4f868a9c0736",
-        "display": "HALLMARK HEALTH SYSTEM"
+        "reference": "Organization/e002090d-4e92-300e-b41e-7d1f21dee4c6",
+        "display": "CAMBRIDGE HEALTH ALLIANCE"
     },
-    "characteristic": [
-        {
-            "code": {
-                "coding": [
-                    {
-                        "system": "http://argonautproject.org/patient-lists/CodeSystem/group-characteristic",
-                        "code": "practitioner",
-                        "display": "Practitioner"
-                    }
-                ]
-            },
-            "valueReference": {
-                "reference": "Practitioner/0000016f-64f5-9833-0000-0000000000c8",
-                "display": "Dr. Corinna386 Beer512"
-            },
-            "exclude": false
-        }
-    ],
     "member": [
         {
             "entity": {
@@ -59,13 +41,13 @@
                     {
                         "url": "http://registry.fhir.org/argonaut/StructureDefinition/patientlistquestionnaireresponse",
                         "valueReference": {
-                            "reference": "QuestionnaireResponse/argo-pl-q1-qr-5812ffab-0650-47e1-ae6c-c32d4d0b330d",
-                            "display": "Argo PL List Test QuestionnaireResponse 5812ffab-0650-47e1-ae6c-c32d4d0b330d"
+                            "reference": "QuestionnaireResponse/argo-pl-q1-qr-4e018248-ed8b-4111-90f2-6584d3e78ba3",
+                            "display": "Argo PL List Test QuestionnaireResponse 4e018248-ed8b-4111-90f2-6584d3e78ba3"
                         }
                     }
                 ],
-                "reference": "Patient/5812ffab-0650-47e1-ae6c-c32d4d0b330d",
-                "display": "Ms. Adrienne302 Hansen121"
+                "reference": "Patient/4e018248-ed8b-4111-90f2-6584d3e78ba3",
+                "display": "Mr. Long300 Becker968"
             },
             "period": {
                 "start": "2020-09-29"
@@ -78,13 +60,13 @@
                     {
                         "url": "http://registry.fhir.org/argonaut/StructureDefinition/patientlistquestionnaireresponse",
                         "valueReference": {
-                            "reference": "QuestionnaireResponse/argo-pl-q1-qr-8b88e3aa-2eee-4a78-8a75-886b7c817982",
-                            "display": "Argo PL List Test QuestionnaireResponse 8b88e3aa-2eee-4a78-8a75-886b7c817982"
+                            "reference": "QuestionnaireResponse/argo-pl-q1-qr-744fe93a-7a0d-41d8-8e2d-7e1ce1e9a85b",
+                            "display": "Argo PL List Test QuestionnaireResponse 744fe93a-7a0d-41d8-8e2d-7e1ce1e9a85b"
                         }
                     }
                 ],
-                "reference": "Patient/8b88e3aa-2eee-4a78-8a75-886b7c817982",
-                "display": "Ms. Ashton21 Wilderman619"
+                "reference": "Patient/744fe93a-7a0d-41d8-8e2d-7e1ce1e9a85b",
+                "display": "Mr. Lucien408 Lubowitz58"
             },
             "period": {
                 "start": "2020-09-29"
@@ -97,13 +79,13 @@
                     {
                         "url": "http://registry.fhir.org/argonaut/StructureDefinition/patientlistquestionnaireresponse",
                         "valueReference": {
-                            "reference": "QuestionnaireResponse/argo-pl-q1-qr-600792ff-3caf-4bc7-9e81-ae9a6937d329",
-                            "display": "Argo PL List Test QuestionnaireResponse 600792ff-3caf-4bc7-9e81-ae9a6937d329"
+                            "reference": "QuestionnaireResponse/argo-pl-q1-qr-64fa51b4-6a38-4bd1-afef-f762f99a047a",
+                            "display": "Argo PL List Test QuestionnaireResponse 64fa51b4-6a38-4bd1-afef-f762f99a047a"
                         }
                     }
                 ],
-                "reference": "Patient/600792ff-3caf-4bc7-9e81-ae9a6937d329",
-                "display": "Ms. Carlita746 Murazik203"
+                "reference": "Patient/64fa51b4-6a38-4bd1-afef-f762f99a047a",
+                "display": "Ms. Mee229 Cremin516"
             },
             "period": {
                 "start": "2020-09-29"
@@ -116,13 +98,13 @@
                     {
                         "url": "http://registry.fhir.org/argonaut/StructureDefinition/patientlistquestionnaireresponse",
                         "valueReference": {
-                            "reference": "QuestionnaireResponse/argo-pl-q1-qr-bb033903-9169-4c09-8b6c-591f2bd25d3c",
-                            "display": "Argo PL List Test QuestionnaireResponse bb033903-9169-4c09-8b6c-591f2bd25d3c"
+                            "reference": "QuestionnaireResponse/argo-pl-q1-qr-c9fe923e-cc0c-4986-a799-911fa95576dc",
+                            "display": "Argo PL List Test QuestionnaireResponse c9fe923e-cc0c-4986-a799-911fa95576dc"
                         }
                     }
                 ],
-                "reference": "Patient/bb033903-9169-4c09-8b6c-591f2bd25d3c",
-                "display": "Ms. Chantal971 Hackett68"
+                "reference": "Patient/c9fe923e-cc0c-4986-a799-911fa95576dc",
+                "display": "Ms. Mellie476 Kreiger457"
             },
             "period": {
                 "start": "2020-09-29"
@@ -135,13 +117,13 @@
                     {
                         "url": "http://registry.fhir.org/argonaut/StructureDefinition/patientlistquestionnaireresponse",
                         "valueReference": {
-                            "reference": "QuestionnaireResponse/argo-pl-q1-qr-1b482582-dc1f-403d-9305-a352c3e84161",
-                            "display": "Argo PL List Test QuestionnaireResponse 1b482582-dc1f-403d-9305-a352c3e84161"
+                            "reference": "QuestionnaireResponse/argo-pl-q1-qr-37d35c19-67e8-444b-ae41-aa490b5a0cdf",
+                            "display": "Argo PL List Test QuestionnaireResponse 37d35c19-67e8-444b-ae41-aa490b5a0cdf"
                         }
                     }
                 ],
-                "reference": "Patient/1b482582-dc1f-403d-9305-a352c3e84161",
-                "display": "Ms. Chelsea317 Luettgen772"
+                "reference": "Patient/37d35c19-67e8-444b-ae41-aa490b5a0cdf",
+                "display": "Ms. Micha632 O'Connell601"
             },
             "period": {
                 "start": "2020-09-29"
@@ -154,13 +136,13 @@
                     {
                         "url": "http://registry.fhir.org/argonaut/StructureDefinition/patientlistquestionnaireresponse",
                         "valueReference": {
-                            "reference": "QuestionnaireResponse/argo-pl-q1-qr-123c9f62-0e54-46f8-9698-37c868589a40",
-                            "display": "Argo PL List Test QuestionnaireResponse 123c9f62-0e54-46f8-9698-37c868589a40"
+                            "reference": "QuestionnaireResponse/argo-pl-q1-qr-c0030836-04df-47e5-97b6-d042a67838eb",
+                            "display": "Argo PL List Test QuestionnaireResponse c0030836-04df-47e5-97b6-d042a67838eb"
                         }
                     }
                 ],
-                "reference": "Patient/123c9f62-0e54-46f8-9698-37c868589a40",
-                "display": "Ms. Cleo27 Hodkiewicz467"
+                "reference": "Patient/c0030836-04df-47e5-97b6-d042a67838eb",
+                "display": "Mr. Miguel815 Herzog843"
             },
             "period": {
                 "start": "2020-09-29"
@@ -173,13 +155,13 @@
                     {
                         "url": "http://registry.fhir.org/argonaut/StructureDefinition/patientlistquestionnaireresponse",
                         "valueReference": {
-                            "reference": "QuestionnaireResponse/argo-pl-q1-qr-a6f169ed-0fd2-49b7-9dbb-77894a77acf8",
-                            "display": "Argo PL List Test QuestionnaireResponse a6f169ed-0fd2-49b7-9dbb-77894a77acf8"
+                            "reference": "QuestionnaireResponse/argo-pl-q1-qr-a60844fc-4eaa-4a83-8923-7356897c71bc",
+                            "display": "Argo PL List Test QuestionnaireResponse a60844fc-4eaa-4a83-8923-7356897c71bc"
                         }
                     }
                 ],
-                "reference": "Patient/a6f169ed-0fd2-49b7-9dbb-77894a77acf8",
-                "display": "Mr. Curtis94 Dibbert990"
+                "reference": "Patient/a60844fc-4eaa-4a83-8923-7356897c71bc",
+                "display": "Ms. Milagros256 Medhurst46"
             },
             "period": {
                 "start": "2020-09-29"
@@ -192,13 +174,526 @@
                     {
                         "url": "http://registry.fhir.org/argonaut/StructureDefinition/patientlistquestionnaireresponse",
                         "valueReference": {
-                            "reference": "QuestionnaireResponse/argo-pl-q1-qr-8541edd8-4197-4464-aa81-7e36fd6d6e29",
-                            "display": "Argo PL List Test QuestionnaireResponse 8541edd8-4197-4464-aa81-7e36fd6d6e29"
+                            "reference": "QuestionnaireResponse/argo-pl-q1-qr-398b19a3-4646-4072-a873-a5f9c79a520b",
+                            "display": "Argo PL List Test QuestionnaireResponse 398b19a3-4646-4072-a873-a5f9c79a520b"
                         }
                     }
                 ],
-                "reference": "Patient/8541edd8-4197-4464-aa81-7e36fd6d6e29",
-                "display": "Ms. Emelda84 Wiegand701"
+                "reference": "Patient/398b19a3-4646-4072-a873-a5f9c79a520b",
+                "display": "Ms. Millicent213 Crona259"
+            },
+            "period": {
+                "start": "2020-09-29"
+            },
+            "inactive": false
+        },
+        {
+            "entity": {
+                "extension": [
+                    {
+                        "url": "http://registry.fhir.org/argonaut/StructureDefinition/patientlistquestionnaireresponse",
+                        "valueReference": {
+                            "reference": "QuestionnaireResponse/argo-pl-q1-qr-6af140ff-20f7-4226-a15c-4e0faeceb9ba",
+                            "display": "Argo PL List Test QuestionnaireResponse 6af140ff-20f7-4226-a15c-4e0faeceb9ba"
+                        }
+                    }
+                ],
+                "reference": "Patient/6af140ff-20f7-4226-a15c-4e0faeceb9ba",
+                "display": "Ms. Muriel394 Auer97"
+            },
+            "period": {
+                "start": "2020-09-29"
+            },
+            "inactive": false
+        },
+        {
+            "entity": {
+                "extension": [
+                    {
+                        "url": "http://registry.fhir.org/argonaut/StructureDefinition/patientlistquestionnaireresponse",
+                        "valueReference": {
+                            "reference": "QuestionnaireResponse/argo-pl-q1-qr-699cca60-f642-469b-bac2-8b62adb8e977",
+                            "display": "Argo PL List Test QuestionnaireResponse 699cca60-f642-469b-bac2-8b62adb8e977"
+                        }
+                    }
+                ],
+                "reference": "Patient/699cca60-f642-469b-bac2-8b62adb8e977",
+                "display": "Mr. Nestor901 Dooley940"
+            },
+            "period": {
+                "start": "2020-09-29"
+            },
+            "inactive": false
+        },
+        {
+            "entity": {
+                "extension": [
+                    {
+                        "url": "http://registry.fhir.org/argonaut/StructureDefinition/patientlistquestionnaireresponse",
+                        "valueReference": {
+                            "reference": "QuestionnaireResponse/argo-pl-q1-qr-54542554-2b48-4ef4-b8b8-643270e8b6ae",
+                            "display": "Argo PL List Test QuestionnaireResponse 54542554-2b48-4ef4-b8b8-643270e8b6ae"
+                        }
+                    }
+                ],
+                "reference": "Patient/54542554-2b48-4ef4-b8b8-643270e8b6ae",
+                "display": "Ms. Olene159 Smith67"
+            },
+            "period": {
+                "start": "2020-09-29"
+            },
+            "inactive": false
+        },
+        {
+            "entity": {
+                "extension": [
+                    {
+                        "url": "http://registry.fhir.org/argonaut/StructureDefinition/patientlistquestionnaireresponse",
+                        "valueReference": {
+                            "reference": "QuestionnaireResponse/argo-pl-q1-qr-f7f38797-25f9-4df8-842a-186b4091e32a",
+                            "display": "Argo PL List Test QuestionnaireResponse f7f38797-25f9-4df8-842a-186b4091e32a"
+                        }
+                    }
+                ],
+                "reference": "Patient/f7f38797-25f9-4df8-842a-186b4091e32a",
+                "display": "Ms. Olive251 Schamberger479"
+            },
+            "period": {
+                "start": "2020-09-29"
+            },
+            "inactive": false
+        },
+        {
+            "entity": {
+                "extension": [
+                    {
+                        "url": "http://registry.fhir.org/argonaut/StructureDefinition/patientlistquestionnaireresponse",
+                        "valueReference": {
+                            "reference": "QuestionnaireResponse/argo-pl-q1-qr-c4c05e3e-1fec-4924-b304-0746d56da996",
+                            "display": "Argo PL List Test QuestionnaireResponse c4c05e3e-1fec-4924-b304-0746d56da996"
+                        }
+                    }
+                ],
+                "reference": "Patient/c4c05e3e-1fec-4924-b304-0746d56da996",
+                "display": "Ms. Rossie247 Kassulke119"
+            },
+            "period": {
+                "start": "2020-09-29"
+            },
+            "inactive": false
+        },
+        {
+            "entity": {
+                "extension": [
+                    {
+                        "url": "http://registry.fhir.org/argonaut/StructureDefinition/patientlistquestionnaireresponse",
+                        "valueReference": {
+                            "reference": "QuestionnaireResponse/argo-pl-q1-qr-d70faf89-5f67-42f1-aae0-77534c4e7bd8",
+                            "display": "Argo PL List Test QuestionnaireResponse d70faf89-5f67-42f1-aae0-77534c4e7bd8"
+                        }
+                    }
+                ],
+                "reference": "Patient/d70faf89-5f67-42f1-aae0-77534c4e7bd8",
+                "display": "Ms. Sammie902 Gutmann970"
+            },
+            "period": {
+                "start": "2020-09-29"
+            },
+            "inactive": false
+        },
+        {
+            "entity": {
+                "extension": [
+                    {
+                        "url": "http://registry.fhir.org/argonaut/StructureDefinition/patientlistquestionnaireresponse",
+                        "valueReference": {
+                            "reference": "QuestionnaireResponse/argo-pl-q1-qr-d6d7dcf0-dc11-4d94-a8ed-011ba82a794b",
+                            "display": "Argo PL List Test QuestionnaireResponse d6d7dcf0-dc11-4d94-a8ed-011ba82a794b"
+                        }
+                    }
+                ],
+                "reference": "Patient/d6d7dcf0-dc11-4d94-a8ed-011ba82a794b",
+                "display": "Mr. Santiago500 Amaya149"
+            },
+            "period": {
+                "start": "2020-09-29"
+            },
+            "inactive": false
+        },
+        {
+            "entity": {
+                "extension": [
+                    {
+                        "url": "http://registry.fhir.org/argonaut/StructureDefinition/patientlistquestionnaireresponse",
+                        "valueReference": {
+                            "reference": "QuestionnaireResponse/argo-pl-q1-qr-9020e9b9-79f8-436e-b7b9-36d9a95a7add",
+                            "display": "Argo PL List Test QuestionnaireResponse 9020e9b9-79f8-436e-b7b9-36d9a95a7add"
+                        }
+                    }
+                ],
+                "reference": "Patient/9020e9b9-79f8-436e-b7b9-36d9a95a7add",
+                "display": "Ms. Sharee66 Grimes165"
+            },
+            "period": {
+                "start": "2020-09-29"
+            },
+            "inactive": false
+        },
+        {
+            "entity": {
+                "extension": [
+                    {
+                        "url": "http://registry.fhir.org/argonaut/StructureDefinition/patientlistquestionnaireresponse",
+                        "valueReference": {
+                            "reference": "QuestionnaireResponse/argo-pl-q1-qr-bc6fae88-3ee1-4f33-be6b-3ef186d7a1ad",
+                            "display": "Argo PL List Test QuestionnaireResponse bc6fae88-3ee1-4f33-be6b-3ef186d7a1ad"
+                        }
+                    }
+                ],
+                "reference": "Patient/bc6fae88-3ee1-4f33-be6b-3ef186d7a1ad",
+                "display": "Ms. Shari363 Price929"
+            },
+            "period": {
+                "start": "2020-09-29"
+            },
+            "inactive": false
+        },
+        {
+            "entity": {
+                "extension": [
+                    {
+                        "url": "http://registry.fhir.org/argonaut/StructureDefinition/patientlistquestionnaireresponse",
+                        "valueReference": {
+                            "reference": "QuestionnaireResponse/argo-pl-q1-qr-6b978de0-2520-4345-b389-7f43d7ccc872",
+                            "display": "Argo PL List Test QuestionnaireResponse 6b978de0-2520-4345-b389-7f43d7ccc872"
+                        }
+                    }
+                ],
+                "reference": "Patient/6b978de0-2520-4345-b389-7f43d7ccc872",
+                "display": "Ms. Sharla853 Von197"
+            },
+            "period": {
+                "start": "2020-09-29"
+            },
+            "inactive": false
+        },
+        {
+            "entity": {
+                "extension": [
+                    {
+                        "url": "http://registry.fhir.org/argonaut/StructureDefinition/patientlistquestionnaireresponse",
+                        "valueReference": {
+                            "reference": "QuestionnaireResponse/argo-pl-q1-qr-ec07a79e-0555-43e7-b7e8-05a2df000c89",
+                            "display": "Argo PL List Test QuestionnaireResponse ec07a79e-0555-43e7-b7e8-05a2df000c89"
+                        }
+                    }
+                ],
+                "reference": "Patient/ec07a79e-0555-43e7-b7e8-05a2df000c89",
+                "display": "Mr. Shon148 Swaniawski813"
+            },
+            "period": {
+                "start": "2020-09-29"
+            },
+            "inactive": false
+        },
+        {
+            "entity": {
+                "extension": [
+                    {
+                        "url": "http://registry.fhir.org/argonaut/StructureDefinition/patientlistquestionnaireresponse",
+                        "valueReference": {
+                            "reference": "QuestionnaireResponse/argo-pl-q1-qr-cd570d63-36a2-4234-9ae9-e79564a025d5",
+                            "display": "Argo PL List Test QuestionnaireResponse cd570d63-36a2-4234-9ae9-e79564a025d5"
+                        }
+                    }
+                ],
+                "reference": "Patient/cd570d63-36a2-4234-9ae9-e79564a025d5",
+                "display": "Mr. Sol312 Lesch175"
+            },
+            "period": {
+                "start": "2020-09-29"
+            },
+            "inactive": false
+        },
+        {
+            "entity": {
+                "extension": [
+                    {
+                        "url": "http://registry.fhir.org/argonaut/StructureDefinition/patientlistquestionnaireresponse",
+                        "valueReference": {
+                            "reference": "QuestionnaireResponse/argo-pl-q1-qr-e1a1e28d-edf0-4fc5-89c9-d34962ad4a35",
+                            "display": "Argo PL List Test QuestionnaireResponse e1a1e28d-edf0-4fc5-89c9-d34962ad4a35"
+                        }
+                    }
+                ],
+                "reference": "Patient/e1a1e28d-edf0-4fc5-89c9-d34962ad4a35",
+                "display": "Mr. Stephan15 Koelpin146"
+            },
+            "period": {
+                "start": "2020-09-29"
+            },
+            "inactive": false
+        },
+        {
+            "entity": {
+                "extension": [
+                    {
+                        "url": "http://registry.fhir.org/argonaut/StructureDefinition/patientlistquestionnaireresponse",
+                        "valueReference": {
+                            "reference": "QuestionnaireResponse/argo-pl-q1-qr-ff757303-a3b8-444f-9877-8ee251bd9dce",
+                            "display": "Argo PL List Test QuestionnaireResponse ff757303-a3b8-444f-9877-8ee251bd9dce"
+                        }
+                    }
+                ],
+                "reference": "Patient/ff757303-a3b8-444f-9877-8ee251bd9dce",
+                "display": "Ms. Stephine916 Hettinger594"
+            },
+            "period": {
+                "start": "2020-09-29"
+            },
+            "inactive": false
+        },
+        {
+            "entity": {
+                "extension": [
+                    {
+                        "url": "http://registry.fhir.org/argonaut/StructureDefinition/patientlistquestionnaireresponse",
+                        "valueReference": {
+                            "reference": "QuestionnaireResponse/argo-pl-q1-qr-6c13fef2-d41b-482a-9769-244f3478134a",
+                            "display": "Argo PL List Test QuestionnaireResponse 6c13fef2-d41b-482a-9769-244f3478134a"
+                        }
+                    }
+                ],
+                "reference": "Patient/6c13fef2-d41b-482a-9769-244f3478134a",
+                "display": "Ms. Suk497 Ratke343"
+            },
+            "period": {
+                "start": "2020-09-29"
+            },
+            "inactive": false
+        },
+        {
+            "entity": {
+                "extension": [
+                    {
+                        "url": "http://registry.fhir.org/argonaut/StructureDefinition/patientlistquestionnaireresponse",
+                        "valueReference": {
+                            "reference": "QuestionnaireResponse/argo-pl-q1-qr-e0cc97e8-eb68-4322-bcb7-e14c3e0a69d5",
+                            "display": "Argo PL List Test QuestionnaireResponse e0cc97e8-eb68-4322-bcb7-e14c3e0a69d5"
+                        }
+                    }
+                ],
+                "reference": "Patient/e0cc97e8-eb68-4322-bcb7-e14c3e0a69d5",
+                "display": "Ms. Taisha184 Brown30"
+            },
+            "period": {
+                "start": "2020-09-29"
+            },
+            "inactive": false
+        },
+        {
+            "entity": {
+                "extension": [
+                    {
+                        "url": "http://registry.fhir.org/argonaut/StructureDefinition/patientlistquestionnaireresponse",
+                        "valueReference": {
+                            "reference": "QuestionnaireResponse/argo-pl-q1-qr-440491ca-ecc0-451a-86b5-2e720c6f08cf",
+                            "display": "Argo PL List Test QuestionnaireResponse 440491ca-ecc0-451a-86b5-2e720c6f08cf"
+                        }
+                    }
+                ],
+                "reference": "Patient/440491ca-ecc0-451a-86b5-2e720c6f08cf",
+                "display": "Ms. Taisha184 Hagenes547"
+            },
+            "period": {
+                "start": "2020-09-29"
+            },
+            "inactive": false
+        },
+        {
+            "entity": {
+                "extension": [
+                    {
+                        "url": "http://registry.fhir.org/argonaut/StructureDefinition/patientlistquestionnaireresponse",
+                        "valueReference": {
+                            "reference": "QuestionnaireResponse/argo-pl-q1-qr-8aecbe11-9804-48b9-99ce-d523878b8904",
+                            "display": "Argo PL List Test QuestionnaireResponse 8aecbe11-9804-48b9-99ce-d523878b8904"
+                        }
+                    }
+                ],
+                "reference": "Patient/8aecbe11-9804-48b9-99ce-d523878b8904",
+                "display": "Ms. Tamesha39 Pagac496"
+            },
+            "period": {
+                "start": "2020-09-29"
+            },
+            "inactive": false
+        },
+        {
+            "entity": {
+                "extension": [
+                    {
+                        "url": "http://registry.fhir.org/argonaut/StructureDefinition/patientlistquestionnaireresponse",
+                        "valueReference": {
+                            "reference": "QuestionnaireResponse/argo-pl-q1-qr-465c0c64-a991-49f6-b3d2-c1810cc86643",
+                            "display": "Argo PL List Test QuestionnaireResponse 465c0c64-a991-49f6-b3d2-c1810cc86643"
+                        }
+                    }
+                ],
+                "reference": "Patient/465c0c64-a991-49f6-b3d2-c1810cc86643",
+                "display": "Ms. Teri144 McLaughlin530"
+            },
+            "period": {
+                "start": "2020-09-29"
+            },
+            "inactive": false
+        },
+        {
+            "entity": {
+                "extension": [
+                    {
+                        "url": "http://registry.fhir.org/argonaut/StructureDefinition/patientlistquestionnaireresponse",
+                        "valueReference": {
+                            "reference": "QuestionnaireResponse/argo-pl-q1-qr-1580f992-d7e6-4fb4-b953-02c2b736b73b",
+                            "display": "Argo PL List Test QuestionnaireResponse 1580f992-d7e6-4fb4-b953-02c2b736b73b"
+                        }
+                    }
+                ],
+                "reference": "Patient/1580f992-d7e6-4fb4-b953-02c2b736b73b",
+                "display": "Ms. Tilda804 Dickens475"
+            },
+            "period": {
+                "start": "2020-09-29"
+            },
+            "inactive": false
+        },
+        {
+            "entity": {
+                "extension": [
+                    {
+                        "url": "http://registry.fhir.org/argonaut/StructureDefinition/patientlistquestionnaireresponse",
+                        "valueReference": {
+                            "reference": "QuestionnaireResponse/argo-pl-q1-qr-f117325b-ff3a-46ad-97b5-d10ef144812c",
+                            "display": "Argo PL List Test QuestionnaireResponse f117325b-ff3a-46ad-97b5-d10ef144812c"
+                        }
+                    }
+                ],
+                "reference": "Patient/f117325b-ff3a-46ad-97b5-d10ef144812c",
+                "display": "Mr. Tory770 Wilderman619"
+            },
+            "period": {
+                "start": "2020-09-29"
+            },
+            "inactive": false
+        },
+        {
+            "entity": {
+                "extension": [
+                    {
+                        "url": "http://registry.fhir.org/argonaut/StructureDefinition/patientlistquestionnaireresponse",
+                        "valueReference": {
+                            "reference": "QuestionnaireResponse/argo-pl-q1-qr-bff50406-6688-4012-a62c-0e7d8c642022",
+                            "display": "Argo PL List Test QuestionnaireResponse bff50406-6688-4012-a62c-0e7d8c642022"
+                        }
+                    }
+                ],
+                "reference": "Patient/bff50406-6688-4012-a62c-0e7d8c642022",
+                "display": "Ms. Velvet616 Harvey63"
+            },
+            "period": {
+                "start": "2020-09-29"
+            },
+            "inactive": false
+        },
+        {
+            "entity": {
+                "extension": [
+                    {
+                        "url": "http://registry.fhir.org/argonaut/StructureDefinition/patientlistquestionnaireresponse",
+                        "valueReference": {
+                            "reference": "QuestionnaireResponse/argo-pl-q1-qr-9f98d0b1-0ff0-4e98-825a-7a6e27aa63d6",
+                            "display": "Argo PL List Test QuestionnaireResponse 9f98d0b1-0ff0-4e98-825a-7a6e27aa63d6"
+                        }
+                    }
+                ],
+                "reference": "Patient/9f98d0b1-0ff0-4e98-825a-7a6e27aa63d6",
+                "display": "Ms. Ver\u00f3nica383 Sep\u00falveda884"
+            },
+            "period": {
+                "start": "2020-09-29"
+            },
+            "inactive": false
+        },
+        {
+            "entity": {
+                "extension": [
+                    {
+                        "url": "http://registry.fhir.org/argonaut/StructureDefinition/patientlistquestionnaireresponse",
+                        "valueReference": {
+                            "reference": "QuestionnaireResponse/argo-pl-q1-qr-78b856da-192e-4d96-913c-1a561dae807a",
+                            "display": "Argo PL List Test QuestionnaireResponse 78b856da-192e-4d96-913c-1a561dae807a"
+                        }
+                    }
+                ],
+                "reference": "Patient/78b856da-192e-4d96-913c-1a561dae807a",
+                "display": "Ms. Wanita14 Mayert710"
+            },
+            "period": {
+                "start": "2020-09-29"
+            },
+            "inactive": false
+        },
+        {
+            "entity": {
+                "extension": [
+                    {
+                        "url": "http://registry.fhir.org/argonaut/StructureDefinition/patientlistquestionnaireresponse",
+                        "valueReference": {
+                            "reference": "QuestionnaireResponse/argo-pl-q1-qr-161f0509-26f0-40d4-881d-7a11a0cfbff3",
+                            "display": "Argo PL List Test QuestionnaireResponse 161f0509-26f0-40d4-881d-7a11a0cfbff3"
+                        }
+                    }
+                ],
+                "reference": "Patient/161f0509-26f0-40d4-881d-7a11a0cfbff3",
+                "display": "Ms. Wesley533 Lakin515"
+            },
+            "period": {
+                "start": "2020-09-29"
+            },
+            "inactive": false
+        },
+        {
+            "entity": {
+                "extension": [
+                    {
+                        "url": "http://registry.fhir.org/argonaut/StructureDefinition/patientlistquestionnaireresponse",
+                        "valueReference": {
+                            "reference": "QuestionnaireResponse/argo-pl-q1-qr-666d5c3c-5a61-4942-b34e-068f2d2ff8a4",
+                            "display": "Argo PL List Test QuestionnaireResponse 666d5c3c-5a61-4942-b34e-068f2d2ff8a4"
+                        }
+                    }
+                ],
+                "reference": "Patient/666d5c3c-5a61-4942-b34e-068f2d2ff8a4",
+                "display": "Ms. Yelena240 Gerlach374"
+            },
+            "period": {
+                "start": "2020-09-29"
+            },
+            "inactive": false
+        },
+        {
+            "entity": {
+                "extension": [
+                    {
+                        "url": "http://registry.fhir.org/argonaut/StructureDefinition/patientlistquestionnaireresponse",
+                        "valueReference": {
+                            "reference": "QuestionnaireResponse/argo-pl-q1-qr-e737ba96-4c67-4820-bfe6-ad6ca7e9c78c",
+                            "display": "Argo PL List Test QuestionnaireResponse e737ba96-4c67-4820-bfe6-ad6ca7e9c78c"
+                        }
+                    }
+                ],
+                "reference": "Patient/e737ba96-4c67-4820-bfe6-ad6ca7e9c78c",
+                "display": "Mr. Zane918 Kozey370"
             },
             "period": {
                 "start": "2020-09-29"

@@ -13,7 +13,23 @@ from utils import write_out, clear_dir, read_in
 from time import sleep
 from jinja2 import Environment, FileSystemLoader
 from yaml import dump as y_dump
+from logging.config import dictConfig
 
+dictConfig({
+    'version': 1,
+    'formatters': {'default': {
+        'format': '[%(asctime)s] %(levelname)s in %(module)s %(lineno)d}: %(message)s',
+    }},
+    'handlers': {'wsgi': {
+        'class': 'logging.StreamHandler',
+        'stream': 'ext://flask.logging.wsgi_errors_stream',
+        'formatter': 'default'
+    }},
+    'root': {
+        'level': 'INFO',
+        'handlers': ['wsgi']
+    }
+})
 
 app = Flask(__name__,)
 app.secret_key = 'my secret key'
@@ -33,11 +49,11 @@ server_list =  {  # base_url for reference server - no trailing forward slash
 
 base = 'HAPI UHN R4'
 pages = f'{app.root_path}/pages'
-group_characterstics = [
-(0,'location','Location/[id]',),
-(1,'practitioner','Practitioner/[id]',),
-(2,'organization','Organization/[id]',),
-(3,'team','Location/CareTeam/[id]',),
+group_characteristics = [
+(0,'location','Location/[id]','33b34318-015b-450a-ab5f-4e8b66b2654b',),
+(1,'practitioner','Practitioner/[id]','0000016f-57cb-cdac-0000-00000000014a',),
+(2,'organization','Organization/[id]', '...'),
+(3,'team','Location/CareTeam/[id]','...'),
 ]
 
 headers = {
@@ -50,9 +66,9 @@ headers = {
 def md_template(my_md,*args,**kwargs): # Create template with the markdown source text
     template = env.get_template(my_md)
     # Render that template.
-    app.logger.info(f'line 34: kwargs = {kwargs}')
+    app.logger.info(f' kwargs = {kwargs}')
     kwargs = {k.replace('__','-'):v for k,v in kwargs.items() }
-    app.logger.info(f'line 34: kwargs = {kwargs}')
+    app.logger.info(f' kwargs = {kwargs}')
     return template.render(kwargs)
 
 def search(Type, **kwargs):
@@ -60,25 +76,25 @@ def search(Type, **kwargs):
     Search resource Type with parameters. [base]/[Type]{?params=kwargs}
     return resource as json, replace '__' with dashes
     '''
-    app.logger.info(f'line 63: kwargs = {kwargs}')
+    app.logger.info(f' kwargs = {kwargs}')
     if session['base_name']=='HAPI UHN R4' and Type == "Group": # append tag search param
         kwargs['_tag'] = '2020-Sep'
-    app.logger.info(f'line 67: kwargs = {kwargs}')
+    app.logger.info(f' kwargs = {kwargs}')
     kwargs = {k.replace('__','-'):v for k,v in kwargs.items() }
-    app.logger.info(f'line 69: kwargs = {kwargs}')
+    app.logger.info(f' kwargs = {kwargs}')
     r_url = (f'{session["base"]}/{Type}')
 
-    app.logger.info(f'line 50: r_url = {r_url}***')
+    app.logger.info(f' r_url = {r_url}***')
     for attempt in range(5): #retry request up to ten times
         sleep(1)  # wait a bit between retries
         with get(r_url, headers=headers, params=kwargs) as r:
-            app.logger.info(f'line 73:url-string = {r.url}')
-            app.logger.info(f'line 73:status = {r.status_code}') #return r.status_code
-            app.logger.info(f'line 74:body = {r.json()}')# view  output
-            #app.logger.info(f'line 75:body as json = {dumps(r.json(), indent=4)}')# view  output
+            app.logger.info(f'url-string = {r.url}')
+            app.logger.info(f'status = {r.status_code}') #return r.status_code
+            #app.logger.info(f'body = {r.json()}')# view  output
+            #app.logger.info(f'body as json = {dumps(r.json(), indent=4)}')# view  output
             # return (r.json()["text"]["div"])
             if r.status_code <300:
-                app.logger.info(f'line 65:query string = {r.url}')
+                app.logger.info(f'query string = {r.url}')
                 return r # just the first for now
     else:
         return None
@@ -92,8 +108,8 @@ def fetch(r_url):
     for attempt in range(5): #retry request up to ten times
         sleep(1)  # wait a bit between retries
         with get(r_url, headers=headers) as r:
-            app.logger.info(f'line 61:status = {r.status_code}') #return r.status_code
-            app.logger.info(f'line 62:body = {r.json()}')# view  output
+            app.logger.info(f'status = {r.status_code}') #return r.status_code
+            # app.logger.info(f'body = {r.json()}')# view  output
             # return (r.json()["text"]["div"])
             if r.status_code <300:
                 return r # just the first for now
@@ -117,11 +133,28 @@ def post_batch(data):
         return None
 
 # mockup for search by characteristic and value_reference
-def mock_bychar(py_bundle, requests_url, c_code, c_value):
-    url_string=f'{requests_url}&characteristic={c_code}&value_reference={c_value}'
-    py_bundle.entry = [e for e in py_bundle.entry if e.resource.characteristic]
-    py_bundle.entry = [e for e in py_bundle.entry if e.resource.characteristic[0].code == c_code and e.resource.characteristic[0].valueReference == c_value]
-    return url_string,py_bundle
+def mock_bychar(dict_bundle, c_value):
+    '''
+    The summary from the test servers do not include characteristic element: to determine if value-reference is a match get each full resource in Bundle and look at characteristic valueReference to decide if stays in Bundle
+    '''
+    py_bundle = pyfhir(dict_bundle, Type="Bundle")
+    #app.logger.info(f'resourceType={py_bundle.resource_type}, len = {len(py_bundle.entry)}')
+    remove_me = []
+    for i,e in enumerate(py_bundle.entry):
+        group_dict = fetch(e.fullUrl).json() #get Group
+        #app.logger.info(f'py_group = {dumps(group_dict, indent = 4)}')
+        py_group = pyfhir(group_dict, Type="Group")#convert to pyfhir
+        if [c.valueReference.reference for c in py_group.characteristic if
+                c.valueReference.reference == c_value]: #just the first one for now
+            #app.logger.info(f'py_group.characteristic.valueReference: { [c.valueReference.reference for c in py_group.characteristic]}== {c_value}')
+            pass
+        else:
+            #app.logger.info(f'py_group.characteristic.valueReference: { [c.valueReference.reference for c in py_group.characteristic]}  != {c_value}')
+            remove_me.append(i)
+    py_bundle.total = len(py_bundle.entry)-len(remove_me)
+    for i in reversed(remove_me):
+        py_bundle.entry.pop(i)
+    return py_bundle.as_json()
 
 
 def update_pdata_table(bundle_dict): # update sessions['my_patients'] patient data table
@@ -150,6 +183,11 @@ def get_qr_id(member_index): #get QR extension value from member
     qr_id = group_dict['member'][member_index]['entity']['extension'][0]['valueReference']['reference']  #assume is first extension for now
     qr_id = qr_id.split('/')[-1]
     return qr_id
+
+
+def bundle_to_file(dict_bundle):
+    write_out(app.root_path, "test-argo-pl-bundle.json", dumps(dict_bundle, indent=4))
+    write_out(app.root_path, "test-argo-pl-bundle.yml", y_dump(dict_bundle, sort_keys=False))
 
 
 @app.template_filter()
@@ -205,7 +243,7 @@ def discovery():
         my_intro = '## The Client Searches for User Facing Patient Lists from an EHR by Querying the *Group* Endpoint...' # markdown intro since the svg doesn't play nice in markdown includes
         my_markdown_string=md_template('discovery.md',
             server_list=session['server_list'], default=session['base_name'],
-            group_characterstics= group_characterstics,
+            group_characteristics=group_characteristics,
             )
         return render_template('template.html',
             my_intro=my_intro,
@@ -222,7 +260,7 @@ def fetch_lists():
     char_id = request.form.get("characteristic")
     input_id = request.form.get("input_id")
     my_string='''## Server Returns a Bundle of User Facing Lists<br><br>Click on the blue buttons below to continue...'''
-    app.logger.info(f' line 166: request.form args = {dict(request.form)}') # get button value...
+    app.logger.info(f'request.form args = {dict(request.form)}') # get button value...
     if org_id: # fetch by managingEntity Groups
         requests_object = search(
         "Group",
@@ -232,20 +270,35 @@ def fetch_lists():
           managing__entity=f'Organization/{org_id}'
           )
         url_string=requests_object.url
+        dict_bundle = requests_object.json()
 
-    elif char_id: # fetch by characteristic
-        c_code = group_characterstics[int(char_id)][1]
-        c_value = group_characterstics[int(char_id)][2].replace("[id]",input_id)
+    elif char_id is not None: # fetch by characteristic
+        c_code = group_characteristics[int(char_id)][1]
+        c_value = group_characteristics[int(char_id)][2].replace("[id]",input_id)
         requests_object = search(
         "Group",
         _summary='true',
         _count=50,
-         type='person',
-         characteristic=group_characterstics[int(char_id)][1],
-        value__reference=group_characterstics[int(char_id)][2].replace('[id]', request.form.get("input_id")),
-        characteristic__reference=group_characterstics[int(char_id)][2].replace('[id]', request.form.get("input_id")),
+        type='person',
+        characteristic=c_code,
+        value__reference=c_value
         )
-        url_string=requests_object.url
+        # Assume search by value-ref supported
+        try:
+            url_string=requests_object.url
+            dict_bundle = requests_object.json()
+        except AttributeError as e:
+            app.logger.error(f'{e} , try search without sp value-reference')
+            requests_object = search(
+            "Group",
+            _summary='true',
+            _count=50,
+            type='person',
+            characteristic=c_code,
+            #value__reference=c_value
+            )
+            url_string=f'{requests_object.url}&value-reference={c_value.replace}'
+            dict_bundle = mock_bychar(dict_bundle=requests_object.json(),c_value=c_value) #filter entries in bundle by value-reference
 
     else: # fetch all Groups
         requests_object = search(
@@ -255,10 +308,10 @@ def fetch_lists():
         _count=50,
          ) # requests object
         url_string=requests_object.url
+        dict_bundle = requests_object.json()
 
-    write_out(app.root_path, "test-argo-pl-bundle.json", dumps(requests_object.json(), indent=4))
-    write_out(app.root_path, "test-argo-pl-bundle.yml", y_dump(requests_object.json(), sort_keys=False))
-    py_bundle = pyfhir(requests_object.json(), Type="Bundle")
+    bundle_to_file(dict_bundle)
+    py_bundle = pyfhir(dict_bundle, Type="Bundle")
 
     app.logger.info(f'bundle id = {py_bundle.id}')
     my_markdown_string=md_template('fetch_userfacinglists.md',
@@ -328,6 +381,8 @@ def fetch_more():
         else:
             update_pdata_table(requests_object.json())
             added = True
+            bundle_to_file(requests_object.json())
+
     elif multiple_or:
         p_value = ', Patient/'.join(i['id'] for i in session['my_patients'])
         p_value = f'Patient/{p_value}'
@@ -467,7 +522,7 @@ def contact():
 @app.route('/uploads/<path:filename>', methods=['GET', 'POST'])
 def download(filename):
     directory= f'{app.root_path}/test_output'
-    return send_from_directory(directory=directory, filename=filename, as_attachment=True, mimetype='application/json')
+    return send_from_directory(directory=directory, filename=filename, as_attachment=True, cache_timeout=0)
 
 if __name__ == '__main__':
     app.run(debug=True)

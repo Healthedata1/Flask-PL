@@ -15,18 +15,17 @@
     - [X] multipleOr
     - [X] Batch
     - [X] _include
-    - [ ] Q/QR
-          - [ ] create sample Q and generate QA from them
-                - [ ] TODO figure out how - SDC extensions?
-          - [ ] define extensions
-- [ ] set up test data using notifications data set
-    - [ ] create Groups from data - using managing entity and provider characteristic to start
-    - [ ] start on HAPI
+    - [X] Q/QR
+          - [X] create sample Q and generate QA from them
+                - [ ] TODO update to use DateTime and other types in addition to String
+          - [X] define extensions
+- [X] set up test data using notifications data set
+    - [X] create Groups from data - using managing entity and provider characteristic to start
+    - [X] start on HAPI Test Server
+      - Zulip to support query QR by questionnaire parameter
 - [ ] since server's won't support support custom SP or QM extensions
     - [X] need to simulate using this as facade
-    - [ ] TODO use GRAPHQL if supported else
-
-- [ ] TODO use HealthSamuri
+- [ ] TODO use AIDBox or FHIRBase
 
 The source code can be found on *github*: <https://github.com/Healthedata1/PL-Client>
 

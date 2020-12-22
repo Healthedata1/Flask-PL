@@ -1,4 +1,6 @@
-The Client Searches for User Facing Patient Lists from an EHR by Querying the *Group* Endpoint..
+The Client Searches for User Facing Patient Lists from an EHR by Querying the *Group* Endpoint...
+
+
 
 ### Step 1: choose Server Endpoint
 
@@ -87,8 +89,8 @@ Action: A client issues a GET request to a server:
 
        `GET Group?_summary=true&type=person&characteristic=[Code value]&value-reference=[Value value]`
 
-Server Success Criteria: The server responds with a Bundle of Group entries where each entry has the same characterisic code/value pair  (e.g.,  location=Location/[location_id])
+Server Success Criteria: The server responds with a Bundle of Group entries where each entry has the same characteristic code/value pair  (e.g.,  location=Location/[location_id])
 
 Client Success Criteria: The client provides a selector listing above characteristic name-value pairs.  When selected, a query returns the patient lists that are managed by the selected Organization.
 
-{% include "charactersticlist.html" %}
+{% include "characteristic_list.html" %}

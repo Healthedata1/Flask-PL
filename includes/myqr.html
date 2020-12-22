@@ -15,12 +15,16 @@
 {% for j in i.answer_list %}
 {% for k,v in j.items() %}
 <td>
-  {% if k.split('value')[-1] != 'Reference' %}
-  {{v}}
-  {% else %}
-  <a href="{{session_base}}/{{v['reference']}}">{{v['reference']}}</a>
-  {% endif %}
-  <br/>({{k}})</td>
+{% if k.split('value')[-1] == 'Reference' %}
+<a href="{{session_base}}/{{v['reference']}}">{{v['reference']}}</a>
+{% elif k.split('value')[-1] == 'Uri' %}
+<a href="{{v}}">{{v}}</a>
+{% elif k.split('value')[-1] == 'Datetime' %}
+{{ v.strftime('%Y-%m-%d') }}
+{% else %}
+{{v}}
+{% endif %}
+<br/>({{k}})</td>
 {% endfor %}
 {% endfor %}
 

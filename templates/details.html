@@ -7,9 +7,9 @@
 
 {% if pyfhir.text %}{{ pyfhir.text.div | safe }}{% else %} (narrative element not present) {% endif %}
 
-<h4> YAML format </h4>
+<h4> YAML format</h4>
 
-<a class="btn btn-default btn-lg" role="button" href="../uploads/test-argo-pl-{{ pyfhir.resource_type | lower }}.yml">Download</a>
+<a class="btn btn-default btn-lg" role="button" href="/uploads/test-argo-pl-{{ pyfhir.resource_type | lower }}.yml">Download</a>
 
 <pre>
 {{ pyfhir.as_json() | yaml }}

@@ -25,36 +25,20 @@
 <li><strong>display</strong>: {{Group.managingEntity.display}}</li>
 </ul>
 </li>
+<!--
 </ul>
-<!-- {% raw %}
-<li><strong>characteristic</strong>: <ul>
-  {% if Group.characteristic %}
-  {% for i in Group.characteristic %}
-<li><strong>code</strong>: {{Group.characteristic[i].code}}<ul>
-<li><strong>text</strong>: {{Group.characteristic[i].code.text}}</li>
-<li><strong>coding</strong>: {{Group.characteristic[i].coding}}<ul>
-    {% if Group.characteristic[i].coding %}
-    {% for j in Group.characteristic[i].coding %}
-<li><strong>code</strong>:{{Group.characteristic[i].coding[j].code}}</li>
-<li><strong>system</strong>:{{Group.characteristic[i].coding[j].system}}</li>
-<li><strong>display</strong>:{{Group.characteristic[i].coding[j].display}}</li>
-{% endfor %}
-{% endif %}
-</ul>
-</ul>
-</li>
-<li><strong>valueReference</strong>:
-<ul>
-<li><strong>reference</strong>: {{Group.characteristic[i].valueReference.reference}}</li>
-<li><strong>display</strong>: {{Group.characteristic[i].valueReference.display}}</li>
-</ul>
-</li>
-{% endfor %}
-{% endif %}
-</ul>
-</li>
-{%endraw%}
 -->
+
+{% if Group.characteristic %}
+  <li><strong>characteristic</strong>: <ul>
+  {% for i in Group.characteristic %}
+    <li><strong>code</strong>: {{i.code.coding[0].code}}</li>
+    <li><strong>valueReference</strong>: {{i.valueReference.reference}}</li>
+    {% endfor %}
+{% endif %}
+</ul>
+</li>
+
 {% if Group.member %}
 <h5><strong>PATIENTS:</strong><h5>
  <table  class="table table-striped table-bordered">
