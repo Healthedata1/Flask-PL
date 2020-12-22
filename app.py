@@ -124,8 +124,8 @@ def post_batch(data):
     for attempt in range(5): #retry request up to ten times
         sleep(1)  # wait a bit between retries
         with post(r_url, headers=headers, data=dumps(data)) as r:
-            app.logger.info(f'line 105:status = {r.status_code}') #return r.status_code
-            app.logger.info(f'line 106:body = {r.json()}')# view  output
+            app.logger.info(f'status = {r.status_code}') #return r.status_code
+            app.logger.info(f'body = {r.json()}')# view  output
             # return (r.json()["text"]["div"])
             if r.status_code <300:
                 return r # just the first for now
@@ -238,8 +238,8 @@ def discovery():
             #get base
             session['base'] = request.form["get-server"]
             session['base_name'] = next(i for i in server_list if server_list[i]==session['base'])
-            app.logger.info(f'line 191: base = {base}')
-        app.logger.info(f'line 192: session = {session}')
+            app.logger.info(f'base = {base}')
+        app.logger.info(f'session = {session}')
         my_intro = '## The Client Searches for User Facing Patient Lists from an EHR by Querying the *Group* Endpoint...' # markdown intro since the svg doesn't play nice in markdown includes
         my_markdown_string=md_template('discovery.md',
             server_list=session['server_list'], default=session['base_name'],
@@ -406,7 +406,7 @@ def fetch_more():
               }
             }
             batch_body['entry'].append(entry)
-            app.logger.info(f'line 310 BATCH body = {dumps(batch_body, indent=4)}')
+            app.logger.info(f'BATCH body = {dumps(batch_body, indent=4)}')
         try:
             requests_object = post_batch(batch_body)
         except AttributeError:
@@ -420,7 +420,7 @@ def fetch_more():
         qr_id = get_qr_id(member_index = member_index)
         try:
             requests_object = search('QuestionnaireResponse', _id=qr_id, _include='QuestionnaireResponse:questionnaire')
-            app.logger.info(f'line 355 requests_object.json() = {requests_object.json()}')
+            app.logger.info(f'requests_object.json() = {requests_object.json()}')
             py_fhir = pyfhir(requests_object.json(), Type="Bundle") # request Bundle object
         except AttributeError:
             app.logger.info(f'endpoint = {endpoint} is not a FHIR endpoint')
@@ -461,7 +461,7 @@ def fetch_more():
             app.logger.info ('No Q extension for Group/{py_fhir}') # no extesnsion
         else:
             session['q_ref'] = ext.valueReference.reference
-            app.logger.info(f'line 394: ext.valueReference.reference = {session["q_ref"]}')
+            app.logger.info(f'ext.valueReference.reference = {session["q_ref"]}')
             myq = fetch(f'{session["base"]}/{session["q_ref"]}')
             py_q = pyfhir(myq.json(), Type="Questionnaire")
             app.logger.info(f'py_q.id = {py_q.id}')
