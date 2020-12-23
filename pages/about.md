@@ -19,6 +19,7 @@
           - [X] create sample Q and generate QA from them
                 - [ ] TODO update to use DateTime and other types in addition to String
           - [X] define extensions
+    - [ ] add in Encounter and Appointment Extension Querying Examples
 - [X] set up test data using notifications data set
     - [X] create Groups from data - using managing entity and provider characteristic to start
     - [X] start on HAPI Test Server

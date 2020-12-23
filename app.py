@@ -61,6 +61,14 @@ headers = {
     'Content-Type':'application/fhir+json',
     "Authorization": 'Bearer 0QLWt38GQHyYxrcHuG40mw==',# TEMP meditech token remove and fix if this works
     }
+
+profile_urls = {
+'pl':'http://www.fhir.org/guides/argonaut/patient-list/StructureDefinition/patientlist',
+'q_ext':'http://www.fhir.org/guides/argonaut/patient-list/StructureDefinition/patientlist-questionnaire',
+'qr_ext':'http://www.fhir.org/guides/argonaut/patient-list/StructureDefinition/patientlist-questionnaireresponse',
+'appt_ext':'http://www.fhir.org/guides/argonaut/patient-list/StructureDefinition/patientlist-appointment',
+'enc_ext':'http://www.fhir.org/guides/argonaut/patient-list/StructureDefinition/patientlist-encounter',
+}
 # ================  Functions =================
 
 def md_template(my_md,*args,**kwargs): # Create template with the markdown source text
@@ -175,13 +183,15 @@ def update_pdata_row(py_patient):  # update sessions['my_patients'] for patient
     return
 
 
-def get_qr_id(member_index): #get QR extension value from member
+def get_ext_ref(member_index,ext_url): #get extension value from member based on ext_url
     app.logger.info(f'member_index = {member_index} of type = {type(member_index)}')
 
     path =  Path () / app.root_path / 'test_output' / 'test-argo-pl-group.json'
     group_dict = loads(path.read_text())
-    qr_id = group_dict['member'][member_index]['entity']['extension'][0]['valueReference']['reference']  #assume is first extension for now
-    qr_id = qr_id.split('/')[-1]
+    member_ext = group_dict['member'][member_index]['extension']
+    qr_id = (i['valueReference']['reference'] for i in member_ext\
+      if i['url'] == profile_urls[ext_url])
+    qr_id = next(qr_id).split('/')[-1]
     return qr_id
 
 
@@ -417,7 +427,7 @@ def fetch_more():
 
     elif qr:  # fetch Q and QR qr == member_index
         member_index = int(request.args.get('member-index'))
-        qr_id = get_qr_id(member_index = member_index)
+        qr_id = get_ext_ref(member_index = member_index, ext_url='qr_ext')
         try:
             requests_object = search('QuestionnaireResponse', _id=qr_id, _include='QuestionnaireResponse:questionnaire')
             app.logger.info(f'requests_object.json() = {requests_object.json()}')

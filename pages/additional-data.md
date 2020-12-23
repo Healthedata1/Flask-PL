@@ -144,7 +144,7 @@ for each patient in group123.bundle.entry get QR:  GET QuestionnaireResponse/[Qu
 ---
 
 {% endif %}
-**Option 2:**  Get all QR for groups based on Q url
+**Bonus Option 2:**  Get all QR for groups based on Q url
 
 GET QuestionnaireResponse?questionnaire=[Questionnaire url from Group.extension]
 
@@ -155,10 +155,32 @@ Client Success Criteria:  The Client extracts the extra patient details from the
 <a href="/todo" type="button" class="btn btn-primary">Click Here to Fetch *All* Additional Data Patients using Questionnaire and QuestionnaireResponse</a>
 
 
+#### 3.4 - NEW Patient Lists - Extra Details Using additional Appointment and/or Encounter extensions
+
+If the Group resource has an extension on each member that references an Appointment or Encounter which is the reason patient on the list, then, for each patient in the list (`Group.member`), the client may fetch the corresponding Appointment or Encounter.
+
+For Example: for each patient in Group/123.bundle.entry get Appointment/123 and Encounter/123
+
+   `GET Appointment/[Appointment resource id from Group.member.entity.extension]`
+
+   `GET Encounter/[Encounter resource id from Group.member.entity.extension]`
+
+
+Server Success Criteria: The server responds with an Encounter or Appointment resource.
+
+Client Success Criteria: The Client extracts the extra patient details from the resource and processes them e.g., populates a table for display.
+
+
+
+**Bonus**:   Get all QR for group.member list
+ a )  based on multipleORs or Transaction Bundle
+
+</figure style="text-align: center;">
+<img alt="visit our website" class="img-responsive project-logo" src="../static/images/rabbit-hole.png">
+<figcaption>...TODO...</figcaption>
+</figure>
+
+
 > Discussion:
 
 > 1. identify how the appropriate questionnaire is determined for a group or particular context.
-
-> 2. This information could easily be transmitted as a binary (csv)  or in the
-Group.member.display element as a delimited string. Is the added complexity
-worth it and what are the real benefits here?
