@@ -1,11 +1,11 @@
 <p>
-  <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#{{collapse_id}}" aria-expanded="false" aria-controls="collapseExample">
+  <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#{{collapse_id}}-id" aria-expanded="false" aria-controls="collapseExample">
     Step 2: Click to Display Request and Response Artifacts (Click Again to Hide)
   </button>
 </p>
-<div class="collapse" id="{{collapse_id}}">
+<div class="collapse" id="{{collapse_id}}-id">
   <div class="card card-body">
-
+{% if collapse_id==scroll %}
 **Request:**
 `{{url_string}}`
 
@@ -30,5 +30,9 @@ Body:
 ~~~json
 {{response_body}}
 ~~~
+
+{% else%}
+Proceed With Step 1 first...
+{% endif %}
   </div>
 </div>

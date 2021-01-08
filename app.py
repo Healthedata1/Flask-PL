@@ -1,5 +1,5 @@
 from flask import Flask, render_template, redirect, url_for, session, send_from_directory, request, Response
-import sys, datetime, uuid
+import sys, datetime, uuid, os
 from json import load, dumps, loads
 from requests import get, post, put
 from commonmark import commonmark
@@ -15,9 +15,14 @@ from jinja2 import Environment, FileSystemLoader
 from yaml import dump as y_dump
 import logging
 
+
+
 logging.basicConfig(
-level=logging.DEBUG,
-format='[%(asctime)s] %(levelname)s in %(module)s %(lineno)d}: %(message)s')
+        level=logging.DEBUG,
+         filename='/Users/ehaas/Documents/Python/Flask-PL/demo.log',
+        format='[%(asctime)s] %(levelname)s in %(module)s %(lineno)d}: %(message)s',
+        )
+
 
 app = Flask(__name__,)
 app.config["DEBUG"] = True
@@ -26,6 +31,8 @@ app.secret_key = 'my secret key'
 env = Environment(loader=FileSystemLoader([f'{app.root_path}/pages',
             f'{app.root_path}/includes',]))
 
+app.logger.info("Starting Program ....")
+app.logger.info(f"Process ID = {os.getpid()}")
 #==============Globals======================
 
 server_list =  {  # base_url for reference server - no trailing forward slash
@@ -97,6 +104,7 @@ def search(Type, **kwargs):
                 #app.logger.info(f'bundle entry count = {r.json()["total"]}')
                 session['entry_count']= r.json()["total"]
                 app.logger.info(f'bundle entry count = {session["entry_count"]}')
+                app.logger.info(f'sys.getsizeof(r.json()) = {sys.getsizeof(r.json())}')
                 return r # just the first for now
     else:
         return None
@@ -530,6 +538,7 @@ def fetch_more():
          session_q=session['q_ref'],
          q_list = session.get('q_list'),
          added=added,
+         scroll = session['scroll'],
          url_string=requests_object.url,
          request_headers = dumps(dict(requests_object.request.headers), indent=4),
          request_body = request_body,

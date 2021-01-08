@@ -17,7 +17,7 @@ GET Observation/$lastn?patient=Patient/ID&category=laboratory
 
 ##### Step 1: Click on Patient to Fetch Additional Data for *Individual* Patient
 
-{% with collapse_id="patient_endpoint" %}{% include "collapse.html" %}{% endwith %}
+{% with collapse_id="endpoint" %}{% include "collapse.html" %}{% endwith %}
 
 {% include "mypatients.html" %}
 
@@ -43,7 +43,7 @@ Client Success Criteria: The request bundle is properly prepared, minimizing GET
 
 <a href="/fetch-more?multipleOr=true" class="btn btn-primary active" role="button" data-toggle="collapse" data-target="#multiple_or" aria-pressed="true">Step 1: Click Here to Fetch Additional Data for *All* Patients Using the multipleOr Functionality</a>
 
-{% with collapse_id="multiple_or_collapse" %}{% include "collapse.html" %}{% endwith %}
+{% with collapse_id="multiple_or" %}{% include "collapse.html" %}{% endwith %}
 
 Note that US Core does not require servers to support multipleOr for these queries
 
@@ -95,7 +95,7 @@ The server SHALL return a Bundle with type set to batch-response that contains t
 Client Success Criteria: The request bundle is properly prepared, minimizing GET operations against the server.  All fetched 'extra details' are then also processes them e.g.,displayed in HTML.
  <a href="/fetch-more?batch=true" class="btn btn-primary active" role="button" aria-pressed="true">Step 1: Click Here to Fetch Additional Data for *All* Patients Using the Batch Functionality</a>
 
-{% with collapse_id="batch_collapse" %}{% include "collapse.html" %}{% endwith %}
+{% with collapse_id="batch" %}{% include "collapse.html" %}{% endwith %}
 
 <a id="include"></a>
 #### 3.2 - Using _include:
@@ -110,7 +110,7 @@ Client Success Criteria: The client queries for a particular list of patients an
 
 <a href="/fetch-more?include=true" class="btn btn-primary active" role="button" aria-pressed="true">Step 1: Click Here to Fetch Additional Data for *All* Patients Using the _include Functionality</a>
 
-{% with collapse_id="include_collapse" %}{% include "collapse.html" %}{% endwith %}
+{% with collapse_id="include" %}{% include "collapse.html" %}{% endwith %}
 
 <a id="qr"></a>
 #### 3.3 - Patient Lists - Extra Details via Questionnaire
@@ -138,7 +138,7 @@ For each patient in group123.bundle.entry get QR:  GET QuestionnaireResponse/[Qu
 
 ##### Step 1: Click on a Patient below to Fetch Additional Data for *Individual* Patient using Questionnaire and QuestionnaireResponse
 
-{% with collapse_id="qr-collapse" %}{% include "collapse.html" %}{% endwith %}
+{% with collapse_id="qr" %}{% include "collapse.html" %}{% endwith %}
 
 *Note these values have been randomly generated for demonstration purposes*
 
@@ -192,7 +192,7 @@ Client Success Criteria: The Client extracts the extra patient details from the 
 
  ##### Step 1: Click on a Patient below to Fetch Additional Appointment Data for *Individual* Patients using the Appointment Extension
 
- {% with collapse_id="enc-collapse" %}{% include "collapse.html" %}{% endwith %}
+ {% with collapse_id="appt-enc" %}{% include "collapse.html" %}{% endwith %}
 
  *Note these values have been randomly generated for demonstration purposes*
 
@@ -202,7 +202,7 @@ Client Success Criteria: The Client extracts the extra patient details from the 
 
  ##### Step 1: Click on a Patient below to Fetch Additional Encounter Data for *Individual* Patients using the Encounter Extension
 
- {% with collapse_id="appt-collapse" %}{% include "collapse.html" %}{% endwith %}
+ {% with collapse_id="appt-enc" %}{% include "collapse.html" %}{% endwith %}
 
  *Note these values have been randomly generated for demonstration purposes*
 
