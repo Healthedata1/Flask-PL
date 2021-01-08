@@ -27,6 +27,7 @@
 - [ ] since server's won't support support custom SP or QM extensions
     - [X] need to simulate using this as facade
 - [ ] TODO use AIDBox or Microsoft customized cloud server
+- [ ] Update and test for concurrency and larger datasets (currently using only sessions which limits size)
 
 The source code can be found on *github*: <https://github.com/Healthedata1/PL-Client>
 

@@ -17,7 +17,7 @@ import logging
 
 logging.basicConfig(
         level=logging.DEBUG,
-         filename='/Users/ehaas/Documents/Python/Flask-PL/demo.log',
+        #filename='/Users/ehaas/Documents/Python/Flask-PL/demo.log',
         format='[%(asctime)s] %(levelname)s in %(module)s %(lineno)d}: %(message)s',
         )
 
