@@ -15,17 +15,14 @@ from jinja2 import Environment, FileSystemLoader
 from yaml import dump as y_dump
 import logging
 
-
-
 logging.basicConfig(
         level=logging.DEBUG,
          filename='/Users/ehaas/Documents/Python/Flask-PL/demo.log',
         format='[%(asctime)s] %(levelname)s in %(module)s %(lineno)d}: %(message)s',
         )
 
-
 app = Flask(__name__,)
-app.config["DEBUG"] = True
+#app.config["DEBUG"] = True
 app.secret_key = 'my secret key'
 
 env = Environment(loader=FileSystemLoader([f'{app.root_path}/pages',
@@ -66,15 +63,26 @@ profile_urls = {
 'enc_ext':'http://www.fhir.org/guides/argonaut/patient-list/StructureDefinition/patientlist-encounter',
 }
 
+download_types = dict(
+endpoint = 'Patient',
+qr = 'Bundle',
+multiple_or = 'Bundle',
+batch = 'Bundle',
+include = 'Bundle',
+qrbonus = 'Bundle',
+appt_ext = 'Appointment',
+enc_ext = 'Encounter',
+)
+
 tag = '2021-Jan'
 # ================  Functions =================
 
 def md_template(my_md,*args,**kwargs): # Create template with the markdown source text
     template = env.get_template(my_md)
     # Render that template.
-    app.logger.info(f' kwargs = {kwargs}')
+    #app.logger.info(f' kwargs = {kwargs}')
     kwargs = {k.replace('__','-'):v for k,v in kwargs.items() }
-    app.logger.info(f' kwargs = {kwargs}')
+    #app.logger.info(f' kwargs = {kwargs}')
     return template.render(kwargs)
 
 def search(Type, **kwargs):
@@ -82,12 +90,12 @@ def search(Type, **kwargs):
     Search resource Type with parameters. [base]/[Type]{?params=kwargs}
     return resource as json, replace '__' with dashes
     '''
-    app.logger.info(f' kwargs = {kwargs}')
+    #app.logger.info(f' kwargs = {kwargs}')
     if session['base_name']=='HAPI UHN R4' and Type == "Group": # append tag search param
         kwargs['_tag'] = tag
-    app.logger.info(f' kwargs = {kwargs}')
+    #app.logger.info(f' kwargs = {kwargs}')
     kwargs = {k.replace('__','-'):v for k,v in kwargs.items() }
-    app.logger.info(f' kwargs = {kwargs}')
+    #app.logger.info(f' kwargs = {kwargs}')
     r_url = (f'{session["base"]}/{Type}')
 
     app.logger.info(f' r_url = {r_url}***')
@@ -105,6 +113,7 @@ def search(Type, **kwargs):
                 session['entry_count']= r.json()["total"]
                 app.logger.info(f'bundle entry count = {session["entry_count"]}')
                 app.logger.info(f'sys.getsizeof(r.json()) = {sys.getsizeof(r.json())}')
+                bundle_to_file(r.json(),)
                 return r # just the first for now
     else:
         return None
@@ -122,6 +131,7 @@ def fetch(r_url):
             # app.logger.info(f'body = {r.json()}')# view  output
             # return (r.json()["text"]["div"])
             if r.status_code <300:
+                bundle_to_file(r.json(),type=r.json()['resourceType'].lower())
                 return r # just the first for now
     else:
         return None
@@ -135,7 +145,7 @@ def post_batch(data):
         sleep(1)  # wait a bit between retries
         with post(r_url, headers=headers, data=dumps(data)) as r:
             app.logger.info(f'status = {r.status_code}') #return r.status_code
-            app.logger.info(f'body = {r.json()}')# view  output
+            #app.logger.info(f'body = {r.json()}')# view  output
             # return (r.json()["text"]["div"])
             if r.status_code <300:
                 return r # just the first for now
@@ -199,9 +209,9 @@ def get_ext_ref(member_index,ext_url): #get extension value and type from member
     return next(ref_id)
 
 
-def bundle_to_file(dict_bundle):
-    write_out(app.root_path, "test-argo-pl-bundle.json", dumps(dict_bundle, indent=4))
-    write_out(app.root_path, "test-argo-pl-bundle.yml", y_dump(dict_bundle, sort_keys=False))
+def bundle_to_file(dict_bundle, type='bundle'):
+    write_out(app.root_path, f"test-argo-pl-{type}.json", dumps(dict_bundle, indent=4))
+    write_out(app.root_path, f"test-argo-pl-{type}.yml", y_dump(dict_bundle, sort_keys=False))
 
 
 @app.template_filter()
@@ -324,7 +334,7 @@ def fetch_lists():
         url_string=requests_object.url
         dict_bundle = requests_object.json()
 
-    bundle_to_file(dict_bundle)
+    #bundle_to_file(dict_bundle)
     py_bundle = pyfhir(dict_bundle, Type="Bundle")
 
     app.logger.info(f'bundle id = {py_bundle.id}')
@@ -402,7 +412,7 @@ def fetch_more():
         else:
             update_pdata_table(requests_object.json())
             added = True
-            bundle_to_file(requests_object.json())
+            #bundle_to_file(requests_object.json())
             session['scroll']='include'
     elif multiple_or:
         p_value = ', Patient/'.join(i['id'] for i in session['my_patients'])
@@ -462,7 +472,7 @@ def fetch_more():
             session.modified = True
             app.logger.info(f"session['my_patients']={session['my_patients']}")
 
-    elif my_ext:  # fetch enc and appt data
+    elif my_ext:  # fetch enc_ext and appt_ext data
         data = []
         member_index = int(request.args.get('member-index'))
         ref_id = get_ext_ref(member_index=member_index, ext_url=my_ext)
@@ -484,7 +494,7 @@ def fetch_more():
                 data.append(py_fhir.status)
             #update_pdata_row
             session['my_patients'][member_index][f'{my_ext}_data']=data
-            session['scroll']='appt-enc'
+            session['scroll']= my_ext
             session.modified = True
             app.logger.info(f"session['my_patients']={session['my_patients']}")
 
@@ -522,7 +532,6 @@ def fetch_more():
             for q_item in py_q.item:
                 question = q_item.text
                 session['q_list'].append(question)
-            app.logger.info('redirect here')
 
     app.logger.info(f'my_patients = {session["my_patients"]}')
     my_string="## The User Get additional Patient data one of three ways: <br>Click on the blue buttons below to continue..."
@@ -545,6 +554,7 @@ def fetch_more():
          response_headers = dumps(dict(requests_object.headers), indent=4),
          response_body=dumps(requests_object.json(), indent=4),
          group_id=session.get("patientlist").split("/")[-1],
+         download_types=download_types,
          )
     return render_template('template.html',
             my_intro=my_string,

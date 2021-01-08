@@ -39,7 +39,7 @@ Server Success Criteria: The server responds with a Bundle of Group entries wher
 
 Client Success Criteria: The client provides a selector listing available Organizations.  When selected, a query returns the patient lists that are managed by the selected Organization.
 
-{% with form_action="/fetch-lists", input_id="organization_id", label = "Enter Organization id:", input_name="organization_id", init_value='43', submit_text="Click Here to Fetch All User Facing Lists by Organization" %}
+{% with form_action="/fetch-lists", input_id="organization_id", label = "Enter Organization id:", input_name="organization_id", init_value='b1ddf812-1fdd-3adf-b1d5-32cc8bd07ebb', submit_text="Click Here to Fetch All User Facing Lists by Organization" %}
 {% include "input_form.html" %}
 {% endwith %}
 

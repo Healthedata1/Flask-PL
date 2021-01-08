@@ -11,7 +11,7 @@
 {% for i in my_patients %}
 <tr>
 <td><a href="/fetch-more?qr=true&member-index={{loop.index0}}">{{i.display}}</a></td>
-
+{% if i.answer_list %}
 {% for j in i.answer_list %}
 {% for k,v in j.items() %}
 <td>
@@ -27,7 +27,11 @@
 <br/>({{k}})</td>
 {% endfor %}
 {% endfor %}
-
+{% else %}
+{% for i in q_list %}
+<td></td>
+{% endfor %}
+{% endif %}
 </tr>
 {% endfor %}
 </tbody>

@@ -6,6 +6,7 @@
 <div class="collapse" id="{{collapse_id}}-id">
   <div class="card card-body">
 {% if collapse_id==scroll %}
+
 **Request:**
 `{{url_string}}`
 
@@ -27,6 +28,10 @@ Headers:
 ~~~
 
 Body:
+
+<a class="btn btn-default btn-lg" role="button" href="/uploads/test-argo-pl-{{download_types[scroll].lower()}}.yml">Download as YAML</a>
+<a class="btn btn-default btn-lg" role="button" href="../uploads/test-argo-pl-{{download_types[scroll].lower()}}.json">Download as JSON</a>
+
 ~~~json
 {{response_body}}
 ~~~

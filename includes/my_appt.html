@@ -12,9 +12,15 @@
 {% for i in my_patients %}
 <tr>
   <td><a href="/fetch-more?my_ext=appt_ext&member-index={{loop.index0}}">{{i.display}}</a></td>
+{% if i.appt_ext_data %}
 {% for j in i.appt_ext_data %}
   <td>{{j}}</td>
 {% endfor %}
+{% else %}
+{% for i in range(4) %}
+<td></td>
+{% endfor %}
+{% endif %}
 </tr>
 {% endfor %}
 </tbody>

@@ -132,7 +132,7 @@ Server Success Criteria:  The server responds with a  Group resource with ID '12
 
 Client Success Criteria: The client queries for a particular list of patients.  The Client make All extra patient details are extracted from a QuestionnaireResponse resource.
 
-**Option 1:**
+#### 3.3 a) Option 1: Get QR for each patient
 
 For each patient in group123.bundle.entry get QR:  GET QuestionnaireResponse/[QuestionnaireResponse resource id from Group.member.entity.extension]
 
@@ -157,9 +157,9 @@ For each patient in group123.bundle.entry get QR:  GET QuestionnaireResponse/[Qu
 {% endif %}
 
 <a id="qrbonus"></a>
-**Bonus Option 2:**  Get all QR for groups using multipleOr, batch/transaction or based on Q url
+#### 3.3 b) Bonus - Option 2: Get all QR for groups using multipleOr, batch/transaction or based on Q url
 
-see above for multipleOr, batch/transaction
+See above for multipleOr, batch/transaction
 
 also using the search `questionnaire` search parameter all the QuestionnaireResponses can be fetched in a single query.  *Note that this does not limit to the members in the group*.
 
@@ -169,7 +169,14 @@ Server Success Criteria:  The server responds with search Bundle with each entry
 
 Client Success Criteria:  The Client extracts the extra patient details from the QuestionnaireResponse resources and processes them e.g., populates a table for display.
 
+</figure style="text-align: center;">
+<img alt="visit our website" class="img-responsive project-logo" src="../static/images/rabbit-hole.png">
+<figcaption>...TODO...</figcaption>
+</figure>
+
+<!--
 <a href="/todo" type="button" class="btn btn-primary">Click Here to Fetch *All* Additional Data Patients using Questionnaire and QuestionnaireResponse</a>
+-->
 
 <a id="appt-enc"></a>
 #### 3.4 - NEW Patient Lists - Extra Details Using additional Appointment and/or Encounter extensions
@@ -189,20 +196,20 @@ Server Success Criteria: The server responds with an Encounter or Appointment re
 Client Success Criteria: The Client extracts the extra patient details from the resource and processes them e.g., populates a table for display.
 
 ---
-
+<a id="appt_ext"></a>
  ##### Step 1: Click on a Patient below to Fetch Additional Appointment Data for *Individual* Patients using the Appointment Extension
 
- {% with collapse_id="appt-enc" %}{% include "collapse.html" %}{% endwith %}
+ {% with collapse_id="appt_ext" %}{% include "collapse.html" %}{% endwith %}
 
  *Note these values have been randomly generated for demonstration purposes*
 
  {% include "my_appt.html" %}
 
 ---
-
+<a id="enc_ext"></a>
  ##### Step 1: Click on a Patient below to Fetch Additional Encounter Data for *Individual* Patients using the Encounter Extension
 
- {% with collapse_id="appt-enc" %}{% include "collapse.html" %}{% endwith %}
+ {% with collapse_id="enc_ext" %}{% include "collapse.html" %}{% endwith %}
 
  *Note these values have been randomly generated for demonstration purposes*
 
