@@ -1,0 +1,21 @@
+<table  class="table table-striped table-bordered">
+<thead>
+<tr>
+<th>Patient</th>
+<th>Appointment data: id</th>
+<th>Appointment data: datetime</th>
+<th>Appointment data: practitioner</th>
+<th>Appointment data: status</th>
+</tr>
+</thead>
+<tbody>
+{% for i in my_patients %}
+<tr>
+  <td><a href="/fetch-more?my_ext=appt_ext&member-index={{loop.index0}}">{{i.display}}</a></td>
+{% for j in i.appt_ext_data %}
+  <td>{{j}}</td>
+{% endfor %}
+</tr>
+{% endfor %}
+</tbody>
+</table>

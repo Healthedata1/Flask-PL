@@ -1,9 +1,9 @@
 <p>
-  <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-    Click to Display Request and Response Artifacts
+  <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#{{collapse_id}}" aria-expanded="false" aria-controls="collapseExample">
+    Step 2: Click to Display Request and Response Artifacts (Click Again to Hide)
   </button>
 </p>
-<div class="collapse" id="collapseExample">
+<div class="collapse" id="{{collapse_id}}">
   <div class="card card-body">
 
 **Request:**
@@ -17,7 +17,7 @@ headers:
 body:
 
 ~~~
-{{request_body }}
+{{ request_body }}
 ~~~
 **Response:**
 

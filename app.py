@@ -69,6 +69,8 @@ profile_urls = {
 'appt_ext':'http://www.fhir.org/guides/argonaut/patient-list/StructureDefinition/patientlist-appointment',
 'enc_ext':'http://www.fhir.org/guides/argonaut/patient-list/StructureDefinition/patientlist-encounter',
 }
+
+tag = '2021-Jan'
 # ================  Functions =================
 
 def md_template(my_md,*args,**kwargs): # Create template with the markdown source text
@@ -86,7 +88,7 @@ def search(Type, **kwargs):
     '''
     app.logger.info(f' kwargs = {kwargs}')
     if session['base_name']=='HAPI UHN R4' and Type == "Group": # append tag search param
-        kwargs['_tag'] = '2020-Sep'
+        kwargs['_tag'] = tag
     app.logger.info(f' kwargs = {kwargs}')
     kwargs = {k.replace('__','-'):v for k,v in kwargs.items() }
     app.logger.info(f' kwargs = {kwargs}')
@@ -103,6 +105,9 @@ def search(Type, **kwargs):
             # return (r.json()["text"]["div"])
             if r.status_code <300:
                 app.logger.info(f'query string = {r.url}')
+                #app.logger.info(f'bundle entry count = {r.json()["total"]}')
+                session['entry_count']= r.json()["total"]
+                app.logger.info(f'bundle entry count = {session["entry_count"]}')
                 return r # just the first for now
     else:
         return None
@@ -183,16 +188,18 @@ def update_pdata_row(py_patient):  # update sessions['my_patients'] for patient
     return
 
 
-def get_ext_ref(member_index,ext_url): #get extension value from member based on ext_url
+def get_ext_ref(member_index,ext_url): #get extension value and type from member based on ext_url
     app.logger.info(f'member_index = {member_index} of type = {type(member_index)}')
 
     path =  Path () / app.root_path / 'test_output' / 'test-argo-pl-group.json'
     group_dict = loads(path.read_text())
     member_ext = group_dict['member'][member_index]['extension']
-    qr_id = (i['valueReference']['reference'] for i in member_ext\
-      if i['url'] == profile_urls[ext_url])
-    qr_id = next(qr_id).split('/')[-1]
-    return qr_id
+    for i in member_ext:
+        app.logger.info(f'{[i["url"]]}' )
+        app.logger.info(f'{ext_url}' )
+        app.logger.info(f'{profile_urls}' )
+    ref_id = (i['valueReference']['reference'] for i in member_ext if i['url'] == profile_urls[ext_url])
+    return next(ref_id)
 
 
 def bundle_to_file(dict_bundle):
@@ -328,6 +335,7 @@ def fetch_lists():
      user_facing_lists=py_bundle.entry,
      base_name=session['base_name'],
      url_string=url_string,
+     count = session['entry_count'],
      #params = params,
      )
     return render_template('details.html',
@@ -336,7 +344,7 @@ def fetch_lists():
         ht_offset = 285,
         seq_ht = 300,
         my_string=my_markdown_string,
-        pyfhir = py_bundle
+        pyfhir = py_bundle,
         )
 
 @app.route("/fetch-patientlist", methods=["POST", "GET"])
@@ -353,7 +361,9 @@ def fetch_patientlist():
              'fetch_patientlist.md',
              base_name=session['base_name'],
              url_string=requests_object.url,
+             count=requests_object.json()['quantity']
              )
+        session["use_case"] = "endpoint"
     my_string='''## After Fetching the List of User Facing lists, a Patient list is selected using a simple Fetch operation: <br>Click on the blue buttons below to continue...'''
     return render_template('group_details.html',
         my_intro=my_string,
@@ -372,8 +382,11 @@ def fetch_more():
     batch = request.args.get('batch')
     include = request.args.get('include')
     qr = request.args.get('qr')
+    my_ext = request.args.get("my_ext") # enc_ext or appt_ext
     app.logger.info(f'endpoint = {endpoint}')
     added = False
+    session["scroll"] = None
+
 
     if endpoint:
         try:
@@ -384,6 +397,7 @@ def fetch_more():
         else:
             update_pdata_row(py_fhir)
             added = True
+            session['scroll']='endpoint'
     elif include:
         try: requests_object = search('Group', _id=session["patientlist"].split("/")[-1], _include='Group:member')
         except AttributeError:
@@ -392,7 +406,7 @@ def fetch_more():
             update_pdata_table(requests_object.json())
             added = True
             bundle_to_file(requests_object.json())
-
+            session['scroll']='include'
     elif multiple_or:
         p_value = ', Patient/'.join(i['id'] for i in session['my_patients'])
         p_value = f'Patient/{p_value}'
@@ -402,6 +416,7 @@ def fetch_more():
         else:
             update_pdata_table(requests_object.json())
             added = True
+            session['scroll']='multiple_or'
     elif batch:
         batch_body = {
           "resourceType": "Bundle",
@@ -424,10 +439,12 @@ def fetch_more():
         else:
             update_pdata_table(requests_object.json())
             added = True
+            session['scroll']='batch'
 
     elif qr:  # fetch Q and QR qr == member_index
         member_index = int(request.args.get('member-index'))
         qr_id = get_ext_ref(member_index = member_index, ext_url='qr_ext')
+        qr_id = qr_id.split('/')[-1]
         try:
             requests_object = search('QuestionnaireResponse', _id=qr_id, _include='QuestionnaireResponse:questionnaire')
             app.logger.info(f'requests_object.json() = {requests_object.json()}')
@@ -444,7 +461,36 @@ def fetch_more():
                         answer_list.append(answer)
             #update_pdata_row
             session['my_patients'][member_index]['answer_list']=answer_list
+            session['scroll']='qr'
             session.modified = True
+            app.logger.info(f"session['my_patients']={session['my_patients']}")
+
+    elif my_ext:  # fetch enc and appt data
+        data = []
+        member_index = int(request.args.get('member-index'))
+        ref_id = get_ext_ref(member_index=member_index, ext_url=my_ext)
+        data.append(ref_id)
+        try:
+            requests_object = fetch(f'{session["base"]}/{ref_id}')
+            app.logger.info(f'requests_object.json() = {requests_object.json()}')
+            py_fhir = pyfhir(requests_object.json())
+        except AttributeError:
+            app.logger.info(f'endpoint = {endpoint} is not a FHIR endpoint')
+        else: # get timedata
+            if py_fhir.resource_type == "Encounter":
+                data.append(py_fhir.period.start.as_json())
+                data.append(py_fhir.participant[0].individual.display)
+                data.append(py_fhir.location[0].location.display)
+            elif py_fhir.resource_type == "Appointment":
+                data.append(py_fhir.start.as_json())
+                data.append(py_fhir.participant[0].actor.display)
+                data.append(py_fhir.status)
+            #update_pdata_row
+            session['my_patients'][member_index][f'{my_ext}_data']=data
+            session['scroll']='appt-enc'
+            session.modified = True
+            app.logger.info(f"session['my_patients']={session['my_patients']}")
+
     else:
         requests_object = fetch(session['patientlist']) # requests Group object
         py_fhir = pyfhir(requests_object.json(), Type="Group")
@@ -479,9 +525,15 @@ def fetch_more():
             for q_item in py_q.item:
                 question = q_item.text
                 session['q_list'].append(question)
+            app.logger.info('redirect here')
 
     app.logger.info(f'my_patients = {session["my_patients"]}')
     my_string="## The User Get additional Patient data one of three ways: <br>Click on the blue buttons below to continue..."
+    try:
+        request_body = dumps(loads(requests_object.request.body), indent=4)
+    except TypeError:
+        request_body = requests_object.request.body
+    #app.logger.info(f'request_body = {request_body}')
     my_markdown_string=md_template(
          'additional-data.md',
          my_patients= session.get('my_patients'),
@@ -491,7 +543,7 @@ def fetch_more():
          added=added,
          url_string=requests_object.url,
          request_headers = dumps(dict(requests_object.request.headers), indent=4),
-         request_body = requests_object.request.body,
+         request_body = request_body,
          response_headers = dumps(dict(requests_object.headers), indent=4),
          response_body=dumps(requests_object.json(), indent=4),
          group_id=session.get("patientlist").split("/")[-1],

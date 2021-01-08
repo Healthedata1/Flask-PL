@@ -1,4 +1,4 @@
-### The *{{base_name}}* FHIR Server returns a Group resource which contains references to patients in response a client issuing the following FHIR RESTful GET request to the server:
+### The *{{base_name}}* FHIR Server returns a Group resource which contains references to {{count}} patients in response a client issuing the following FHIR RESTful GET request to the server:
 
     {{url_string}}
 
