@@ -1,7 +1,7 @@
 resourceType: Bundle
-id: d3aadbc5-cf88-4f59-aa7c-4549ba5964d7
+id: 1538675b-f65f-40e9-abe8-78740e552e4c
 meta:
-  lastUpdated: '2021-01-08T03:40:20.363+00:00'
+  lastUpdated: '2021-01-08T04:09:54.933+00:00'
   tag:
   - system: http://terminology.hl7.org/CodeSystem/v3-ObservationValue
     code: SUBSETTED
@@ -39,6 +39,354 @@ entry:
     managingEntity:
       reference: Organization/b1ddf812-1fdd-3adf-b1d5-32cc8bd07ebb
       display: BETH ISRAEL DEACONESS HOSPITAL - PLYMOUTH
+  search:
+    mode: match
+- fullUrl: http://hapi.fhir.org/baseR4/Group/argo-pl-group-all-200
+  resource:
+    resourceType: Group
+    id: argo-pl-group-all-200
+    meta:
+      versionId: '1'
+      lastUpdated: '2020-12-30T02:07:38.408+00:00'
+      source: Health_eData_Inc#jouo4ry7UxlzsYfY
+      profile:
+      - http://www.fhir.org/guides/argonaut/patient-list/StructureDefinition/patientlist
+      tag:
+      - code: 2020-Sep
+      - code: 2021-Jan
+      - system: http://terminology.hl7.org/CodeSystem/v3-ObservationValue
+        code: SUBSETTED
+        display: Resource encoded in summary mode
+    identifier:
+    - system: http://example.org/fhir/identifiers
+      value: argo-pl-group-all-200
+    active: true
+    type: person
+    actual: true
+    name: 'Argo Patient List: "all" Use Case 200'
+    quantity: 1
+    managingEntity:
+      reference: Organization/db0acede-4abe-3c01-8d03-5c68a190d8c7
+      display: SOUTH SHORE HOSPITAL
+  search:
+    mode: match
+- fullUrl: http://hapi.fhir.org/baseR4/Group/argo-pl-group-all-300
+  resource:
+    resourceType: Group
+    id: argo-pl-group-all-300
+    meta:
+      versionId: '2'
+      lastUpdated: '2020-12-30T02:08:55.416+00:00'
+      source: Health_eData_Inc#BLixXBd7wHyWDfBK
+      profile:
+      - http://www.fhir.org/guides/argonaut/patient-list/StructureDefinition/patientlist
+      tag:
+      - code: 2020-Sep
+      - code: 2021-Jan
+      - system: http://terminology.hl7.org/CodeSystem/v3-ObservationValue
+        code: SUBSETTED
+        display: Resource encoded in summary mode
+    identifier:
+    - system: http://example.org/fhir/identifiers
+      value: argo-pl-group-all-300
+    active: true
+    type: person
+    actual: true
+    name: 'Argo Patient List: "all" Use Case 300'
+    quantity: 1
+    managingEntity:
+      reference: Organization/a9f20dc1-5147-3789-bcef-bbecb41c5983
+      display: HOLY FAMILY HOSPITAL
+  search:
+    mode: match
+- fullUrl: http://hapi.fhir.org/baseR4/Group/argo-pl-group-location-101
+  resource:
+    resourceType: Group
+    id: argo-pl-group-location-101
+    meta:
+      versionId: '2'
+      lastUpdated: '2020-12-30T02:08:55.416+00:00'
+      source: Health_eData_Inc#BLixXBd7wHyWDfBK
+      profile:
+      - http://www.fhir.org/guides/argonaut/patient-list/StructureDefinition/patientlist
+      tag:
+      - code: 2020-Sep
+      - code: 2021-Jan
+      - system: http://terminology.hl7.org/CodeSystem/v3-ObservationValue
+        code: SUBSETTED
+        display: Resource encoded in summary mode
+    identifier:
+    - system: http://example.org/fhir/identifiers
+      value: argo-pl-group-location-101
+    active: true
+    type: person
+    actual: true
+    name: 'Argo Patient List: "location" Use Case 101'
+    quantity: 1
+    managingEntity:
+      reference: Organization/b1ddf812-1fdd-3adf-b1d5-32cc8bd07ebb
+      display: BETH ISRAEL DEACONESS HOSPITAL - PLYMOUTH
+  search:
+    mode: match
+- fullUrl: http://hapi.fhir.org/baseR4/Group/argo-pl-group-practitioner-102
+  resource:
+    resourceType: Group
+    id: argo-pl-group-practitioner-102
+    meta:
+      versionId: '2'
+      lastUpdated: '2020-12-30T02:08:55.416+00:00'
+      source: Health_eData_Inc#BLixXBd7wHyWDfBK
+      profile:
+      - http://www.fhir.org/guides/argonaut/patient-list/StructureDefinition/patientlist
+      tag:
+      - code: 2020-Sep
+      - code: 2021-Jan
+      - system: http://terminology.hl7.org/CodeSystem/v3-ObservationValue
+        code: SUBSETTED
+        display: Resource encoded in summary mode
+    identifier:
+    - system: http://example.org/fhir/identifiers
+      value: argo-pl-group-practitioner-102
+    active: true
+    type: person
+    actual: true
+    name: 'Argo Patient List: "practitioner" Use Case 102'
+    quantity: 1
+    managingEntity:
+      reference: Organization/b1ddf812-1fdd-3adf-b1d5-32cc8bd07ebb
+      display: BETH ISRAEL DEACONESS HOSPITAL - PLYMOUTH
+  search:
+    mode: match
+- fullUrl: http://hapi.fhir.org/baseR4/Group/argo-pl-group-practitioner-202
+  resource:
+    resourceType: Group
+    id: argo-pl-group-practitioner-202
+    meta:
+      versionId: '1'
+      lastUpdated: '2020-12-30T02:07:38.408+00:00'
+      source: Health_eData_Inc#jouo4ry7UxlzsYfY
+      profile:
+      - http://www.fhir.org/guides/argonaut/patient-list/StructureDefinition/patientlist
+      tag:
+      - code: 2020-Sep
+      - code: 2021-Jan
+      - system: http://terminology.hl7.org/CodeSystem/v3-ObservationValue
+        code: SUBSETTED
+        display: Resource encoded in summary mode
+    identifier:
+    - system: http://example.org/fhir/identifiers
+      value: argo-pl-group-practitioner-202
+    active: true
+    type: person
+    actual: true
+    name: 'Argo Patient List: "practitioner" Use Case 202'
+    quantity: 1
+    managingEntity:
+      reference: Organization/db0acede-4abe-3c01-8d03-5c68a190d8c7
+      display: SOUTH SHORE HOSPITAL
+  search:
+    mode: match
+- fullUrl: http://hapi.fhir.org/baseR4/Group/argo-pl-group-location-301
+  resource:
+    resourceType: Group
+    id: argo-pl-group-location-301
+    meta:
+      versionId: '2'
+      lastUpdated: '2020-12-30T02:08:55.416+00:00'
+      source: Health_eData_Inc#BLixXBd7wHyWDfBK
+      profile:
+      - http://www.fhir.org/guides/argonaut/patient-list/StructureDefinition/patientlist
+      tag:
+      - code: 2020-Sep
+      - code: 2021-Jan
+      - system: http://terminology.hl7.org/CodeSystem/v3-ObservationValue
+        code: SUBSETTED
+        display: Resource encoded in summary mode
+    identifier:
+    - system: http://example.org/fhir/identifiers
+      value: argo-pl-group-location-301
+    active: true
+    type: person
+    actual: true
+    name: 'Argo Patient List: "location" Use Case 301'
+    quantity: 1
+    managingEntity:
+      reference: Organization/a9f20dc1-5147-3789-bcef-bbecb41c5983
+      display: HOLY FAMILY HOSPITAL
+  search:
+    mode: match
+- fullUrl: http://hapi.fhir.org/baseR4/Group/argo-pl-group-location-201
+  resource:
+    resourceType: Group
+    id: argo-pl-group-location-201
+    meta:
+      versionId: '6'
+      lastUpdated: '2020-12-30T02:07:38.408+00:00'
+      source: Health_eData_Inc#jouo4ry7UxlzsYfY
+      profile:
+      - http://www.fhir.org/guides/argonaut/patient-list/StructureDefinition/patientlist
+      tag:
+      - code: 2020-Sep
+      - code: 2021-Jan
+      - system: http://terminology.hl7.org/CodeSystem/v3-ObservationValue
+        code: SUBSETTED
+        display: Resource encoded in summary mode
+    identifier:
+    - system: http://example.org/fhir/identifiers
+      value: argo-pl-group-location-201
+    active: true
+    type: person
+    actual: true
+    name: 'Argo Patient List: "location" Use Case 201'
+    quantity: 1
+    managingEntity:
+      reference: Organization/db0acede-4abe-3c01-8d03-5c68a190d8c7
+      display: SOUTH SHORE HOSPITAL
+  search:
+    mode: match
+- fullUrl: http://hapi.fhir.org/baseR4/Group/argo-pl-group-practitioner-302
+  resource:
+    resourceType: Group
+    id: argo-pl-group-practitioner-302
+    meta:
+      versionId: '8'
+      lastUpdated: '2020-12-30T02:08:55.416+00:00'
+      source: Health_eData_Inc#BLixXBd7wHyWDfBK
+      profile:
+      - http://www.fhir.org/guides/argonaut/patient-list/StructureDefinition/patientlist
+      tag:
+      - code: 2020-Sep
+      - code: 2021-Jan
+      - system: http://terminology.hl7.org/CodeSystem/v3-ObservationValue
+        code: SUBSETTED
+        display: Resource encoded in summary mode
+    identifier:
+    - system: http://example.org/fhir/identifiers
+      value: argo-pl-group-practitioner-302
+    active: true
+    type: person
+    actual: true
+    name: 'Argo Patient List: "practitioner" Use Case 302'
+    quantity: 1
+    managingEntity:
+      reference: Organization/a9f20dc1-5147-3789-bcef-bbecb41c5983
+      display: HOLY FAMILY HOSPITAL
+  search:
+    mode: match
+- fullUrl: http://hapi.fhir.org/baseR4/Group/argo-pl-group-all-2000
+  resource:
+    resourceType: Group
+    id: argo-pl-group-all-2000
+    meta:
+      versionId: '1'
+      lastUpdated: '2020-12-30T02:17:23.207+00:00'
+      source: Health_eData_Inc#r6QGa34BP11qBIsx
+      profile:
+      - http://www.fhir.org/guides/argonaut/patient-list/StructureDefinition/patientlist
+      tag:
+      - code: 2020-Sep
+      - code: 2021-Jan
+      - system: http://terminology.hl7.org/CodeSystem/v3-ObservationValue
+        code: SUBSETTED
+        display: Resource encoded in summary mode
+    identifier:
+    - system: http://example.org/fhir/identifiers
+      value: argo-pl-group-all-2000
+    active: true
+    type: person
+    actual: true
+    name: 'Argo Patient List: "all" Use Case 2000'
+    quantity: 30
+    managingEntity:
+      reference: Organization/d692e283-0833-3201-8e55-4f868a9c0736
+      display: HALLMARK HEALTH SYSTEM
+  search:
+    mode: match
+- fullUrl: http://hapi.fhir.org/baseR4/Group/argo-pl-group-all-3000
+  resource:
+    resourceType: Group
+    id: argo-pl-group-all-3000
+    meta:
+      versionId: '1'
+      lastUpdated: '2020-12-30T02:17:23.207+00:00'
+      source: Health_eData_Inc#r6QGa34BP11qBIsx
+      profile:
+      - http://www.fhir.org/guides/argonaut/patient-list/StructureDefinition/patientlist
+      tag:
+      - code: 2020-Sep
+      - code: 2021-Jan
+      - system: http://terminology.hl7.org/CodeSystem/v3-ObservationValue
+        code: SUBSETTED
+        display: Resource encoded in summary mode
+    identifier:
+    - system: http://example.org/fhir/identifiers
+      value: argo-pl-group-all-3000
+    active: true
+    type: person
+    actual: true
+    name: 'Argo Patient List: "all" Use Case 3000'
+    quantity: 30
+    managingEntity:
+      reference: Organization/37c0de84-bcaf-3624-82bf-a89b2ac441b8
+      display: BEVERLY HOSPITAL CORPORATION
+  search:
+    mode: match
+- fullUrl: http://hapi.fhir.org/baseR4/Group/argo-pl-group-location-1001
+  resource:
+    resourceType: Group
+    id: argo-pl-group-location-1001
+    meta:
+      versionId: '1'
+      lastUpdated: '2020-12-30T02:17:23.207+00:00'
+      source: Health_eData_Inc#r6QGa34BP11qBIsx
+      profile:
+      - http://www.fhir.org/guides/argonaut/patient-list/StructureDefinition/patientlist
+      tag:
+      - code: 2020-Sep
+      - code: 2021-Jan
+      - system: http://terminology.hl7.org/CodeSystem/v3-ObservationValue
+        code: SUBSETTED
+        display: Resource encoded in summary mode
+    identifier:
+    - system: http://example.org/fhir/identifiers
+      value: argo-pl-group-location-1001
+    active: true
+    type: person
+    actual: true
+    name: 'Argo Patient List: "location" Use Case 1001'
+    quantity: 6
+    managingEntity:
+      reference: Organization/e002090d-4e92-300e-b41e-7d1f21dee4c6
+      display: CAMBRIDGE HEALTH ALLIANCE
+  search:
+    mode: match
+- fullUrl: http://hapi.fhir.org/baseR4/Group/argo-pl-group-location-1002
+  resource:
+    resourceType: Group
+    id: argo-pl-group-location-1002
+    meta:
+      versionId: '1'
+      lastUpdated: '2020-12-30T02:17:23.207+00:00'
+      source: Health_eData_Inc#r6QGa34BP11qBIsx
+      profile:
+      - http://www.fhir.org/guides/argonaut/patient-list/StructureDefinition/patientlist
+      tag:
+      - code: 2020-Sep
+      - code: 2021-Jan
+      - system: http://terminology.hl7.org/CodeSystem/v3-ObservationValue
+        code: SUBSETTED
+        display: Resource encoded in summary mode
+    identifier:
+    - system: http://example.org/fhir/identifiers
+      value: argo-pl-group-location-1002
+    active: true
+    type: person
+    actual: true
+    name: 'Argo Patient List: "location" Use Case 1002'
+    quantity: 16
+    managingEntity:
+      reference: Organization/e002090d-4e92-300e-b41e-7d1f21dee4c6
+      display: CAMBRIDGE HEALTH ALLIANCE
   search:
     mode: match
 - fullUrl: http://hapi.fhir.org/baseR4/Group/argo-pl-group-location-1003
@@ -532,353 +880,5 @@ entry:
     managingEntity:
       reference: Organization/d692e283-0833-3201-8e55-4f868a9c0736
       display: HALLMARK HEALTH SYSTEM
-  search:
-    mode: match
-- fullUrl: http://hapi.fhir.org/baseR4/Group/argo-pl-group-all-200
-  resource:
-    resourceType: Group
-    id: argo-pl-group-all-200
-    meta:
-      versionId: '1'
-      lastUpdated: '2020-12-30T02:07:38.408+00:00'
-      source: Health_eData_Inc#jouo4ry7UxlzsYfY
-      profile:
-      - http://www.fhir.org/guides/argonaut/patient-list/StructureDefinition/patientlist
-      tag:
-      - code: 2020-Sep
-      - code: 2021-Jan
-      - system: http://terminology.hl7.org/CodeSystem/v3-ObservationValue
-        code: SUBSETTED
-        display: Resource encoded in summary mode
-    identifier:
-    - system: http://example.org/fhir/identifiers
-      value: argo-pl-group-all-200
-    active: true
-    type: person
-    actual: true
-    name: 'Argo Patient List: "all" Use Case 200'
-    quantity: 1
-    managingEntity:
-      reference: Organization/db0acede-4abe-3c01-8d03-5c68a190d8c7
-      display: SOUTH SHORE HOSPITAL
-  search:
-    mode: match
-- fullUrl: http://hapi.fhir.org/baseR4/Group/argo-pl-group-all-300
-  resource:
-    resourceType: Group
-    id: argo-pl-group-all-300
-    meta:
-      versionId: '2'
-      lastUpdated: '2020-12-30T02:08:55.416+00:00'
-      source: Health_eData_Inc#BLixXBd7wHyWDfBK
-      profile:
-      - http://www.fhir.org/guides/argonaut/patient-list/StructureDefinition/patientlist
-      tag:
-      - code: 2020-Sep
-      - code: 2021-Jan
-      - system: http://terminology.hl7.org/CodeSystem/v3-ObservationValue
-        code: SUBSETTED
-        display: Resource encoded in summary mode
-    identifier:
-    - system: http://example.org/fhir/identifiers
-      value: argo-pl-group-all-300
-    active: true
-    type: person
-    actual: true
-    name: 'Argo Patient List: "all" Use Case 300'
-    quantity: 1
-    managingEntity:
-      reference: Organization/a9f20dc1-5147-3789-bcef-bbecb41c5983
-      display: HOLY FAMILY HOSPITAL
-  search:
-    mode: match
-- fullUrl: http://hapi.fhir.org/baseR4/Group/argo-pl-group-location-101
-  resource:
-    resourceType: Group
-    id: argo-pl-group-location-101
-    meta:
-      versionId: '2'
-      lastUpdated: '2020-12-30T02:08:55.416+00:00'
-      source: Health_eData_Inc#BLixXBd7wHyWDfBK
-      profile:
-      - http://www.fhir.org/guides/argonaut/patient-list/StructureDefinition/patientlist
-      tag:
-      - code: 2020-Sep
-      - code: 2021-Jan
-      - system: http://terminology.hl7.org/CodeSystem/v3-ObservationValue
-        code: SUBSETTED
-        display: Resource encoded in summary mode
-    identifier:
-    - system: http://example.org/fhir/identifiers
-      value: argo-pl-group-location-101
-    active: true
-    type: person
-    actual: true
-    name: 'Argo Patient List: "location" Use Case 101'
-    quantity: 1
-    managingEntity:
-      reference: Organization/b1ddf812-1fdd-3adf-b1d5-32cc8bd07ebb
-      display: BETH ISRAEL DEACONESS HOSPITAL - PLYMOUTH
-  search:
-    mode: match
-- fullUrl: http://hapi.fhir.org/baseR4/Group/argo-pl-group-practitioner-102
-  resource:
-    resourceType: Group
-    id: argo-pl-group-practitioner-102
-    meta:
-      versionId: '2'
-      lastUpdated: '2020-12-30T02:08:55.416+00:00'
-      source: Health_eData_Inc#BLixXBd7wHyWDfBK
-      profile:
-      - http://www.fhir.org/guides/argonaut/patient-list/StructureDefinition/patientlist
-      tag:
-      - code: 2020-Sep
-      - code: 2021-Jan
-      - system: http://terminology.hl7.org/CodeSystem/v3-ObservationValue
-        code: SUBSETTED
-        display: Resource encoded in summary mode
-    identifier:
-    - system: http://example.org/fhir/identifiers
-      value: argo-pl-group-practitioner-102
-    active: true
-    type: person
-    actual: true
-    name: 'Argo Patient List: "practitioner" Use Case 102'
-    quantity: 1
-    managingEntity:
-      reference: Organization/b1ddf812-1fdd-3adf-b1d5-32cc8bd07ebb
-      display: BETH ISRAEL DEACONESS HOSPITAL - PLYMOUTH
-  search:
-    mode: match
-- fullUrl: http://hapi.fhir.org/baseR4/Group/argo-pl-group-practitioner-202
-  resource:
-    resourceType: Group
-    id: argo-pl-group-practitioner-202
-    meta:
-      versionId: '1'
-      lastUpdated: '2020-12-30T02:07:38.408+00:00'
-      source: Health_eData_Inc#jouo4ry7UxlzsYfY
-      profile:
-      - http://www.fhir.org/guides/argonaut/patient-list/StructureDefinition/patientlist
-      tag:
-      - code: 2020-Sep
-      - code: 2021-Jan
-      - system: http://terminology.hl7.org/CodeSystem/v3-ObservationValue
-        code: SUBSETTED
-        display: Resource encoded in summary mode
-    identifier:
-    - system: http://example.org/fhir/identifiers
-      value: argo-pl-group-practitioner-202
-    active: true
-    type: person
-    actual: true
-    name: 'Argo Patient List: "practitioner" Use Case 202'
-    quantity: 1
-    managingEntity:
-      reference: Organization/db0acede-4abe-3c01-8d03-5c68a190d8c7
-      display: SOUTH SHORE HOSPITAL
-  search:
-    mode: match
-- fullUrl: http://hapi.fhir.org/baseR4/Group/argo-pl-group-location-301
-  resource:
-    resourceType: Group
-    id: argo-pl-group-location-301
-    meta:
-      versionId: '2'
-      lastUpdated: '2020-12-30T02:08:55.416+00:00'
-      source: Health_eData_Inc#BLixXBd7wHyWDfBK
-      profile:
-      - http://www.fhir.org/guides/argonaut/patient-list/StructureDefinition/patientlist
-      tag:
-      - code: 2020-Sep
-      - code: 2021-Jan
-      - system: http://terminology.hl7.org/CodeSystem/v3-ObservationValue
-        code: SUBSETTED
-        display: Resource encoded in summary mode
-    identifier:
-    - system: http://example.org/fhir/identifiers
-      value: argo-pl-group-location-301
-    active: true
-    type: person
-    actual: true
-    name: 'Argo Patient List: "location" Use Case 301'
-    quantity: 1
-    managingEntity:
-      reference: Organization/a9f20dc1-5147-3789-bcef-bbecb41c5983
-      display: HOLY FAMILY HOSPITAL
-  search:
-    mode: match
-- fullUrl: http://hapi.fhir.org/baseR4/Group/argo-pl-group-location-201
-  resource:
-    resourceType: Group
-    id: argo-pl-group-location-201
-    meta:
-      versionId: '6'
-      lastUpdated: '2020-12-30T02:07:38.408+00:00'
-      source: Health_eData_Inc#jouo4ry7UxlzsYfY
-      profile:
-      - http://www.fhir.org/guides/argonaut/patient-list/StructureDefinition/patientlist
-      tag:
-      - code: 2020-Sep
-      - code: 2021-Jan
-      - system: http://terminology.hl7.org/CodeSystem/v3-ObservationValue
-        code: SUBSETTED
-        display: Resource encoded in summary mode
-    identifier:
-    - system: http://example.org/fhir/identifiers
-      value: argo-pl-group-location-201
-    active: true
-    type: person
-    actual: true
-    name: 'Argo Patient List: "location" Use Case 201'
-    quantity: 1
-    managingEntity:
-      reference: Organization/db0acede-4abe-3c01-8d03-5c68a190d8c7
-      display: SOUTH SHORE HOSPITAL
-  search:
-    mode: match
-- fullUrl: http://hapi.fhir.org/baseR4/Group/argo-pl-group-practitioner-302
-  resource:
-    resourceType: Group
-    id: argo-pl-group-practitioner-302
-    meta:
-      versionId: '8'
-      lastUpdated: '2020-12-30T02:08:55.416+00:00'
-      source: Health_eData_Inc#BLixXBd7wHyWDfBK
-      profile:
-      - http://www.fhir.org/guides/argonaut/patient-list/StructureDefinition/patientlist
-      tag:
-      - code: 2020-Sep
-      - code: 2021-Jan
-      - system: http://terminology.hl7.org/CodeSystem/v3-ObservationValue
-        code: SUBSETTED
-        display: Resource encoded in summary mode
-    identifier:
-    - system: http://example.org/fhir/identifiers
-      value: argo-pl-group-practitioner-302
-    active: true
-    type: person
-    actual: true
-    name: 'Argo Patient List: "practitioner" Use Case 302'
-    quantity: 1
-    managingEntity:
-      reference: Organization/a9f20dc1-5147-3789-bcef-bbecb41c5983
-      display: HOLY FAMILY HOSPITAL
-  search:
-    mode: match
-- fullUrl: http://hapi.fhir.org/baseR4/Group/argo-pl-group-all-2000
-  resource:
-    resourceType: Group
-    id: argo-pl-group-all-2000
-    meta:
-      versionId: '1'
-      lastUpdated: '2020-12-30T02:17:23.207+00:00'
-      source: Health_eData_Inc#r6QGa34BP11qBIsx
-      profile:
-      - http://www.fhir.org/guides/argonaut/patient-list/StructureDefinition/patientlist
-      tag:
-      - code: 2020-Sep
-      - code: 2021-Jan
-      - system: http://terminology.hl7.org/CodeSystem/v3-ObservationValue
-        code: SUBSETTED
-        display: Resource encoded in summary mode
-    identifier:
-    - system: http://example.org/fhir/identifiers
-      value: argo-pl-group-all-2000
-    active: true
-    type: person
-    actual: true
-    name: 'Argo Patient List: "all" Use Case 2000'
-    quantity: 30
-    managingEntity:
-      reference: Organization/d692e283-0833-3201-8e55-4f868a9c0736
-      display: HALLMARK HEALTH SYSTEM
-  search:
-    mode: match
-- fullUrl: http://hapi.fhir.org/baseR4/Group/argo-pl-group-all-3000
-  resource:
-    resourceType: Group
-    id: argo-pl-group-all-3000
-    meta:
-      versionId: '1'
-      lastUpdated: '2020-12-30T02:17:23.207+00:00'
-      source: Health_eData_Inc#r6QGa34BP11qBIsx
-      profile:
-      - http://www.fhir.org/guides/argonaut/patient-list/StructureDefinition/patientlist
-      tag:
-      - code: 2020-Sep
-      - code: 2021-Jan
-      - system: http://terminology.hl7.org/CodeSystem/v3-ObservationValue
-        code: SUBSETTED
-        display: Resource encoded in summary mode
-    identifier:
-    - system: http://example.org/fhir/identifiers
-      value: argo-pl-group-all-3000
-    active: true
-    type: person
-    actual: true
-    name: 'Argo Patient List: "all" Use Case 3000'
-    quantity: 30
-    managingEntity:
-      reference: Organization/37c0de84-bcaf-3624-82bf-a89b2ac441b8
-      display: BEVERLY HOSPITAL CORPORATION
-  search:
-    mode: match
-- fullUrl: http://hapi.fhir.org/baseR4/Group/argo-pl-group-location-1001
-  resource:
-    resourceType: Group
-    id: argo-pl-group-location-1001
-    meta:
-      versionId: '1'
-      lastUpdated: '2020-12-30T02:17:23.207+00:00'
-      source: Health_eData_Inc#r6QGa34BP11qBIsx
-      profile:
-      - http://www.fhir.org/guides/argonaut/patient-list/StructureDefinition/patientlist
-      tag:
-      - code: 2020-Sep
-      - code: 2021-Jan
-      - system: http://terminology.hl7.org/CodeSystem/v3-ObservationValue
-        code: SUBSETTED
-        display: Resource encoded in summary mode
-    identifier:
-    - system: http://example.org/fhir/identifiers
-      value: argo-pl-group-location-1001
-    active: true
-    type: person
-    actual: true
-    name: 'Argo Patient List: "location" Use Case 1001'
-    quantity: 6
-    managingEntity:
-      reference: Organization/e002090d-4e92-300e-b41e-7d1f21dee4c6
-      display: CAMBRIDGE HEALTH ALLIANCE
-  search:
-    mode: match
-- fullUrl: http://hapi.fhir.org/baseR4/Group/argo-pl-group-location-1002
-  resource:
-    resourceType: Group
-    id: argo-pl-group-location-1002
-    meta:
-      versionId: '1'
-      lastUpdated: '2020-12-30T02:17:23.207+00:00'
-      source: Health_eData_Inc#r6QGa34BP11qBIsx
-      profile:
-      - http://www.fhir.org/guides/argonaut/patient-list/StructureDefinition/patientlist
-      tag:
-      - code: 2020-Sep
-      - code: 2021-Jan
-      - system: http://terminology.hl7.org/CodeSystem/v3-ObservationValue
-        code: SUBSETTED
-        display: Resource encoded in summary mode
-    identifier:
-    - system: http://example.org/fhir/identifiers
-      value: argo-pl-group-location-1002
-    active: true
-    type: person
-    actual: true
-    name: 'Argo Patient List: "location" Use Case 1002'
-    quantity: 16
-    managingEntity:
-      reference: Organization/e002090d-4e92-300e-b41e-7d1f21dee4c6
-      display: CAMBRIDGE HEALTH ALLIANCE
   search:
     mode: match

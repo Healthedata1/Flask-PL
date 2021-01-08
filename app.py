@@ -13,25 +13,14 @@ from utils import write_out, clear_dir, read_in
 from time import sleep
 from jinja2 import Environment, FileSystemLoader
 from yaml import dump as y_dump
-from logging.config import dictConfig
+import logging
 
-dictConfig({
-    'version': 1,
-    'formatters': {'default': {
-        'format': '[%(asctime)s] %(levelname)s in %(module)s %(lineno)d}: %(message)s',
-    }},
-    'handlers': {'wsgi': {
-        'class': 'logging.StreamHandler',
-        'stream': 'ext://flask.logging.wsgi_errors_stream',
-        'formatter': 'default'
-    }},
-    'root': {
-        'level': 'INFO',
-        'handlers': ['wsgi']
-    }
-})
+logging.basicConfig(
+level=logging.DEBUG,
+format='[%(asctime)s] %(levelname)s in %(module)s %(lineno)d}: %(message)s')
 
 app = Flask(__name__,)
+app.config["DEBUG"] = True
 app.secret_key = 'my secret key'
 
 env = Environment(loader=FileSystemLoader([f'{app.root_path}/pages',
@@ -587,5 +576,4 @@ def download(filename):
     return send_from_directory(directory=directory, filename=filename, as_attachment=True, cache_timeout=0)
 
 if __name__ == '__main__':
-    app.run(debug=True)
     app.run(debug=True)
