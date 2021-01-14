@@ -1,0 +1,71 @@
+{
+    "resourceType": "Appointment",
+    "id": "pl-appt-b1cf5f57-b061-4b7f-aa9d-6283a121694b",
+    "meta": {
+        "versionId": "4",
+        "lastUpdated": "2020-12-30T02:08:55.416+00:00",
+        "source": "#BLixXBd7wHyWDfBK"
+    },
+    "status": "booked",
+    "serviceType": [
+        {
+            "coding": [
+                {
+                    "system": "http://fhir.org/guides/argonaut-scheduling/CodeSystem/visit-type",
+                    "code": "117",
+                    "display": "Emergency Medical"
+                }
+            ],
+            "text": "Emergency Medical"
+        }
+    ],
+    "specialty": [
+        {
+            "coding": [
+                {
+                    "system": "http://snomed.info/sct",
+                    "code": "408478003",
+                    "display": "Critical care medicine"
+                }
+            ],
+            "text": "Critical care medicine"
+        }
+    ],
+    "appointmentType": {
+        "coding": [
+            {
+                "system": "http://terminology.hl7.org/CodeSystem/v2-0276",
+                "code": "EMERGENCY"
+            }
+        ],
+        "text": "Routine"
+    },
+    "start": "2020-12-30T02:08:46.501221+00:00",
+    "end": "2020-12-30T02:38:46.501221+00:00",
+    "participant": [
+        {
+            "actor": {
+                "reference": "Patient/b1cf5f57-b061-4b7f-aa9d-6283a121694b",
+                "display": "Mr. Garland107 Conn188"
+            },
+            "required": "required",
+            "status": "accepted"
+        },
+        {
+            "actor": {
+                "reference": "Practitioner/0000016f-57cb-cdac-0000-0000000000dc",
+                "display": "Dr. Tommy814 Schmeler639"
+            },
+            "required": "required",
+            "status": "accepted"
+        },
+        {
+            "actor": {
+                "reference": "Location/09178b24-9340-47ec-90b2-1aac03248cd5",
+                "display": "BETH ISRAEL DEACONESS HOSPITAL - PLYMOUTH"
+            },
+            "required": "required",
+            "status": "accepted"
+        }
+    ]
+}

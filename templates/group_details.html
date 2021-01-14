@@ -29,15 +29,19 @@
 </ul>
 -->
 
+
 {% if Group.characteristic %}
   <li><strong>characteristic</strong>: <ul>
   {% for i in Group.characteristic %}
-    <li><strong>code</strong>: {{i.code.coding[0].code}}</li>
+  {% if i.code %}
+    <li><strong>code</strong>:{% if i.code.coding %} {{i.code.coding[0].code}}{% else %} NA {% endif %} {% if i.code.text %}"{{i.code.text}}"{% endif %}</li>
+  {% endif %}
     <li><strong>valueReference</strong>: {{i.valueReference.reference}}</li>
     {% endfor %}
 {% endif %}
 </ul>
 </li>
+
 
 {% if Group.member %}
 <h5><strong>PATIENTS:</strong><h5>

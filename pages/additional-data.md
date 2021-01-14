@@ -142,7 +142,7 @@ For each patient in group123.bundle.entry get QR:  GET QuestionnaireResponse/[Qu
 
 *Note these values have been randomly generated for demonstration purposes*
 
-{% if q_list %}
+{% if qr_ext_exist %}
 
 {% include "myqr.html" %}
 
@@ -203,7 +203,19 @@ Client Success Criteria: The Client extracts the extra patient details from the 
 
  *Note these values have been randomly generated for demonstration purposes*
 
+ {% if appt_ext_exist %}
+
  {% include "my_appt.html" %}
+
+ {% else %}
+
+---
+<img alt="NO Q/QR for this Group" class="img-responsive project-logo" src="../static/images/empty.png">
+ *NO Q/QR for this Group*
+
+---
+
+{% endif %}
 
 ---
 <a id="enc_ext"></a>
@@ -213,7 +225,19 @@ Client Success Criteria: The Client extracts the extra patient details from the 
 
  *Note these values have been randomly generated for demonstration purposes*
 
-  {% include "my_enc.html" %}
+ {% if enc_ext_exist %}
+
+ {% include "my_enc.html" %}
+
+ {% else %}
+
+---
+<img alt="NO Q/QR for this Group" class="img-responsive project-logo" src="../static/images/empty.png">
+ *NO Q/QR for this Group*
+
+---
+
+{% endif %}
 
 ---
 

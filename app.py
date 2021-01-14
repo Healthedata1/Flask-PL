@@ -52,7 +52,7 @@ group_characteristics = [
 headers = {
     'Accept':'application/fhir+json',
     'Content-Type':'application/fhir+json',
-    "Authorization": 'Bearer 0QLWt38GQHyYxrcHuG40mw==',# TEMP meditech token remove and fix if this works
+    "Authorization": 'Bearer Ul5Jq6jHSqOIuud7KMrrag==',# TEMP meditech token remove and fix if this works
     }
 
 profile_urls = {
@@ -200,7 +200,10 @@ def get_ext_ref(member_index,ext_url): #get extension value and type from member
 
     path =  Path () / app.root_path / 'test_output' / 'test-argo-pl-group.json'
     group_dict = loads(path.read_text())
-    member_ext = group_dict['member'][member_index]['extension']
+    try:
+        member_ext = group_dict['member'][member_index]['extension']
+    except KeyError:
+        member_ext = group_dict['member'][member_index]['entity']['extension']
     for i in member_ext:
         app.logger.info(f'{[i["url"]]}' )
         app.logger.info(f'{ext_url}' )
@@ -516,6 +519,19 @@ def fetch_more():
                 inactive = getattr(i,'inactive', None),
             )
             session['my_patients'].append(patient_data)
+        # check what if any member extensions - just looking at first member for now
+        try:
+            for member_ext in py_fhir.member[0].extension:
+                session['qr_ext_exist'] = True if member_ext.url ==  profile_urls['qr_ext'] else False
+                session['appt_ext_exist'] = True if member_ext.url ==  profile_urls['appt_ext'] else False
+                session['enc_ext_exist'] = True if member_ext.url ==  profile_urls['enc_ext'] else False
+        except TypeError:  # no members
+            for member_ext in py_fhir.member[0].entity.extension:
+                session['qr_ext_exist'] = True if member_ext.url ==  profile_urls['qr_ext'] else False
+                session['appt_ext_exist'] = True if member_ext.url ==  profile_urls['appt_ext'] else False
+                session['enc_ext_exist'] = True if member_ext.url ==  profile_urls['enc_ext'] else False
+        except KeyError:  # no members
+            pass
 
         # if Q Extension get questions assume only one for now
         try:
@@ -539,13 +555,18 @@ def fetch_more():
         request_body = dumps(loads(requests_object.request.body), indent=4)
     except TypeError:
         request_body = requests_object.request.body
+    except AttributeError:
+        request_body = None
     #app.logger.info(f'request_body = {request_body}')
     my_markdown_string=md_template(
          'additional-data.md',
          my_patients= session.get('my_patients'),
          session_base=session.get('base'),
-         session_q=session['q_ref'],
-         q_list = session.get('q_list'),
+         session_q=session.get('q_ref'),
+         q_list = session.get('q_list'), 
+         qr_ext_exist=session.get('qr_ext_exist'),
+         appt_ext_exist=session.get('appt_ext_exist'),
+         enc_ext_exist=session.get('enc_ext_exist'),
          added=added,
          scroll = session['scroll'],
          url_string=requests_object.url,

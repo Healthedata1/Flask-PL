@@ -1,103 +1,161 @@
 {
-    "resourceType": "Bundle",
-    "id": "7acea970-b4f2-44db-bea1-aac1074cde4a",
-    "meta": {
-        "lastUpdated": "2021-01-08T18:29:41.089+00:00"
-    },
     "type": "searchset",
-    "total": 1,
     "link": [
         {
             "relation": "self",
-            "url": "http://hapi.fhir.org/baseR4/QuestionnaireResponse?_id=argo-pl-q2-qr-b1cf5f57-b061-4b7f-aa9d-6283a121694b&_include=QuestionnaireResponse%3Aquestionnaire"
+            "url": "https://dev-mtx-interop.meditech.com:443/v1/ArgoPatientList/R4/Group?_summary=true&type=person"
         }
     ],
     "entry": [
         {
-            "fullUrl": "http://hapi.fhir.org/baseR4/QuestionnaireResponse/argo-pl-q2-qr-b1cf5f57-b061-4b7f-aa9d-6283a121694b",
-            "resource": {
-                "resourceType": "QuestionnaireResponse",
-                "id": "argo-pl-q2-qr-b1cf5f57-b061-4b7f-aa9d-6283a121694b",
-                "meta": {
-                    "versionId": "4",
-                    "lastUpdated": "2020-12-30T02:08:55.416+00:00",
-                    "source": "Health_eData_Inc#BLixXBd7wHyWDfBK",
-                    "tag": [
-                        {
-                            "code": "2020-Sep"
-                        },
-                        {
-                            "code": "2021-Jan"
-                        }
-                    ]
-                },
-                "questionnaire": "http://www.fhir.org/guides/argonaut/patient-list/Questionniare/argo-pl-q2",
-                "status": "completed",
-                "subject": {
-                    "reference": "Patient/b1cf5f57-b061-4b7f-aa9d-6283a121694b",
-                    "display": "Mr. Garland107 Conn188"
-                },
-                "authored": "2020-12-29T18:08:46.496311Z",
-                "item": [
-                    {
-                        "linkId": "q1",
-                        "text": "COVID Contact",
-                        "answer": [
-                            {
-                                "valueBoolean": false
-                            }
-                        ]
-                    },
-                    {
-                        "linkId": "q2",
-                        "text": "Age/Legal Sex",
-                        "answer": [
-                            {
-                                "valueString": "22/Female"
-                            }
-                        ]
-                    },
-                    {
-                        "linkId": "q3",
-                        "text": "SAPS II Score",
-                        "answer": [
-                            {
-                                "valueInteger": 25
-                            }
-                        ]
-                    },
-                    {
-                        "linkId": "q4",
-                        "text": "SAPS II Score change",
-                        "answer": [
-                            {
-                                "valueInteger": -10
-                            }
-                        ]
-                    },
-                    {
-                        "linkId": "q5",
-                        "text": "SOFA Score",
-                        "answer": [
-                            {
-                                "valueInteger": 5
-                            }
-                        ]
-                    },
-                    {
-                        "linkId": "q6",
-                        "text": "Unit",
-                        "answer": [
-                            {
-                                "valueString": "ICU"
-                            }
-                        ]
-                    }
-                ]
-            },
+            "fullUrl": "https://dev-mtx-interop.meditech.com:443/v1/ArgoPatientList/R4/Group/de766ee3-cbe9-404c-8f81-f5e9f5d41d13",
             "search": {
                 "mode": "match"
+            },
+            "resource": {
+                "active": true,
+                "type": "person",
+                "actual": true,
+                "name": "Ambulatory Schedule",
+                "managingEntity": {
+                    "reference": "Organization/DEV.US",
+                    "display": "DEV.US"
+                },
+                "characteristic": [
+                    {
+                        "code": {
+                            "text": "practitioner",
+                            "coding": [
+                                {
+                                    "system": "http://www.fhir.org/guides/argonaut/patient-list/ValueSet/argo-group-characteristic",
+                                    "code": "practitioner",
+                                    "display": "Practitioner"
+                                }
+                            ]
+                        },
+                        "valueReference": {
+                            "reference": "Practitioner/34e38692-610b-50e3-854a-683ac1033f14",
+                            "display": "Dottie Jensen"
+                        },
+                        "exclude": false
+                    }
+                ],
+                "id": "de766ee3-cbe9-404c-8f81-f5e9f5d41d13",
+                "resourceType": "Group"
+            }
+        },
+        {
+            "fullUrl": "https://dev-mtx-interop.meditech.com:443/v1/ArgoPatientList/R4/Group/4668565b-37f1-4051-b22d-fd3a28120196",
+            "search": {
+                "mode": "match"
+            },
+            "resource": {
+                "active": true,
+                "type": "person",
+                "actual": true,
+                "name": "Location List - 1 East",
+                "managingEntity": {
+                    "reference": "Organization/DEV.US",
+                    "display": "DEV.US"
+                },
+                "characteristic": [
+                    {
+                        "code": {
+                            "text": "location",
+                            "coding": [
+                                {
+                                    "system": "http://www.fhir.org/guides/argonaut/patient-list/ValueSet/argo-group-characteristic",
+                                    "code": "location",
+                                    "display": "Location"
+                                }
+                            ]
+                        },
+                        "valueReference": {
+                            "reference": "Location/fac8f367-6705-5186-8352-6f936aef1f44",
+                            "display": "1 East"
+                        },
+                        "exclude": false
+                    }
+                ],
+                "id": "4668565b-37f1-4051-b22d-fd3a28120196",
+                "resourceType": "Group"
+            }
+        },
+        {
+            "fullUrl": "https://dev-mtx-interop.meditech.com:443/v1/ArgoPatientList/R4/Group/8496c7f0-bb9b-4e64-9c79-748f385fe5b6",
+            "search": {
+                "mode": "match"
+            },
+            "resource": {
+                "active": true,
+                "type": "person",
+                "actual": true,
+                "name": "Location List - 1 West",
+                "managingEntity": {
+                    "reference": "Organization/DEV.US",
+                    "display": "DEV.US"
+                },
+                "characteristic": [
+                    {
+                        "code": {
+                            "text": "location",
+                            "coding": [
+                                {
+                                    "system": "http://www.fhir.org/guides/argonaut/patient-list/ValueSet/argo-group-characteristic",
+                                    "code": "location",
+                                    "display": "Location"
+                                }
+                            ]
+                        },
+                        "valueReference": {
+                            "reference": "Location/83a1a1b6-7692-52ef-80b2-f64d3397f5b6",
+                            "display": "1 West"
+                        },
+                        "exclude": false
+                    }
+                ],
+                "id": "8496c7f0-bb9b-4e64-9c79-748f385fe5b6",
+                "resourceType": "Group"
+            }
+        },
+        {
+            "fullUrl": "https://dev-mtx-interop.meditech.com:443/v1/ArgoPatientList/R4/Group/9aa52da3-652c-4798-9012-30dba5939116",
+            "search": {
+                "mode": "match"
+            },
+            "resource": {
+                "active": true,
+                "type": "person",
+                "actual": true,
+                "name": "Ambulatory Schedule",
+                "managingEntity": {
+                    "reference": "Organization/DEV.US",
+                    "display": "DEV.US"
+                },
+                "characteristic": [
+                    {
+                        "code": {
+                            "text": "practitioner",
+                            "coding": [
+                                {
+                                    "system": "http://www.fhir.org/guides/argonaut/patient-list/ValueSet/argo-group-characteristic",
+                                    "code": "practitioner",
+                                    "display": "Practitioner"
+                                }
+                            ]
+                        },
+                        "valueReference": {
+                            "reference": "Practitioner/fa84ef74-2cb1-584a-8593-ab6df29a19f5",
+                            "display": "Greg Rucker"
+                        },
+                        "exclude": false
+                    }
+                ],
+                "id": "9aa52da3-652c-4798-9012-30dba5939116",
+                "resourceType": "Group"
             }
         }
-    ]
+    ],
+    "total": 4,
+    "resourceType": "Bundle"
 }

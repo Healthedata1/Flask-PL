@@ -1,79 +1,469 @@
 {
-    "resourceType": "Group",
-    "id": "argo-pl-group-all-100",
-    "meta": {
-        "versionId": "12",
-        "lastUpdated": "2020-12-30T02:08:55.416+00:00",
-        "source": "Health_eData_Inc#BLixXBd7wHyWDfBK",
-        "profile": [
-            "http://www.fhir.org/guides/argonaut/patient-list/StructureDefinition/patientlist"
-        ],
-        "tag": [
-            {
-                "code": "2021-Jan"
-            },
-            {
-                "code": "2020-Sep"
-            }
-        ]
-    },
-    "extension": [
-        {
-            "url": "http://www.fhir.org/guides/argonaut/patient-list/StructureDefinition/patientlist-questionnaire",
-            "valueReference": {
-                "reference": "Questionnaire/argo-pl-q2",
-                "display": "Argo PL List Test Questionnaire id=argo-pl-q2"
-            }
-        }
-    ],
-    "identifier": [
-        {
-            "system": "http://example.org/fhir/identifiers",
-            "value": "argo-pl-group-all-100"
-        }
-    ],
+    "id": "4668565b-37f1-4051-b22d-fd3a28120196",
     "active": true,
     "type": "person",
     "actual": true,
-    "name": "Argo Patient List: \"all\" Use Case 100",
-    "quantity": 1,
+    "name": "List by Location - 1 East",
+    "quantity": 29,
     "managingEntity": {
-        "reference": "Organization/b1ddf812-1fdd-3adf-b1d5-32cc8bd07ebb",
-        "display": "BETH ISRAEL DEACONESS HOSPITAL - PLYMOUTH"
+        "reference": "Organization/DEV.US",
+        "display": "DEV.US"
     },
+    "characteristic": [
+        {
+            "code": {
+                "text": "location",
+                "coding": [
+                    {
+                        "system": "http://www.fhir.org/guides/argonaut/patient-list/ValueSet/argo-group-characteristic",
+                        "code": "location",
+                        "display": "Location"
+                    }
+                ]
+            },
+            "valueReference": {
+                "reference": "Location/fac8f367-6705-5186-8352-6f936aef1f44",
+                "display": "1 East"
+            },
+            "exclude": false
+        }
+    ],
     "member": [
         {
+            "entity": {
+                "reference": "Patient/C9DD413D-E5DD-437D-9C21-826CC62F78F3",
+                "display": "Naomi Nagata"
+            },
             "extension": [
-                {
-                    "url": "http://www.fhir.org/guides/argonaut/patient-list/StructureDefinition/patientlist-appointment",
-                    "valueReference": {
-                        "reference": "Appointment/pl-appt-b1cf5f57-b061-4b7f-aa9d-6283a121694b",
-                        "display": "Argo PL List Test Appointment pl-appt-b1cf5f57-b061-4b7f-aa9d-6283a121694b"
-                    }
-                },
                 {
                     "url": "http://www.fhir.org/guides/argonaut/patient-list/StructureDefinition/patientlist-encounter",
                     "valueReference": {
-                        "reference": "Encounter/542f9e32-4309-4277-81ce-12419f0d1294",
-                        "display": "Argo PL List Test Encounter 542f9e32-4309-4277-81ce-12419f0d1294"
-                    }
-                },
-                {
-                    "url": "http://www.fhir.org/guides/argonaut/patient-list/StructureDefinition/patientlist-questionnaireresponse",
-                    "valueReference": {
-                        "reference": "QuestionnaireResponse/argo-pl-q2-qr-b1cf5f57-b061-4b7f-aa9d-6283a121694b",
-                        "display": "Argo PL List Test QuestionnaireResponse argo-pl-q2-qr-b1cf5f57-b061-4b7f-aa9d-6283a121694b"
+                        "reference": "Encounter/F706CD24-8F1D-4A09-B62E-111685FE080A",
+                        "type": "Encounter"
                     }
                 }
-            ],
+            ]
+        },
+        {
             "entity": {
-                "reference": "Patient/b1cf5f57-b061-4b7f-aa9d-6283a121694b",
-                "display": "Mr. Garland107 Conn188"
+                "reference": "Patient/FD1BD66E-FA2E-4DAB-B621-36A62B980699",
+                "display": "ashlyn test"
             },
-            "period": {
-                "start": "2020-12-29"
+            "extension": [
+                {
+                    "url": "http://www.fhir.org/guides/argonaut/patient-list/StructureDefinition/patientlist-encounter",
+                    "valueReference": {
+                        "reference": "Encounter/09A7243F-644B-4507-B969-8F8ED80A36F7",
+                        "type": "Encounter"
+                    }
+                }
+            ]
+        },
+        {
+            "entity": {
+                "reference": "Patient/FC9F29CC-EE9B-463F-A00C-412CD4461EF4",
+                "display": "Molly Smith"
             },
-            "inactive": false
+            "extension": [
+                {
+                    "url": "http://www.fhir.org/guides/argonaut/patient-list/StructureDefinition/patientlist-encounter",
+                    "valueReference": {
+                        "reference": "Encounter/68088871-9DD5-4ADB-9F5A-74FA86C1D54C",
+                        "type": "Encounter"
+                    }
+                }
+            ]
+        },
+        {
+            "entity": {
+                "reference": "Patient/8C4A4EBA-8FCA-44C6-A097-1E0D8E5916BE",
+                "display": "Baby Benson Moles"
+            },
+            "extension": [
+                {
+                    "url": "http://www.fhir.org/guides/argonaut/patient-list/StructureDefinition/patientlist-encounter",
+                    "valueReference": {
+                        "reference": "Encounter/375DDDB9-510B-4A26-9660-CFFA71B74BA6",
+                        "type": "Encounter"
+                    }
+                }
+            ]
+        },
+        {
+            "entity": {
+                "reference": "Patient/45AC901A-D532-4C9F-83B1-D70DDC5497C7",
+                "display": "Rebecca Q Golden"
+            },
+            "extension": [
+                {
+                    "url": "http://www.fhir.org/guides/argonaut/patient-list/StructureDefinition/patientlist-encounter",
+                    "valueReference": {
+                        "reference": "Encounter/7C612B1D-2036-4096-98A4-400A8AB0D6C7",
+                        "type": "Encounter"
+                    }
+                }
+            ]
+        },
+        {
+            "entity": {
+                "reference": "Patient/CE28953F-53CE-4F60-9856-6A8466ED7657",
+                "display": "Leo Vidal"
+            },
+            "extension": [
+                {
+                    "url": "http://www.fhir.org/guides/argonaut/patient-list/StructureDefinition/patientlist-encounter",
+                    "valueReference": {
+                        "reference": "Encounter/2B576D40-1C20-4599-9BDE-770F524F63DB",
+                        "type": "Encounter"
+                    }
+                }
+            ]
+        },
+        {
+            "entity": {
+                "reference": "Patient/41B242D8-2F8F-4FD8-8062-ED3F3A588DFC",
+                "display": "BARBARA HART"
+            },
+            "extension": [
+                {
+                    "url": "http://www.fhir.org/guides/argonaut/patient-list/StructureDefinition/patientlist-encounter",
+                    "valueReference": {
+                        "reference": "Encounter/C90CE4BB-049D-4167-800E-E88D5FBACE6E",
+                        "type": "Encounter"
+                    }
+                }
+            ]
+        },
+        {
+            "entity": {
+                "reference": "Patient/25D2CD43-F6DB-4D54-8CF6-0ACC9C538C74",
+                "display": "Lynda Janness"
+            },
+            "extension": [
+                {
+                    "url": "http://www.fhir.org/guides/argonaut/patient-list/StructureDefinition/patientlist-encounter",
+                    "valueReference": {
+                        "reference": "Encounter/AB7BBD0D-5E49-4A71-9E0A-55487AE326B7",
+                        "type": "Encounter"
+                    }
+                }
+            ]
+        },
+        {
+            "entity": {
+                "reference": "Patient/CE28953F-53CE-4F60-9856-6A8466ED7657",
+                "display": "Leo Vidal"
+            },
+            "extension": [
+                {
+                    "url": "http://www.fhir.org/guides/argonaut/patient-list/StructureDefinition/patientlist-encounter",
+                    "valueReference": {
+                        "reference": "Encounter/D8D1B644-E6E1-486F-A4C2-78E281D1CD41",
+                        "type": "Encounter"
+                    }
+                }
+            ]
+        },
+        {
+            "entity": {
+                "reference": "Patient/5670C2CB-3595-414C-BE57-FCC7C36D3767",
+                "display": "Dennis Vidal"
+            },
+            "extension": [
+                {
+                    "url": "http://www.fhir.org/guides/argonaut/patient-list/StructureDefinition/patientlist-encounter",
+                    "valueReference": {
+                        "reference": "Encounter/2A4EC960-0C2E-4ED3-9AC1-8E01265C26AA",
+                        "type": "Encounter"
+                    }
+                }
+            ]
+        },
+        {
+            "entity": {
+                "reference": "Patient/9E510C6D-00AC-4CE7-A11E-E067266032CB",
+                "display": "Megan Batchelder"
+            },
+            "extension": [
+                {
+                    "url": "http://www.fhir.org/guides/argonaut/patient-list/StructureDefinition/patientlist-encounter",
+                    "valueReference": {
+                        "reference": "Encounter/9930A900-BE63-4738-8D59-B84B509DB1B0",
+                        "type": "Encounter"
+                    }
+                }
+            ]
+        },
+        {
+            "entity": {
+                "reference": "Patient/2343467D-91C9-4113-A855-435F58D56635",
+                "display": "sean madden"
+            },
+            "extension": [
+                {
+                    "url": "http://www.fhir.org/guides/argonaut/patient-list/StructureDefinition/patientlist-encounter",
+                    "valueReference": {
+                        "reference": "Encounter/5AD26388-68BF-4A93-9CF8-FD3C74ECACE5",
+                        "type": "Encounter"
+                    }
+                }
+            ]
+        },
+        {
+            "entity": {
+                "reference": "Patient/0453ACC3-A1A9-4177-AA91-4B6561E5BACC",
+                "display": "Jessica Anderson"
+            },
+            "extension": [
+                {
+                    "url": "http://www.fhir.org/guides/argonaut/patient-list/StructureDefinition/patientlist-encounter",
+                    "valueReference": {
+                        "reference": "Encounter/C5F1CCED-DAA9-459B-B82D-14FDA7441180",
+                        "type": "Encounter"
+                    }
+                }
+            ]
+        },
+        {
+            "entity": {
+                "reference": "Patient/95E3732A-8884-425A-B621-7ECEB8393E2F",
+                "display": "ELSIE OLLILA"
+            },
+            "extension": [
+                {
+                    "url": "http://www.fhir.org/guides/argonaut/patient-list/StructureDefinition/patientlist-encounter",
+                    "valueReference": {
+                        "reference": "Encounter/5D42BFBE-11C2-4EB4-B243-E1C90ED1FCA0",
+                        "type": "Encounter"
+                    }
+                }
+            ]
+        },
+        {
+            "entity": {
+                "reference": "Patient/03017167-9F58-4812-89A7-FB87A442361C",
+                "display": "Julia Evans"
+            },
+            "extension": [
+                {
+                    "url": "http://www.fhir.org/guides/argonaut/patient-list/StructureDefinition/patientlist-encounter",
+                    "valueReference": {
+                        "reference": "Encounter/848440E6-FE1D-4A03-BBD2-5A295B039B45",
+                        "type": "Encounter"
+                    }
+                }
+            ]
+        },
+        {
+            "entity": {
+                "reference": "Patient/FE5013CF-20CC-4EFE-A937-AE8AE98C8AF5",
+                "display": "Gordon Town"
+            },
+            "extension": [
+                {
+                    "url": "http://www.fhir.org/guides/argonaut/patient-list/StructureDefinition/patientlist-encounter",
+                    "valueReference": {
+                        "reference": "Encounter/6DA9D092-3677-478A-BA3A-20011E187627",
+                        "type": "Encounter"
+                    }
+                }
+            ]
+        },
+        {
+            "entity": {
+                "reference": "Patient/90DB7338-C328-47F8-928D-8E4D14EC4B06",
+                "display": "Delete J Norton"
+            },
+            "extension": [
+                {
+                    "url": "http://www.fhir.org/guides/argonaut/patient-list/StructureDefinition/patientlist-encounter",
+                    "valueReference": {
+                        "reference": "Encounter/696F758F-CAC7-4270-9740-B7D389CB1236",
+                        "type": "Encounter"
+                    }
+                }
+            ]
+        },
+        {
+            "entity": {
+                "reference": "Patient/92A40182-0145-4558-8388-DD281C52D864",
+                "display": "Testing Leary"
+            },
+            "extension": [
+                {
+                    "url": "http://www.fhir.org/guides/argonaut/patient-list/StructureDefinition/patientlist-encounter",
+                    "valueReference": {
+                        "reference": "Encounter/FEB9CF18-01EC-4447-B098-8B58B17D419C",
+                        "type": "Encounter"
+                    }
+                }
+            ]
+        },
+        {
+            "entity": {
+                "reference": "Patient/B5F13EF6-7AC9-4E67-BB35-32D9FF55C1A0",
+                "display": "Dee C. Barnett"
+            },
+            "extension": [
+                {
+                    "url": "http://www.fhir.org/guides/argonaut/patient-list/StructureDefinition/patientlist-encounter",
+                    "valueReference": {
+                        "reference": "Encounter/BFCC216D-5F22-4649-B5A0-0F7F607F07FB",
+                        "type": "Encounter"
+                    }
+                }
+            ]
+        },
+        {
+            "entity": {
+                "reference": "Patient/5D8AC795-782C-4210-8FB8-231F09C7E9CB",
+                "display": "Carly Stebbins"
+            },
+            "extension": [
+                {
+                    "url": "http://www.fhir.org/guides/argonaut/patient-list/StructureDefinition/patientlist-encounter",
+                    "valueReference": {
+                        "reference": "Encounter/2A03E7AD-7EB0-4D61-9B35-7EC499D29AE9",
+                        "type": "Encounter"
+                    }
+                }
+            ]
+        },
+        {
+            "entity": {
+                "reference": "Patient/9699FA83-DD07-42C0-9CB6-C67652ECF82D",
+                "display": "WAYNE A WENHAM"
+            },
+            "extension": [
+                {
+                    "url": "http://www.fhir.org/guides/argonaut/patient-list/StructureDefinition/patientlist-encounter",
+                    "valueReference": {
+                        "reference": "Encounter/663243DD-37F9-4EA7-BBAF-85E03A01A6C5",
+                        "type": "Encounter"
+                    }
+                }
+            ]
+        },
+        {
+            "entity": {
+                "reference": "Patient/3B20D943-4E3F-4C8B-A54B-9471F316A0F5",
+                "display": "Rusty Rees"
+            },
+            "extension": [
+                {
+                    "url": "http://www.fhir.org/guides/argonaut/patient-list/StructureDefinition/patientlist-encounter",
+                    "valueReference": {
+                        "reference": "Encounter/8D5C01B2-FB8A-459E-BD0B-1004E074A85C",
+                        "type": "Encounter"
+                    }
+                }
+            ]
+        },
+        {
+            "entity": {
+                "reference": "Patient/FD1BD66E-FA2E-4DAB-B621-36A62B980699",
+                "display": "ashlyn test"
+            },
+            "extension": [
+                {
+                    "url": "http://www.fhir.org/guides/argonaut/patient-list/StructureDefinition/patientlist-encounter",
+                    "valueReference": {
+                        "reference": "Encounter/E2C895AD-D48C-4F28-B954-B930EE3C0AFA",
+                        "type": "Encounter"
+                    }
+                }
+            ]
+        },
+        {
+            "entity": {
+                "reference": "Patient/6C7DE8D6-E9D5-43C7-AD04-8159DA7034E2",
+                "display": "Cheese Cake"
+            },
+            "extension": [
+                {
+                    "url": "http://www.fhir.org/guides/argonaut/patient-list/StructureDefinition/patientlist-encounter",
+                    "valueReference": {
+                        "reference": "Encounter/F3E9AD52-98F3-4731-963F-D290E0022C8F",
+                        "type": "Encounter"
+                    }
+                }
+            ]
+        },
+        {
+            "entity": {
+                "reference": "Patient/B8ACF2B2-A857-4D29-94EA-6B992E115A2D",
+                "display": "GAIL HATHAWAY"
+            },
+            "extension": [
+                {
+                    "url": "http://www.fhir.org/guides/argonaut/patient-list/StructureDefinition/patientlist-encounter",
+                    "valueReference": {
+                        "reference": "Encounter/EB51830D-E041-45A8-B924-35941BD20275",
+                        "type": "Encounter"
+                    }
+                }
+            ]
+        },
+        {
+            "entity": {
+                "reference": "Patient/FD488849-8300-45DD-9785-37B99BADB534",
+                "display": "Harry Cupal"
+            },
+            "extension": [
+                {
+                    "url": "http://www.fhir.org/guides/argonaut/patient-list/StructureDefinition/patientlist-encounter",
+                    "valueReference": {
+                        "reference": "Encounter/1BBB7368-156E-4F4A-935C-D5718D8EFA94",
+                        "type": "Encounter"
+                    }
+                }
+            ]
+        },
+        {
+            "entity": {
+                "reference": "Patient/5670C2CB-3595-414C-BE57-FCC7C36D3767",
+                "display": "Dennis Vidal"
+            },
+            "extension": [
+                {
+                    "url": "http://www.fhir.org/guides/argonaut/patient-list/StructureDefinition/patientlist-encounter",
+                    "valueReference": {
+                        "reference": "Encounter/C3E2E824-0652-40C3-AB1C-D95AA96731B7",
+                        "type": "Encounter"
+                    }
+                }
+            ]
+        },
+        {
+            "entity": {
+                "reference": "Patient/2793C80D-0042-4A65-B6A7-50435B979BB0",
+                "display": "Daisy Talabec"
+            },
+            "extension": [
+                {
+                    "url": "http://www.fhir.org/guides/argonaut/patient-list/StructureDefinition/patientlist-encounter",
+                    "valueReference": {
+                        "reference": "Encounter/7B3A952D-0C76-445E-AFD0-01EA2535D80F",
+                        "type": "Encounter"
+                    }
+                }
+            ]
+        },
+        {
+            "entity": {
+                "reference": "Patient/804BDB5C-5E2B-4864-B555-4D393FFC1C95",
+                "display": "Connor Test"
+            },
+            "extension": [
+                {
+                    "url": "http://www.fhir.org/guides/argonaut/patient-list/StructureDefinition/patientlist-encounter",
+                    "valueReference": {
+                        "reference": "Encounter/196B7C3E-5629-4EBB-ADFA-F2E36970FFEE",
+                        "type": "Encounter"
+                    }
+                }
+            ]
         }
-    ]
+    ],
+    "resourceType": "Group"
 }
