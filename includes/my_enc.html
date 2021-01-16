@@ -3,6 +3,8 @@
 <tr>
 <th>Patient</th>
 <th>Encounter data: id</th>
+<th>Encounter data: status</th>
+<th>Encounter data: class</th>
 <th>Encounter data: datetime</th>
 <th>Encounter data: practitioner</th>
 <th>Encounter data: location</th>
@@ -17,7 +19,7 @@
   <td>{{j}}</td>
 {% endfor %}
 {% else %}
-{% for i in range(4) %}
+{% for i in range(6) %}
 <td></td>
 {% endfor %}
 {% endif %}

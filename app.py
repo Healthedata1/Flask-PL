@@ -488,9 +488,21 @@ def fetch_more():
             app.logger.info(f'endpoint = {endpoint} is not a FHIR endpoint')
         else: # get timedata
             if py_fhir.resource_type == "Encounter":
-                data.append(py_fhir.period.start.as_json())
-                data.append(py_fhir.participant[0].individual.display)
-                data.append(py_fhir.location[0].location.display)
+                data.append(py_fhir.status)
+                data.append(py_fhir.class_fhir.display)
+                try:
+                    data.append(py_fhir.period.start.as_json())
+                except AttributeError:
+                    data.append("NA")
+                try:
+                    data.append(py_fhir.participant[0].individual.display)
+                except TypeError:
+                    data.append("NA")
+                try:
+                    data.append(f'{py_fhir.location[0].location.reference} ({py_fhir.location[0].location.display})')
+                except AttributeError:
+                    data.append(py_fhir.location[0].location.reference)
+
             elif py_fhir.resource_type == "Appointment":
                 data.append(py_fhir.start.as_json())
                 data.append(py_fhir.participant[0].actor.display)
@@ -511,7 +523,7 @@ def fetch_more():
         except KeyError:
             pass
 
-        for i in py_fhir.member: #type=Group
+        for i in py_fhir.member[:10]: #type=Group
             e = i.entity
             patient_data=dict(
                 display = getattr(e,'display', None),
@@ -519,19 +531,18 @@ def fetch_more():
                 inactive = getattr(i,'inactive', None),
             )
             session['my_patients'].append(patient_data)
+
         # check what if any member extensions - just looking at first member for now
-        try:
-            for member_ext in py_fhir.member[0].extension:
-                session['qr_ext_exist'] = True if member_ext.url ==  profile_urls['qr_ext'] else False
-                session['appt_ext_exist'] = True if member_ext.url ==  profile_urls['appt_ext'] else False
-                session['enc_ext_exist'] = True if member_ext.url ==  profile_urls['enc_ext'] else False
-        except TypeError:  # no members
-            for member_ext in py_fhir.member[0].entity.extension:
-                session['qr_ext_exist'] = True if member_ext.url ==  profile_urls['qr_ext'] else False
-                session['appt_ext_exist'] = True if member_ext.url ==  profile_urls['appt_ext'] else False
-                session['enc_ext_exist'] = True if member_ext.url ==  profile_urls['enc_ext'] else False
-        except KeyError:  # no members
-            pass
+        for ext_type in list(profile_urls.keys())[2:]:
+            session[f'{ext_type}_exist'] = False
+            try:
+                for check_ext in py_fhir.member[0].extension:
+                    app.logger.info(f'check_ext.url == profile_urls[ext_type] : {check_ext.url} == {profile_urls[ext_type]}')
+                    if check_ext.url == profile_urls[ext_type]:
+                        session[f'{ext_type}_exist'] = True
+            except KeyError:  # no members
+                pass
+
 
         # if Q Extension get questions assume only one for now
         try:
@@ -558,12 +569,13 @@ def fetch_more():
     except AttributeError:
         request_body = None
     #app.logger.info(f'request_body = {request_body}')
+    app.logger.info(f'session = {session}')
     my_markdown_string=md_template(
          'additional-data.md',
          my_patients= session.get('my_patients'),
          session_base=session.get('base'),
          session_q=session.get('q_ref'),
-         q_list = session.get('q_list'), 
+         q_list = session.get('q_list'),
          qr_ext_exist=session.get('qr_ext_exist'),
          appt_ext_exist=session.get('appt_ext_exist'),
          enc_ext_exist=session.get('enc_ext_exist'),

@@ -1,5 +1,6 @@
 ### 3  Getting Extra Details about the patients members in the list
 <a id="endpoint"></a>
+*Note: Due to the limitation of this app, the tables below display only the first 10 patients in the patient list.*
 
 #### 3.1 - Patient Lists - Extra Details via Base FHIR RESTful API Search
 The Simplest approach for the client to do a series of queries on the Server to Fetch additional data:
